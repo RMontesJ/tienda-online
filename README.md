@@ -5,11 +5,11 @@ To start, create a user on phpMyAdmin with this credentials:
 name: Rafa,
 host: localhost,
 password: 1234.
-then go to SQL and execute the script of the database
+Create a database called app and then go to SQL and execute the script of the database
 (the script of the database is in the proyect, in the folder BD, the file is called "app.sql")
 
 then, put the folder proyect in C:/xampp/htdocs. Go to google chrome
-and search 127.0.0.1 and open the proyect.
+and search 127.0.0.1 and open the folder that contains the proyect files.
 
 Once you have open the proyect, you will have to register, and then, login.
 If your email contains "@admin.com", you will access to the administrator mode and you will can see, search, edit, create and delete products, and also see all users registered in the app.
