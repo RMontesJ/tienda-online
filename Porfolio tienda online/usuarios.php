@@ -1,6 +1,8 @@
 
 <?php 
 
+error_reporting(0);
+
 $usuario = $_GET['id_user'];
 
 require_once "BD/Datos.php";
