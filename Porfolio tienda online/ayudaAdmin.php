@@ -37,6 +37,12 @@ if(!isset($usuario) || $usuario == ""){
     pones cualquer dato, te apareceran cualquier busqueda relacionada con lo que escribiste
 </p>
 
+<h1>¿Como navego en la seccion de usuarios?</h1>
+
+<p>En la pagina "usuarios" tendras todos los usuarios registrados de la tienda. Tendras un buscador en el que si 
+pones cualquer dato, te apareceran cualquier busqueda relacionada con lo que escribiste.</p>
+
+
 </div>
 
 </div>
