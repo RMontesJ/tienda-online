@@ -53,6 +53,7 @@ if(isset($nombre) && isset($descripcion) && isset($categoria) && isset($precio))
 
     <?php include "includes/navAdmin.php" ?>
 
+    <div class="formulario">
     
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>?id_user=<?php echo $usuario; ?>" method="post" id="form">
             <h2>Crear y subir producto</h2>
@@ -88,6 +89,7 @@ if(isset($nombre) && isset($descripcion) && isset($categoria) && isset($precio))
                 <input class="btn" id="boton" type="submit" value="Enviar">
             </div>
         </form>
+        </div>
     </div>
 </body>
 

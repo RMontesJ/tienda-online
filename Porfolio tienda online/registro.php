@@ -10,36 +10,7 @@ $correo = $_POST['correo'];
 $direccion = $_POST['direccion'];
 
 if(isset($nombre) && isset($contrasena) && isset($correo) && isset($direccion)){
-// crea una archivo aparte para cada usuario creado
-    $nombre_archivo = "datosUsuarios/DatosUsuario";
 
-$usuario = array("nombre" => $nombre, "contrasena" => $contrasena, "correo" => $correo, "direccion" => $direccion);
-$json = json_encode($usuario,JSON_PRETTY_PRINT);
-$ruta_json = $nombre_archivo.date('YmdHis') . '.json';
-file_put_contents($ruta_json, $json, FILE_APPEND);
-
-// los va metiendo todos en el mismo archivo para poder hacerle fetch
-
-$file = 'infoUsuarios/usuarios.json';
-    // lee los datos del archivo json
-    $current_data = file_get_contents($file);
-    // convierte el json en php
-    $data_array = json_decode($current_data, true);
-    // array con datos del usuario
-    $new_object = array(
-
-        "nombre" => $nombre, 
-        "contrasena" => $contrasena, 
-        "correo" => $correo, 
-        "direccion" => $direccion
-
-    );
-    // lo mete en una variable
-    $data_array[] = $new_object;
-    // lo pasa a json
-    $new_data_json = json_encode($data_array, JSON_PRETTY_PRINT);
-    // mete el contenido en un archivo
-    file_put_contents($file, $new_data_json);
     $crear = $clase->crear($nombre, $contrasena, $correo, $direccion);
 }
 
