@@ -18,6 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
+-- Crear la base de datos si no existe y usarla
+--
+
+CREATE DATABASE IF NOT EXISTS `app`;
+USE `app`;
+
+--
 -- Base de datos: `app`
 --
 
