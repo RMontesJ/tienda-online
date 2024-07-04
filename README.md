@@ -5,10 +5,10 @@ To start, create a user on phpMyAdmin with this credentials:
 name: Rafa,
 host: localhost,
 password: 1234.
-Create a database called app and then go to SQL and execute the script of the database
-(the script of the database is in the proyect, in the folder BD, the file is called "app.sql")
+Execute the script of the database
+(the script of the database is in the proyect, in the folder BD, the file is called "app.sql").
 
-then, put the folder proyect in C:/xampp/htdocs. Go to google chrome
+Then, put the folder proyect in C:/xampp/htdocs. Go to google chrome
 and search 127.0.0.1 and open the proyect.
 
 Once you have open the proyect, you will have to register, and then, login.
