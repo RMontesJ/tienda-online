@@ -9,7 +9,7 @@ Create a database called app and then go to SQL and execute the script of the da
 (the script of the database is in the proyect, in the folder BD, the file is called "app.sql")
 
 then, put the folder proyect in C:/xampp/htdocs. Go to google chrome
-and search 127.0.0.1 and open the folder that contains the proyect files.
+and search 127.0.0.1 and open the proyect.
 
 Once you have open the proyect, you will have to register, and then, login.
 If your email contains "@admin.com", you will access to the administrator mode and you will can see, search, edit, create and delete products, and also see all users registered in the app.
