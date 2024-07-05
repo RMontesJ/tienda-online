@@ -11,8 +11,21 @@ $nombre = $_POST['nombre'];
 $descripcion = $_POST['descripcion'];
 $categoria = $_POST['categoria'];
 $precio = $_POST['precio'];
-$foto = $_POST['foto'];
 
+if (isset($_FILES['foto'])) {
+    // Ruta donde se guardará la foto (puedes ajustarla según tu estructura de archivos)
+    $ruta_destino = '../fotosProductos/';
+
+    // Nombre del archivo original
+    $nombre_archivo = $_FILES['foto']['name'];
+
+    // Mover el archivo desde el directorio temporal al directorio destino
+    if (move_uploaded_file($_FILES['foto']['tmp_name'], $ruta_destino . $nombre_archivo)) {
+        // Aquí puedes guardar $nombre_archivo en la base de datos o realizar otras operaciones
+        $foto = $nombre_archivo;
+    }
+
+}
 $datosUsuario = new Datos();
 $clase = new Productos();
 
@@ -56,7 +69,7 @@ if(isset($nombre) && isset($descripcion) && isset($categoria) && isset($precio) 
 
     <div class="formulario">
     
-    <form action="<?php echo $_SERVER['PHP_SELF']; ?>?id_user=<?php echo $usuario; ?>" method="post" id="form">
+    <form action="<?php echo $_SERVER['PHP_SELF']; ?>?id_user=<?php echo $usuario; ?>" method="post" id="form" enctype="multipart/form-data">
             <h2>Crear y subir producto</h2>
 
             <input type="hidden" name="id_user" value="<?php echo $usuario; ?>">

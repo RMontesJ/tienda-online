@@ -48,10 +48,7 @@ CREATE TABLE IF NOT EXISTS `productos` (
 --
 
 INSERT INTO `productos` (`id`, `nombre`, `descripción`, `categoria`, `precio`, `foto`) VALUES
-(15, 'zapatillas', 'zapasdeporte', 'deportes', 45, ''),
-(16, 'mesa', 'un mueble epico', 'hogar', 5, ''),
-(17, 'pc', 'computador', 'electronica', 555, ''),
-(18, 'camisa', 'con capucha', 'ropa', 20, ''),
+
 (20, 'person', 'htrd', 'electronica', 1, 'foto curriculum buena.jpg');
 
 -- --------------------------------------------------------
