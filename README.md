@@ -9,7 +9,7 @@ Execute the script of the database
 (the script of the database is in the proyect, in the folder BD, the file is called "app.sql").
 
 Then, put the folder proyect in C:/xampp/htdocs. Go to google chrome
-and search 127.0.0.1 and open the proyect.
+and search 127.0.0.1 and open the proyect, opening "index.php" file.
 
 Once you have open the proyect, you will have to register, and then, login.
 If your email contains "@admin.com", you will access to the administrator mode and you will can see, search, edit, create and delete products, and also see all users registered in the app.
