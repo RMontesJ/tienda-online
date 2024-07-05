@@ -11,6 +11,7 @@ $nombre = $_POST['nombre'];
 $descripcion = $_POST['descripcion'];
 $categoria = $_POST['categoria'];
 $precio = $_POST['precio'];
+$foto = $_POST['foto'];
 
 $datosUsuario = new Datos();
 $clase = new Productos();
@@ -27,9 +28,9 @@ if (strpos($correo, "@admin.com") === false) {
     exit();
 }
 
-if(isset($nombre) && isset($descripcion) && isset($categoria) && isset($precio)) {
+if(isset($nombre) && isset($descripcion) && isset($categoria) && isset($precio) && isset($foto)) {
 
-    $altaProducto = $clase->crearProducto($nombre, $descripcion, $categoria, $precio, $usuario);
+    $altaProducto = $clase->crearProducto($nombre, $descripcion, $categoria, $precio, $foto, $usuario);
     
 }
 
@@ -82,6 +83,9 @@ if(isset($nombre) && isset($descripcion) && isset($categoria) && isset($precio))
                 <label for="precio">Precio</label>
                 <input type="number" name="precio" min="0" step="0.01" id="precio" placeholder="Precio">
                 <p id="corregirPrecio"></p>
+
+                <label for="foto">Foto</label>
+                <input type="file" name="foto">
 
                 <div class="form-txt">
                     <a href="#"></a>
