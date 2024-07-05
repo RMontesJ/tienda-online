@@ -2,11 +2,23 @@
 
 $usuario = $_GET['id_user'];
 
+require_once "BD/Datos.php";
+
+$clase = new Datos;
+$correo = $clase->cogerCorreo($usuario);
+
 if(!isset($usuario) || $usuario == ""){
     header("Location: inicio_sesion.php");
-    }
+}
+
+// si no es admin
+if (strpos($correo, "@admin.com") === false) {
+    header("Location: indexRegistrado.php?id_user=$usuario");
+    exit();
+}
 
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
