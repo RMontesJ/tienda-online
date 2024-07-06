@@ -25,7 +25,7 @@ $usuario = $_GET['id_user'];
 <p id="correccionNombre"></p>
 
 <div class="form-txt">
-<a href="../perfil.php?id_user=<?php echo $usuario; ?>">Volver a mi perfil</a>
+<a href="../paginas/perfil.php?id_user=<?php echo $usuario; ?>">Volver a mi perfil</a>
 
 </div>
 <input class="btn" type="submit" value="Enviar">

@@ -41,7 +41,7 @@ if (strpos($correo, "@admin.com") === false) {
 <p id="correccionNombre"></p>
 
 <div class="form-txt">
-<a href="../perfilAdmin.php?id_user=<?php echo $usuario; ?>">Volver a mi perfil</a>
+<a href="../paginas/perfilAdmin.php?id_user=<?php echo $usuario; ?>">Volver a mi perfil</a>
 
 </div>
 <input class="btn" type="submit" value="Enviar">
