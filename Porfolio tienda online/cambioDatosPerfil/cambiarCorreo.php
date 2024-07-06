@@ -12,7 +12,7 @@ $usuario = $_GET['id_user'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cambiar nombre</title>
     <link rel="stylesheet" href="../css/nav.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="../css/crearProducto.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../css/cambiarCorreo.css?v=<?php echo time(); ?>">
     <script src="../validaciones/cambiar_correo.js?v=<?php echo time(); ?>" defer></script>
 </head>
 <body>
