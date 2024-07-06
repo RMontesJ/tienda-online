@@ -27,10 +27,17 @@ if (strpos($correo, "@admin.com") === false) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cambiar nombre</title>
-    <link rel="stylesheet" href="../css/formulario.css">
+    <link rel="stylesheet" href="../css/nav.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../css/crearProducto.css?v=<?php echo time(); ?>">
     <script src="../validaciones/cambiar_contrasena.js?v=<?php echo time(); ?>" defer></script>
 </head>
 <body>
+
+<div class="pagina">
+
+<?php include "../includes/navAdmin.php" ?>
+
+<div class="formulario">
 
 <form action="logicaCambiarContrasena.php?id_user=<?php echo $usuario ?>" method="post" id="form">
 <h2>Cambiar contraseña</h2>
@@ -47,6 +54,10 @@ if (strpos($correo, "@admin.com") === false) {
 <input class="btn" type="submit" value="Enviar">
 </div>
 </form>
+
+</div>
     
+</div>
+
 </body>
 </html>
