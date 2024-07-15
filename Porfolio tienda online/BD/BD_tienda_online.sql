@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-07-2024 a las 19:28:43
+-- Tiempo de generación: 15-07-2024 a las 20:11:24
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -18,13 +18,6 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Crear la base de datos si no existe y usarla
---
-
-CREATE DATABASE IF NOT EXISTS `app`;
-USE `app`;
-
---
 -- Base de datos: `app`
 --
 
@@ -34,7 +27,7 @@ USE `app`;
 -- Estructura de tabla para la tabla `productos`
 --
 
-CREATE TABLE IF NOT EXISTS `productos` (
+CREATE TABLE `productos` (
   `id` int(11) NOT NULL,
   `nombre` varchar(50) NOT NULL,
   `descripción` varchar(100) NOT NULL,
@@ -47,13 +40,16 @@ CREATE TABLE IF NOT EXISTS `productos` (
 -- Volcado de datos para la tabla `productos`
 --
 
+INSERT INTO `productos` (`id`, `nombre`, `descripción`, `categoria`, `precio`, `foto`) VALUES
+(21, 'Silla', 'Silla de madera, con reposabrazos y cojin para estar comodo', 'hogar', 15, 'Skylanders_Logo.webp');
+
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `usuarios`
 --
 
-CREATE TABLE IF NOT EXISTS `usuarios` (
+CREATE TABLE `usuarios` (
   `id` int(11) NOT NULL,
   `nombre` varchar(30) NOT NULL,
   `contrasena` varchar(20) NOT NULL,
@@ -66,7 +62,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nombre`, `contrasena`, `correo`, `dirección`) VALUES
-(6, 'jefe', 'Pasing5$', 'ad@admin.com', 'Calle moro'),
+(6, 'admin', 'Pasing5$', 'ad@admin.com', 'Calle moro'),
 (8, 'paco', 'Vbnhj6$', 'pac@gmail.com', 'Calle besugo'),
 (9, 'Rafa', 'Asxcd4$', 'rafaelmontesjimenez@gmail.com', 'Calle bustarviejo');
 
@@ -94,7 +90,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
