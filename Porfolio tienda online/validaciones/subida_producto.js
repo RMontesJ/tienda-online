@@ -56,11 +56,11 @@ else{
     corregirCategoria.innerHTML = "";    
     validar = true;
 }
-// precio (se envia el formulario si solo se pone precio, hay que corregirlo)
-if(precio.value.trim() === "" || !/^[0-9]+([,][0-9]{1,2})?$/.test(precio.value)){
+
+if(precio.value.trim() === "" || !/^([0-9]+(\.[0-9]{3})*(,[0-9]{1,2})?|[0-9]+(,[0-9]{1,2})?)$/.test(precio.value)){
     precio = document.getElementById('precio').style.border = "1px red solid";
     corregirPrecio.style.color = 'red';
-    corregirPrecio.innerHTML = "El precio tiene que tener solo numeros enteros, como mucho 11 digitos";
+    corregirPrecio.innerHTML = "El precio tiene que tener solo numeros.";
     validar = false;
 }
 else{

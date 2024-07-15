@@ -94,7 +94,7 @@ if(isset($nombre) && isset($descripcion) && isset($categoria) && isset($precio) 
                 </select>
                 <p id="corregirCategoria"></p>
                 <label for="precio">Precio</label>
-                <input type="number" name="precio" min="0" step="0.01" id="precio" placeholder="Precio">
+                <input type="text" name="precio" id="precio" placeholder="Precio">
                 <p id="corregirPrecio"></p>
 
                 <label for="foto">Foto</label>
