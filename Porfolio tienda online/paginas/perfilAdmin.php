@@ -7,6 +7,7 @@ $datosUsuario = new Datos();
 
 $correo = $datosUsuario->cogerCorreo($usuario);
 
+// si la sesion no esta iniciada
 if(!isset($usuario) || $usuario == ""){
     header("Location: ../paginas/inicio_sesion.php");
     }

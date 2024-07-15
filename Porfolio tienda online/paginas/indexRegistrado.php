@@ -20,7 +20,7 @@ if(!isset($usuario) || $usuario == ""){
         header("Location: ../paginas/indexRegistradoAdmin.php?id_user=$usuario");
         exit();
     }
-
+// verifica el valor del campo de texto del include busquedaProductos.php
     if(isset($_POST['enviar'])){
         $valor = $_POST['busqueda'];
     }
@@ -40,11 +40,16 @@ if(!isset($usuario) || $usuario == ""){
 <div class="pagina">
 <?php include "../includes/nav.php" ?>
     <h1><?php echo "Hola, ". $nombre ?></h1>
-    <?php include "../includes/busquedaProductos.php" ?>
+    <?php 
+    // campo de busqueda y boton de buscar
+    include "../includes/busquedaProductos.php"
+    
+    ?>
     <div id="productos">
 
     <?php 
-    
+    // ejecuta una sentencia a la base de datos que busca productos con el valor del campo del include
+    // busquedaProductos.php
     $productos = $clase->buscarProductos($valor);
     
     ?>

@@ -11,6 +11,8 @@ $contrasena = $_POST['contrasena'];
 $correo = $_POST['correo'];
 $direccion = $_POST['direccion'];
 
+// comprueba que todos los campos no esten vacios
+
 if(isset($nombre) && isset($contrasena) && isset($correo) && isset($direccion)){
 
     $crear = $clase->crear($nombre, $contrasena, $correo, $direccion);

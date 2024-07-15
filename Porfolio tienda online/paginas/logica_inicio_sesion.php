@@ -6,7 +6,7 @@ $clase = new Datos;
 $nombre = $_POST['nombre'];
 $contrasena = $_POST['contrasena'];
 
-// coge el id del usuario si esta registrado. Si no lo esta, se le reedirige al inicio de sesion
+// coge el id del usuario y lo guarda en una variable
 $inicioSesion = $clase->inicioSesion($nombre, $contrasena);
 
 // coge el correo del usuario que se esta iniciando sesion

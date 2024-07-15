@@ -142,7 +142,7 @@ class Datos
         $query = mysqli_query($this->conexion, "DELETE FROM usuarios WHERE id = '$id'");
 
     }
-
+// metodo que permita crear un usuario
     public function crear($nombre, $contrasena, $correo, $direccion)
     {
         $query = mysqli_query($this->conexion, "INSERT INTO usuarios (nombre, contrasena, correo, dirección) VALUES ('$nombre','$contrasena','$correo','$direccion')");
@@ -152,7 +152,7 @@ class Datos
             header("Location: inicio_sesion.php");
         }
     }
-
+// coge el id del usuario si esta registrado. Si no lo esta, se le reedirige al inicio de sesion
     public function inicioSesion($nombre, $contrasena)
     {
         $query = mysqli_query($this->conexion, "SELECT * FROM usuarios where nombre = '$nombre' and contrasena = '$contrasena'");
@@ -168,7 +168,7 @@ class Datos
         }
 
     }
-
+    // metodo que coge el nombre
     public function cogerNombre($id)
     {
         $query = mysqli_query($this->conexion, "SELECT * FROM usuarios where id = '$id'");
@@ -183,7 +183,7 @@ class Datos
             return "No se encontró nada";
         }
     }
-
+// metodo que coge la contraseña
     public function cogerContrasena($id)
     {
         $query = mysqli_query($this->conexion, "SELECT * FROM usuarios where id = '$id'");
@@ -198,7 +198,7 @@ class Datos
             return "No se encontró nada";
         }
     }
-
+// metodo que coge el correo
     public function cogerCorreo($id)
     {
         $query = mysqli_query($this->conexion, "SELECT * FROM usuarios where id = '$id'");
@@ -213,7 +213,7 @@ class Datos
             return "No se encontró nada";
         }
     }
-
+// metodo que coge la dirección
     public function cogerDirección($id)
     {
         $query = mysqli_query($this->conexion, "SELECT * FROM usuarios where id = '$id'");

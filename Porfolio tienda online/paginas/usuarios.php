@@ -20,7 +20,8 @@ if (strpos($correo, "@admin.com") === false) {
     header("Location: ../paginas/indexRegistrado.php?id_user=$usuario");
     exit();
 }
-// si se le da al boton de buscar, coge el valor de la busqueda
+// si se le da al boton de buscar, coge el valor de la busqueda del include busquedaUsuarios.php
+// y lo pasa como argumento al metodo buscarUsuarios
 if(isset($_POST['enviar'])){
     $valor = $_POST['busqueda'];
 }
@@ -44,11 +45,17 @@ if(isset($_POST['enviar'])){
 
 <h1>Usuarios</h1>
 
-<?php include "../includes/busquedaUsuarios.php" ?>
+<?php 
+// include con el campo de texto y boton de busqueda
+include "../includes/busquedaUsuarios.php"
+
+?>
 
 <div id="perfiles">
 <?php 
-// se imprime los echo de la funcion, enviandole el parametro del valor del campo busqueda del include busquedaUsuarios.php
+
+ // ejecuta una sentencia a la base de datos que busca usuarios con el valor del campo del include
+ //busquedaUsuarios.php
 $imprimirUsuarios = $datosUsuario->buscarUsuarios($valor);
 
 

@@ -18,7 +18,7 @@ class cambioDatosPerfil{
         }
 
     }
-
+// metodo que cambia el nombre
     public function cambiarNombre($id, $nombreNuevo, $verificarCorreo){
         $query = mysqli_query($this->conexion, "UPDATE usuarios SET nombre='$nombreNuevo' WHERE id = '$id'");
 
@@ -30,7 +30,7 @@ class cambioDatosPerfil{
         }
 
     }
-
+// metodo que cambia la contraseña
     public function cambiarContrasena($id, $contrasenaNueva, $verificarCorreo){
         $query = mysqli_query($this->conexion, "UPDATE usuarios SET contrasena='$contrasenaNueva' WHERE id = '$id'");
 
@@ -41,7 +41,7 @@ class cambioDatosPerfil{
             header("Location: ../paginas/perfil.php?id_user=$id");
         }
     }
-
+// metodo que cambia el correo
     public function cambiarCorreo($id, $correoNuevo, $verificarCorreo){
         $query = mysqli_query($this->conexion, "UPDATE usuarios SET correo='$correoNuevo' WHERE id = '$id'");
 
@@ -52,7 +52,7 @@ class cambioDatosPerfil{
             header("Location: ../paginas/perfil.php?id_user=$id");
         }
     }
-
+// metodo que cambia la dirección
     public function cambiarDireccion($id, $direccionNueva, $verificarCorreo){
         $query = mysqli_query($this->conexion, "UPDATE usuarios SET dirección='$direccionNueva' WHERE id = '$id'");
 
