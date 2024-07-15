@@ -39,17 +39,13 @@ CREATE TABLE IF NOT EXISTS `productos` (
   `nombre` varchar(50) NOT NULL,
   `descripción` varchar(100) NOT NULL,
   `categoria` varchar(30) NOT NULL,
-  `precio` int(11) NOT NULL,
+  `precio` double NOT NULL,
   `foto` varchar(300) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `productos`
 --
-
-INSERT INTO `productos` (`id`, `nombre`, `descripción`, `categoria`, `precio`, `foto`) VALUES
-
-(20, 'person', 'htrd', 'electronica', 1, 'foto curriculum buena.jpg');
 
 -- --------------------------------------------------------
 
