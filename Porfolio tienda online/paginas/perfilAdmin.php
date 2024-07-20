@@ -49,7 +49,6 @@ $fotoPerfil = $datosUsuario->cogerFoto($usuario);
 <img src="../fotosUsuarios/<?php echo $fotoPerfil; ?>" alt="Foto usuario" style="width:400px;height:300px;"><br>
 <a href="../cambioDatosPerfil/cambiarFotoAdmin.php?id_user=<?php echo $usuario;?>"><img src="../img/iconoLapiz.svg" alt="Cambiar foto"></img></a>
 </div>
-<div class="datosPersonales">
 <div class="nombre">
 <p>Nombre: <?php echo $nombrePerfil ?></p>
 <a href="../cambioDatosPerfil/cambiarNombreAdmin.php?id_user=<?php echo $usuario;?>"><img src="../img/iconoLapiz.svg" alt="Cambiar nombre"></img></a>
@@ -73,8 +72,6 @@ $fotoPerfil = $datosUsuario->cogerFoto($usuario);
 <div class="borrar">
     <p>Eliminar usuario</p>
     <a href="../cambioDatosPerfil/eliminarUsuario.php?id_user=<?php echo $usuario;?>"><img src="../img/iconoPapelera.svg" alt="Eliminar usuario"></a>
-</div>
-
 </div>
 
 </div>
