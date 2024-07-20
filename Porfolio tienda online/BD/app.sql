@@ -3,14 +3,13 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-07-2024 a las 20:11:24
+-- Tiempo de generación: 20-07-2024 a las 20:28:25
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
-
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -23,14 +22,13 @@ SET time_zone = "+00:00";
 
 CREATE DATABASE IF NOT EXISTS `app`;
 USE `app`;
-
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `productos`
 --
 
-CREATE TABLE `productos` (
+CREATE TABLE IF NOT EXISTS `productos` (
   `id` int(11) NOT NULL,
   `nombre` varchar(50) NOT NULL,
   `descripción` varchar(100) NOT NULL,
@@ -44,7 +42,8 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`id`, `nombre`, `descripción`, `categoria`, `precio`, `foto`) VALUES
-(21, 'Silla', 'Silla de madera, con reposabrazos y cojin para estar comodo', 'hogar', 15, 'Skylanders_Logo.webp');
+(21, 'Silla', 'Silla de madera, con reposabrazos y cojin para estar comodo', 'hogar', 15, 'Skylanders_Logo.webp'),
+(23, 'maquina', 'un mueble epico', 'electronica', 12345, 'free-photo-of-resfriado-frio-nieve-nevar.jpeg');
 
 -- --------------------------------------------------------
 
@@ -52,22 +51,22 @@ INSERT INTO `productos` (`id`, `nombre`, `descripción`, `categoria`, `precio`, 
 -- Estructura de tabla para la tabla `usuarios`
 --
 
-CREATE TABLE `usuarios` (
+CREATE TABLE IF NOT EXISTS `usuarios` (
   `id` int(11) NOT NULL,
   `nombre` varchar(30) NOT NULL,
   `contrasena` varchar(20) NOT NULL,
   `correo` varchar(40) NOT NULL,
-  `dirección` varchar(50) NOT NULL
+  `dirección` varchar(50) NOT NULL,
+  `foto` varchar(300) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `nombre`, `contrasena`, `correo`, `dirección`) VALUES
-(6, 'admin', 'Pasing5$', 'ad@admin.com', 'Calle moro'),
-(8, 'paco', 'Vbnhj6$', 'pac@gmail.com', 'Calle besugo'),
-(9, 'Rafa', 'Asxcd4$', 'rafaelmontesjimenez@gmail.com', 'Calle bustarviejo');
+INSERT INTO `usuarios` (`id`, `nombre`, `contrasena`, `correo`, `dirección`, `foto`) VALUES
+(11, 'Rafa', 'Aqwefvc4$', 'em@gmail.com', 'Calle getafe', 'foto curriculum buena.jpg'),
+(12, 'admin', 'Zxcvbgt1$', 'ad@admin.com', 'Calle getafe', 'Captura de pantalla 2024-06-21 144116.png');
 
 --
 -- Índices para tablas volcadas
@@ -93,13 +92,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
