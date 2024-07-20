@@ -24,15 +24,31 @@ if (strpos($correo, "@admin.com") === false) {
 }
 
 
+if (isset($_FILES['fotoNueva'])) {
+    // Ruta donde se guardará la foto
+    $ruta_destino = '../fotosProductos/';
 
-if (isset($_GET['id_user']) && isset($_GET['id_producto']) && isset($_GET['nombre']) && isset($_GET['descripcion']) && isset($_GET['categoria']) && isset($_GET['precio'])) {
+    // Nombre del archivo original
+    $nombre_archivo = $_FILES['fotoNueva']['name'];
+
+    // Mover el archivo desde el directorio temporal al directorio destino
+    if (move_uploaded_file($_FILES['fotoNueva']['tmp_name'], $ruta_destino . $nombre_archivo)) {
+        // Aquí puedes guardar $nombre_archivo en la base de datos o realizar otras operaciones
+        $foto = $nombre_archivo;
+    }
+
+}
+
+if (isset($_GET['id_user']) && isset($_GET['id_producto']) && isset($_GET['nombre']) && isset($_GET['descripcion']) && isset($_GET['categoria']) && isset($_GET['precio']) && isset($_GET['foto'])) {
     $usuario = $_GET['id_user'];
     $id_producto = $_GET['id_producto'];
     $nombre = urldecode($_GET['nombre']);
     $descripcion = urldecode($_GET['descripcion']);
     $categoria = urldecode($_GET['categoria']);
+    $foto = urldecode($_GET['foto']);
     $precio = urldecode($_GET['precio']);
 }
+
 
 $nombreNuevo = $_POST['nombreNuevo'];
 $descripcionNueva = $_POST['descripcionNueva'];
@@ -43,7 +59,7 @@ if (isset($nombreNuevo) || isset($descripcionNueva) || isset($categoriaNueva) ||
     $usuario = $_POST['usuario'];
     $id_producto = $_POST['id_producto'];
     
-    $productos->editarProducto($usuario, $id_producto, $nombreNuevo, $descripcionNueva, $categoriaNueva, $precioNuevo);
+    $productos->editarProducto($usuario, $id_producto, $nombreNuevo, $descripcionNueva, $categoriaNueva, $precioNuevo, $foto);
     header("Location: ../paginas/indexRegistradoAdmin.php?id_user=$usuario");
 }
 
@@ -58,7 +74,7 @@ if (isset($nombreNuevo) || isset($descripcionNueva) || isset($categoriaNueva) ||
     <title>Editar producto</title>
     <link rel="stylesheet" href="../css/nav.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../css/crearProducto.css?v=<?php echo time(); ?>">
-    <script src="../validaciones/subida_producto.js?v=<?php echo time(); ?>" defer></script>
+    <script src="../validaciones/actualizar_producto.js?v=<?php echo time(); ?>" defer></script>
 </head>
 
 <body>
@@ -66,7 +82,7 @@ if (isset($nombreNuevo) || isset($descripcionNueva) || isset($categoriaNueva) ||
 <?php include "../includes/navAdmin.php" ?>
 
     <div class="formulario">
-    <form action="<?php echo $_SERVER['PHP_SELF']; ?>?id_user=<?php echo $usuario; ?>" method="post" id="form">
+    <form action="<?php echo $_SERVER['PHP_SELF']; ?>?id_user=<?php echo $usuario; ?>" method="post" id="form" enctype="multipart/form-data">
             <h2>Editar producto</h2>
 
             <input type="hidden" name="usuario" value="<?php echo $usuario; ?>">
@@ -92,9 +108,10 @@ if (isset($nombreNuevo) || isset($descripcionNueva) || isset($categoriaNueva) ||
                     <option value="ropa">Ropa</option>
                 </select>
                 <p id="corregirCategoria"></p>
+                <label for="foto">Foto</label>
+                <input type="file" name="fotoNueva" value="<?php echo $foto ?>" id="fotoNueva">
                 <label for="precio">Precio</label>
-                <input type="number" name="precioNuevo" value="<?php echo $precio ?>" min="0" step="0.01" id="precio"
-                    placeholder="Precio">
+                <input type="number" name="precioNuevo" value="<?php echo $precio ?>" min="0" step="0.01" id="precio"placeholder="Precio">
                 <p id="corregirPrecio"></p>
 
                 <div class="form-txt">
