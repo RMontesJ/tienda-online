@@ -97,7 +97,7 @@ class Datos
 
         while ($row = $consulta->fetch_array(MYSQLI_ASSOC)) {
             echo "<div class= 'tarjeta'>";
-            echo "<img src='../fotoProductos/" . $row['foto'] . "' alt='Foto del producto' style='width:100px;height:100px;'><br>";
+            echo "<img src='../fotosProductos/" . $row['foto'] . "' alt='Foto del producto' style='width:100%;height:300px;'><br>";
             echo "ID: " . $row['id'] . "<br>";
             echo "Nombre: " . $row['nombre'] . "<br>";
             echo "Descripción: " . $row['descripción'] . "<br>";
@@ -113,7 +113,7 @@ class Datos
 
         while ($row = $consulta->fetch_array(MYSQLI_ASSOC)) {
             echo "<div class= 'tarjeta'>";
-            echo "<img src='../fotosProductos/" . $row['foto'] . "' alt='Foto del producto' style='width:100px;height:100px;'><br>";
+            echo "<img src='../fotosProductos/" . $row['foto'] . "' alt='Foto del producto' style='width:100%;height:300px;'><br>";
             echo "ID: " . $row['id'] . "<br>";
             echo "Nombre: " . $row['nombre'] . "<br>";
             echo "Descripción: " . $row['descripción'] . "<br>";
