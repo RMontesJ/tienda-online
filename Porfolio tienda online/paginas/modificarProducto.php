@@ -39,7 +39,6 @@ if (isset($_FILES['fotoNueva'])) {
 
 }
 
-if (isset($_GET['id_user']) && isset($_GET['id_producto']) && isset($_GET['nombre']) && isset($_GET['descripcion']) && isset($_GET['categoria']) && isset($_GET['precio']) && isset($_GET['foto'])) {
     $usuario = $_GET['id_user'];
     $id_producto = $_GET['id_producto'];
     $nombre = urldecode($_GET['nombre']);
@@ -47,7 +46,7 @@ if (isset($_GET['id_user']) && isset($_GET['id_producto']) && isset($_GET['nombr
     $categoria = urldecode($_GET['categoria']);
     $foto = urldecode($_GET['foto']);
     $precio = urldecode($_GET['precio']);
-}
+
 
 
 $nombreNuevo = $_POST['nombreNuevo'];
@@ -55,7 +54,7 @@ $descripcionNueva = $_POST['descripcionNueva'];
 $categoriaNueva = $_POST['categoriaNueva'];
 $precioNuevo = $_POST['precioNuevo'];
 
-if (isset($nombreNuevo) || isset($descripcionNueva) || isset($categoriaNueva) || isset($precioNuevo)) {
+if (!empty($nombreNuevo) || !empty($descripcionNueva) || !empty($categoriaNueva) || !empty($precioNuevo)) {
     $usuario = $_POST['usuario'];
     $id_producto = $_POST['id_producto'];
     

@@ -27,7 +27,7 @@ class Productos{
         
     }
 
-    public function editarProducto($id_usuario, $id_producto, $nombreNuevo, $descripcionNueva, $categoriaNueva, $fotoNueva, $precioNuevo) {
+    public function editarProducto($id_usuario, $id_producto, $nombreNuevo, $descripcionNueva, $categoriaNueva, $precioNuevo, $fotoNueva) {
         $query = mysqli_query($this->conexion, "UPDATE productos SET nombre = '$nombreNuevo', descripción = '$descripcionNueva', categoria = '$categoriaNueva', precio = $precioNuevo, foto = '$fotoNueva' WHERE id = $id_producto");
         
     }
