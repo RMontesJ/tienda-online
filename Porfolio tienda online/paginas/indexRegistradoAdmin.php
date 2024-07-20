@@ -16,7 +16,7 @@ $correo = $clase->cogerCorreo($usuario);
 
 // si no es admin
 if (strpos($correo, "@admin.com") === false) {
-    header("Location: indexRegistrado.php?id_user=$usuario");
+    header("Location: ../paginas/indexRegistrado.php?id_user=$usuario");
     exit();
 }
 

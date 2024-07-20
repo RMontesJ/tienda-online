@@ -17,7 +17,7 @@ $correo = $clase->cogerCorreo($usuario);
 
 // si el correo es admin
 if (strpos($correo, "@admin.com") === true) {
-    header("Location: ../indexRegistradoAdmin.php?id_user=$usuario");
+    header("Location: ../paginas/indexRegistradoAdmin.php?id_user=$usuario");
     exit();
 }
 
