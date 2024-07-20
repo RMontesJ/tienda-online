@@ -23,6 +23,13 @@ if (strpos($correo, "@admin.com") === false) {
     exit();
 }
 
+$usuario = $_GET['id_user'];
+    $id_producto = $_GET['id_producto'];
+    $nombre = urldecode($_GET['nombre']);
+    $descripcion = urldecode($_GET['descripcion']);
+    $categoria = urldecode($_GET['categoria']);
+    $foto = urldecode($_GET['foto']);
+    $precio = urldecode($_GET['precio']);
 
 if (isset($_FILES['fotoNueva'])) {
     // Ruta donde se guardará la foto
@@ -38,16 +45,6 @@ if (isset($_FILES['fotoNueva'])) {
     }
 
 }
-
-    $usuario = $_GET['id_user'];
-    $id_producto = $_GET['id_producto'];
-    $nombre = urldecode($_GET['nombre']);
-    $descripcion = urldecode($_GET['descripcion']);
-    $categoria = urldecode($_GET['categoria']);
-    $foto = urldecode($_GET['foto']);
-    $precio = urldecode($_GET['precio']);
-
-
 
 $nombreNuevo = $_POST['nombreNuevo'];
 $descripcionNueva = $_POST['descripcionNueva'];
