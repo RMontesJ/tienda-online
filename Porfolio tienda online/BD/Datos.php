@@ -48,33 +48,6 @@ class Datos
         }
     }
 
-    public function imprimirProductos()
-    {
-        $query = "SELECT * FROM productos";
-
-        if ($result = $this->conexion->query($query)) {
-
-            while ($row = $result->fetch_assoc()) {
-                $id = $row["id"];
-                $nombre = $row["nombre"];
-                $descripcion = $row["descripción"];
-                $categoria = $row["categoria"];
-                $precio = $row["precio"];
-
-                echo "
-    <div class='tarjeta'> 
-    <p>Id: $id</p>
-    <p>Nombre: $nombre</p>
-    <p>Contraseña: $descripcion</p>
-    <p>Correo: $categoria</p>
-    <p>Dirección: $precio</p>
-    </div>";
-            }
-
-
-            $result->free();
-        }
-    }
 
     public function buscarUsuarios($busqueda)
     {
