@@ -55,6 +55,7 @@ class Datos
 
         while ($row = $consulta->fetch_array(MYSQLI_ASSOC)) {
             echo "<div class= 'tarjeta'>";
+            echo "<img src='../fotosUsuarios/" . $row['foto'] . "' alt='Foto usuario' style='width:100%;height:300px;'><br>";
             echo "ID: " . $row['id'] . "<br>";
             echo "Nombre: " . $row['nombre'] . "<br>";
             echo "Contraseña: " . $row['contrasena'] . "<br>";
@@ -116,9 +117,9 @@ class Datos
 
     }
 // metodo que permita crear un usuario
-    public function crear($nombre, $contrasena, $correo, $direccion)
+    public function crear($nombre, $contrasena, $correo, $direccion, $foto)
     {
-        $query = mysqli_query($this->conexion, "INSERT INTO usuarios (nombre, contrasena, correo, dirección) VALUES ('$nombre','$contrasena','$correo','$direccion')");
+        $query = mysqli_query($this->conexion, "INSERT INTO usuarios (nombre, contrasena, correo, dirección, foto) VALUES ('$nombre','$contrasena','$correo','$direccion','$foto')");
         $query = mysqli_query($this->conexion, "SELECT * FROM usuarios where nombre = '$nombre' and contrasena = '$contrasena'");
         $num = mysqli_num_rows($query);
         if ($num == 1) {
@@ -197,6 +198,20 @@ class Datos
             // coge el valor del nombre
             $dirección = $row['dirección'];
             return $dirección;
+        } else {
+            return "No se encontró nada";
+        }
+    }
+
+    public function cogerFoto($id){
+        $query = mysqli_query($this->conexion, "SELECT * FROM usuarios where id = '$id'");
+        $num = mysqli_num_rows($query);
+
+        if ($num == 1) {
+            $row = mysqli_fetch_assoc($query);
+            // coge el valor del nombre
+            $foto = $row['foto'];
+            return $foto;
         } else {
             return "No se encontró nada";
         }

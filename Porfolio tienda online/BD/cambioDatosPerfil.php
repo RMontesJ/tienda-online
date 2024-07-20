@@ -64,5 +64,16 @@ class cambioDatosPerfil{
         }
     }
 
+    public function cambiarFoto($id, $fotoNueva, $verificarCorreo){
+        $query = mysqli_query($this->conexion, "UPDATE usuarios SET foto='$fotoNueva' WHERE id = '$id'");
+
+        if(strpos($verificarCorreo, "@admin.com")){
+            header("Location: ../paginas/perfilAdmin.php?id_user=$id");
+        }
+        else{
+            header("Location: ../paginas/perfil.php?id_user=$id");
+        }
+    }
+
 }
 ?>

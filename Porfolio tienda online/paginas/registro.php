@@ -11,11 +11,26 @@ $contrasena = $_POST['contrasena'];
 $correo = $_POST['correo'];
 $direccion = $_POST['direccion'];
 
+if (isset($_FILES['foto'])) {
+    // Ruta donde se guardará la foto (puedes ajustarla según tu estructura de archivos)
+    $ruta_destino = '../fotosUsuarios/';
+
+    // Nombre del archivo original
+    $nombre_archivo = $_FILES['foto']['name'];
+
+    // Mover el archivo desde el directorio temporal al directorio destino
+    if (move_uploaded_file($_FILES['foto']['tmp_name'], $ruta_destino . $nombre_archivo)) {
+        // Aquí puedes guardar $nombre_archivo en la base de datos o realizar otras operaciones
+        $foto = $nombre_archivo;
+    }
+
+}
+
 // comprueba que todos los campos no esten vacios
 
 if(isset($nombre) && isset($contrasena) && isset($correo) && isset($direccion)){
 
-    $crear = $clase->crear($nombre, $contrasena, $correo, $direccion);
+    $crear = $clase->crear($nombre, $contrasena, $correo, $direccion, $foto);
 }
 
 ?>
@@ -32,7 +47,7 @@ if(isset($nombre) && isset($contrasena) && isset($correo) && isset($direccion)){
 </head>
 <body>
     
-<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" id="form">
+<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" id="form" enctype="multipart/form-data">
 <h2>Registrarse</h2>
 
 <div class="input-group">
@@ -48,6 +63,8 @@ if(isset($nombre) && isset($contrasena) && isset($correo) && isset($direccion)){
 <label for="dirección">Dirección</label>
 <input type="text" name="direccion" id="direccion" placeholder="Dirección">
 <p id="corregirDireccion"></p>
+<label for="foto">Foto</label>
+<input type="file" name="foto" id="foto">
 
 <div class="form-txt">
 <a href="inicio_sesion.php">Iniciar sesion</a>
