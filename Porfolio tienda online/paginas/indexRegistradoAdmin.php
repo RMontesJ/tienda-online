@@ -22,7 +22,8 @@ if (strpos($correo, "@admin.com") === false) {
 
 $nombre = $clase->cogerNombre($usuario);
 
-// verifica el valor del campo de texto del include busquedaProductos.php
+// verifica el valor del campo de texto del include busquedaProductos.php,
+// guardando su valor en una variable
 
 if(isset($_POST['enviar'])){
     $valor = $_POST['busqueda'];

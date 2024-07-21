@@ -7,6 +7,7 @@ require_once "../BD/Datos.php";
 
 $clase = new Datos;
 
+// si la sesion no esta iniciada
 if(!isset($usuario) || $usuario == ""){
     header("Location: inicio_sesion.php");
     }

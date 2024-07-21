@@ -13,6 +13,7 @@ $nombreNuevo = $_POST['nombreNuevo'];
 
 $clase = new cambioDatosPerfil();
 
+// si se rellena el campo, actualiza el nombre
 if(isset($nombreNuevo)){
 
     $cambioNombre = $clase->cambiarNombre($usuario, $nombreNuevo, $verificarCorreo);

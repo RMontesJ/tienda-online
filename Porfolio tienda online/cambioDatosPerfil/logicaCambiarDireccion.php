@@ -13,6 +13,7 @@ $direccionNueva = $_POST['direccionNueva'];
 
 $clase = new cambioDatosPerfil();
 
+// si se rellena el campo, actualiza la dirección
 if(isset($direccionNueva)){
 
     $cambioDireccion = $clase->cambiarDireccion($usuario, $direccionNueva, $verificarCorreo);

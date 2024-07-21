@@ -20,7 +20,9 @@ if(!isset($usuario) || $usuario == ""){
         header("Location: ../paginas/indexRegistradoAdmin.php?id_user=$usuario");
         exit();
     }
-// verifica el valor del campo de texto del include busquedaProductos.php
+// verifica el valor del campo de texto del include busquedaProductos.php,
+// guardando su valor en una variable
+
     if(isset($_POST['enviar'])){
         $valor = $_POST['busqueda'];
     }

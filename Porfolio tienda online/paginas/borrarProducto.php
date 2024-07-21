@@ -12,6 +12,7 @@ $producto = $_GET['id_producto'];
 
 $clase->borrarProducto($producto);
 
+// metodo que coge el correo
 $correo = $clase->cogerCorreo($usuario);
 
 

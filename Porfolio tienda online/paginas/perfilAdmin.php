@@ -18,7 +18,7 @@ if(!isset($usuario) || $usuario == ""){
         exit();
     }
 
-
+// funciones que recuperan los datos del usuario y los muestra
 $nombrePerfil = $datosUsuario->cogerNombre($usuario);
 $contrasenaPerfil = $datosUsuario->cogerContrasena($usuario);
 $correoPerfil = $datosUsuario->cogerCorreo($usuario);

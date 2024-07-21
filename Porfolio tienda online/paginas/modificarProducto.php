@@ -54,7 +54,7 @@ $precioNuevo = $_POST['precioNuevo'];
 if (!empty($nombreNuevo) || !empty($descripcionNueva) || !empty($categoriaNueva) || !empty($precioNuevo)) {
     $usuario = $_POST['usuario'];
     $id_producto = $_POST['id_producto'];
-    
+    // actualiza los datos del producto segun los datos del formulario
     $productos->editarProducto($usuario, $id_producto, $nombreNuevo, $descripcionNueva, $categoriaNueva, $precioNuevo, $foto);
     header("Location: ../paginas/indexRegistradoAdmin.php?id_user=$usuario");
 }

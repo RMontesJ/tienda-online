@@ -29,6 +29,7 @@ if (isset($_FILES['foto'])) {
 $datosUsuario = new Datos();
 $clase = new Productos();
 
+// funcion que coge el correo del usuario usando su id como argumento
 $correo = $datosUsuario->cogerCorreo($usuario);
 
 if(!isset($usuario) || $usuario == ""){
@@ -41,6 +42,7 @@ if (strpos($correo, "@admin.com") === false) {
     exit();
 }
 
+// si todos los datos se han rellenado, se crea el producto
 if(isset($nombre) && isset($descripcion) && isset($categoria) && isset($precio) && isset($foto)) {
 
     $altaProducto = $clase->crearProducto($nombre, $descripcion, $categoria, $precio, $foto, $usuario);

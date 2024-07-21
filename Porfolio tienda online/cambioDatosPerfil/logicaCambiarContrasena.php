@@ -13,6 +13,7 @@ $contrasenaNueva = $_POST['contrasenaNueva'];
 
 $clase = new cambioDatosPerfil();
 
+// si se rellena el campo, actualiza la contraseña
 if(isset($contrasenaNueva)){
 
     $cambioContrasena = $clase->cambiarContrasena($usuario, $contrasenaNueva, $verificarCorreo);
