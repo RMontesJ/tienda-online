@@ -1,5 +1,5 @@
 # porfolio-tienda-online
-Proyect porfolio as student of first year of DAM.
+Proyect porfolio as student of DAM.
 install xampp and locate it in C:/xampp, open the program and start the services apache and mysql, click the button "admin" at MySQL.
 To start, create a user on phpMyAdmin with this credentials:
 name: Rafa,
