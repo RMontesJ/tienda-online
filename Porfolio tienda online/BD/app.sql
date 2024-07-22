@@ -3,13 +3,14 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-07-2024 a las 20:28:25
+-- Tiempo de generación: 22-07-2024 a las 13:24:01
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -22,13 +23,14 @@ SET time_zone = "+00:00";
 
 CREATE DATABASE IF NOT EXISTS `app`;
 USE `app`;
+
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `productos`
 --
 
-CREATE TABLE IF NOT EXISTS `productos` (
+CREATE TABLE IF NOT EXISTS`productos` (
   `id` int(11) NOT NULL,
   `nombre` varchar(50) NOT NULL,
   `descripción` varchar(100) NOT NULL,
@@ -42,8 +44,8 @@ CREATE TABLE IF NOT EXISTS `productos` (
 --
 
 INSERT INTO `productos` (`id`, `nombre`, `descripción`, `categoria`, `precio`, `foto`) VALUES
-(21, 'Silla', 'Silla de madera, con reposabrazos y cojin para estar comodo', 'hogar', 15, 'Skylanders_Logo.webp'),
-(23, 'maquina', 'un mueble epico', 'electronica', 12345, 'free-photo-of-resfriado-frio-nieve-nevar.jpeg');
+(21, 'Silla', 'Silla de madera, con reposabrazos y cojin para estar comodo', '', 15, 'SHAPE-SILLA-CON-CABEZAL-Y-BRAZOS.webp'),
+(23, 'Mochila', 'Mochila de acampada de alta capacidad e impermeable', 'deportes', 40, 'free-photo-of-resfriado-frio-nieve-nevar.jpeg');
 
 -- --------------------------------------------------------
 
@@ -66,7 +68,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 
 INSERT INTO `usuarios` (`id`, `nombre`, `contrasena`, `correo`, `dirección`, `foto`) VALUES
 (11, 'Rafa', 'Aqwefvc4$', 'em@gmail.com', 'Calle getafe', 'foto curriculum buena.jpg'),
-(12, 'admin', 'Zxcvbgt1$', 'ad@admin.com', 'Calle getafe', 'Captura de pantalla 2024-06-21 144116.png');
+(13, 'admin', 'Azcvbh6$', 'ad@admin.com', 'Calle mar', 'logo_unimatch.png');
 
 --
 -- Índices para tablas volcadas
@@ -98,7 +100,7 @@ ALTER TABLE `productos`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
