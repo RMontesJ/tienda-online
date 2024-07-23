@@ -60,7 +60,7 @@ else{
 if(precio.value.trim() === "" || !/^[0-9]+(\.[0-9]{3})*\.[0-9]{2}$/.test(precio.value)){
     precio = document.getElementById('precio').style.border = "1px red solid";
     corregirPrecio.style.color = 'red';
-    corregirPrecio.innerHTML = "El precio tiene que tener este formato: 1025.59";
+    corregirPrecio.innerHTML = "El precio tiene que incluir centimos, por ejemplo 25.59";
     validar = false;
 }
 else{
