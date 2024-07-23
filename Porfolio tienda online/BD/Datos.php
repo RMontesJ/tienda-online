@@ -76,7 +76,7 @@ class Datos
             echo "Nombre: " . $row['nombre'] . "<br>";
             echo "Descripción: " . $row['descripción'] . "<br>";
             echo "Categoria: " . $row['categoria'] . "<br>";
-            echo "Precio: " . $row['precio'] . "<br>";
+            echo "Precio: " . $row['precio'] . "€" . "<br>";
             echo "</div>";
         }
     }
@@ -92,7 +92,7 @@ class Datos
             echo "Nombre: " . $row['nombre'] . "<br>";
             echo "Descripción: " . $row['descripción'] . "<br>";
             echo "Categoria: " . $row['categoria'] . "<br>";
-            echo "Precio: " . $row['precio'] . "<br>";
+            echo "Precio: " . $row['precio'] . "€" . "<br>";
             echo "<div class= 'botones'>";
             $id_producto = urlencode($row['id']);
             $nombre = urlencode($row['nombre']);
