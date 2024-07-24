@@ -39,7 +39,7 @@ if (strpos($correo, "@admin.com") === false) {
 
 <h1>¿Donde puedo ver mis datos?</h1>
 
-<p>Pincha en la pagina "Perfil" en la parte superior, donde podras consultar toda la informacion de 
+<p>Pincha en la pagina "Mi perfil" en la parte superior, donde podras consultar toda la informacion de 
     tu perfil, asi como modificar tus datos y borrar tu cuenta.
 </p>
 
