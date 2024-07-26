@@ -27,6 +27,7 @@ $nombre = $_POST['nombre'];
 $descripcion = $_POST['descripcion'];
 $categoria = $_POST['categoria'];
 $precio = $_POST['precio'];
+// pone la foto de producto predeterminada si no se pone
 $fotoPredeterminada = '../fotosProductos/image-product-default.png';
 $foto = $fotoPredeterminada;
 
@@ -50,7 +51,7 @@ if (isset($_FILES['foto'])) {
 // si todos los datos se han rellenado, se crea el producto
 if(isset($nombre) && isset($descripcion) && isset($categoria) && isset($precio)) {
 
-    $altaProducto = $clase->crearProducto($nombre, $descripcion, $categoria, $precio, $fotoPredeterminada, $usuario);
+    $altaProducto = $clase->crearProducto($nombre, $descripcion, $categoria, $precio, $foto, $usuario);
     
 }
 
