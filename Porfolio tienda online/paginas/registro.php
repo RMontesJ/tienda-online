@@ -10,6 +10,7 @@ $nombre = $_POST['nombre'];
 $contrasena = $_POST['contrasena'];
 $correo = $_POST['correo'];
 $direccion = $_POST['direccion'];
+// ponemos una foto predeterminada en caso de que el usuario no ponga una
 $fotoPredeterminada = '../fotosUsuarios/user-photo-default.webp';
 $foto = $fotoPredeterminada;
 

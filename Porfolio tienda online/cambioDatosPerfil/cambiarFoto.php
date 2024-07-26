@@ -34,6 +34,7 @@ if (isset($_FILES['fotoNueva'])) {
         $foto = $nombre_archivo;
         $cambioFoto = $cambio->cambiarFoto($usuario, $foto, $correo);
     }
+    // si no has puesto foto, te pone la foto predeterminada
     else if ($_FILES['fotoNueva']['name'] == ""){
         $fotoPredeterminada = '../fotosUsuarios/user-photo-default.webp';
         $cambioFoto = $cambio->cambiarFoto($usuario, $fotoPredeterminada, $correo);
