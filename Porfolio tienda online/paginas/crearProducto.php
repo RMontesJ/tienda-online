@@ -43,7 +43,7 @@ if (isset($_FILES['foto'])) {
         $foto = $nombre_archivo;
     }
     
-
+    $altaProducto = $clase->crearProducto($nombre, $descripcion, $categoria, $precio, $foto, $usuario);
 }
 
 
