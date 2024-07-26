@@ -10,6 +10,8 @@ $nombre = $_POST['nombre'];
 $contrasena = $_POST['contrasena'];
 $correo = $_POST['correo'];
 $direccion = $_POST['direccion'];
+$fotoPredeterminada = '../fotosUsuarios/user-photo-default.webp';
+$foto = $fotoPredeterminada;
 
 if (isset($_FILES['foto'])) {
     // Ruta donde se guardará la foto (puedes ajustarla según tu estructura de archivos)

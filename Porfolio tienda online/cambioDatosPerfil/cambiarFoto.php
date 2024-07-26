@@ -22,7 +22,7 @@ if (strpos($correo, "@admin.com") === true) {
 }
 
 if (isset($_FILES['fotoNueva'])) {
-    // Ruta donde se guardará la foto (puedes ajustarla según tu estructura de archivos)
+    // Ruta donde se guardará la foto
     $ruta_destino = '../fotosUsuarios/';
 
     // Nombre del archivo original
@@ -32,9 +32,15 @@ if (isset($_FILES['fotoNueva'])) {
     if (move_uploaded_file($_FILES['fotoNueva']['tmp_name'], $ruta_destino . $nombre_archivo)) {
         // Aquí puedes guardar $nombre_archivo en la base de datos o realizar otras operaciones
         $foto = $nombre_archivo;
+        $cambioFoto = $cambio->cambiarFoto($usuario, $foto, $correo);
     }
-    $cambioFoto = $cambio->cambiarFoto($usuario, $foto, $correo);
+    else if ($_FILES['fotoNueva']['name'] == ""){
+        $fotoPredeterminada = '../fotosUsuarios/user-photo-default.webp';
+        $cambioFoto = $cambio->cambiarFoto($usuario, $fotoPredeterminada, $correo);
+    }
 }
+
+
 
 ?>
 
