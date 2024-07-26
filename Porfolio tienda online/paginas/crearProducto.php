@@ -7,25 +7,6 @@ $usuario = $_GET['id_user'];
 require_once "../BD/productos.php";
 require_once "../BD/Datos.php";
 
-$nombre = $_POST['nombre'];
-$descripcion = $_POST['descripcion'];
-$categoria = $_POST['categoria'];
-$precio = $_POST['precio'];
-
-if (isset($_FILES['foto'])) {
-    // Ruta donde se guardará la foto (puedes ajustarla según tu estructura de archivos)
-    $ruta_destino = '../fotosProductos/';
-
-    // Nombre del archivo original
-    $nombre_archivo = $_FILES['foto']['name'];
-
-    // Mover el archivo desde el directorio temporal al directorio destino
-    if (move_uploaded_file($_FILES['foto']['tmp_name'], $ruta_destino . $nombre_archivo)) {
-        // Aquí puedes guardar $nombre_archivo en la base de datos o realizar otras operaciones
-        $foto = $nombre_archivo;
-    }
-
-}
 $datosUsuario = new Datos();
 $clase = new Productos();
 
@@ -42,10 +23,34 @@ if (strpos($correo, "@admin.com") === false) {
     exit();
 }
 
-// si todos los datos se han rellenado, se crea el producto
-if(isset($nombre) && isset($descripcion) && isset($categoria) && isset($precio) && isset($foto)) {
+$nombre = $_POST['nombre'];
+$descripcion = $_POST['descripcion'];
+$categoria = $_POST['categoria'];
+$precio = $_POST['precio'];
+$fotoPredeterminada = '../fotosProductos/image-product-default.png';
+$foto = $fotoPredeterminada;
 
-    $altaProducto = $clase->crearProducto($nombre, $descripcion, $categoria, $precio, $foto, $usuario);
+if (isset($_FILES['foto'])) {
+    // Ruta donde se guardará la foto (puedes ajustarla según tu estructura de archivos)
+    $ruta_destino = '../fotosProductos/';
+
+    // Nombre del archivo original
+    $nombre_archivo = $_FILES['foto']['name'];
+
+    // Mover el archivo desde el directorio temporal al directorio destino
+    if (move_uploaded_file($_FILES['foto']['tmp_name'], $ruta_destino . $nombre_archivo)) {
+        // Aquí puedes guardar $nombre_archivo en la base de datos o realizar otras operaciones
+        $foto = $nombre_archivo;
+    }
+    
+
+}
+
+
+// si todos los datos se han rellenado, se crea el producto
+if(isset($nombre) && isset($descripcion) && isset($categoria) && isset($precio)) {
+
+    $altaProducto = $clase->crearProducto($nombre, $descripcion, $categoria, $precio, $fotoPredeterminada, $usuario);
     
 }
 
