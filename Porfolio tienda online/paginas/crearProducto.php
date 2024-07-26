@@ -43,8 +43,6 @@ if (isset($_FILES['foto'])) {
         // Aquí puedes guardar $nombre_archivo en la base de datos o realizar otras operaciones
         $foto = $nombre_archivo;
     }
-    
-    $altaProducto = $clase->crearProducto($nombre, $descripcion, $categoria, $precio, $foto, $usuario);
 }
 
 

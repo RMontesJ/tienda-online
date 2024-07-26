@@ -32,6 +32,7 @@ $usuario = $_GET['id_user'];
     $precio = urldecode($_GET['precio']);
     $fotoPredeterminada = '../fotosProductos/image-product-default.png';
 $foto = $fotoPredeterminada;
+    
 
 if (isset($_FILES['fotoNueva'])) {
     // Ruta donde se guardará la foto
