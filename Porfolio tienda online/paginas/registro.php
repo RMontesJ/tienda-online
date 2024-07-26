@@ -66,7 +66,7 @@ if(isset($nombre) && isset($contrasena) && isset($correo) && isset($direccion)){
 <label for="dirección">Dirección</label>
 <input type="text" name="direccion" id="direccion" placeholder="Dirección">
 <p id="corregirDireccion"></p>
-<label for="foto">Foto</label>
+<label for="foto">Foto (opcional)</label>
 <input type="file" name="foto" id="foto">
 
 <div class="form-txt">
