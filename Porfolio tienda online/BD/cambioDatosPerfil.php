@@ -18,45 +18,11 @@ class cambioDatosPerfil{
         }
 
     }
-// metodo que cambia el nombre
-    public function cambiarNombre($id, $nombreNuevo, $verificarCorreo){
-        $query = mysqli_query($this->conexion, "UPDATE usuarios SET nombre='$nombreNuevo' WHERE id = '$id'");
 
-        if(strpos($verificarCorreo, "@admin.com")){
-            header("Location: ../paginas/perfilAdmin.php?id_user=$id");
-        }
-        else{
-            header("Location: ../paginas/perfil.php?id_user=$id");
-        }
+    public function actualizarPerfil($nombre, $contrasena, $correo, $direccion, $id){
+        $query = mysqli_query($this->conexion, "UPDATE usuarios SET nombre='$nombre', contrasena='$contrasena', correo='$correo', dirección='$direccion' WHERE id='$id'");
 
-    }
-// metodo que cambia la contraseña
-    public function cambiarContrasena($id, $contrasenaNueva, $verificarCorreo){
-        $query = mysqli_query($this->conexion, "UPDATE usuarios SET contrasena='$contrasenaNueva' WHERE id = '$id'");
-
-        if(strpos($verificarCorreo, "@admin.com")){
-            header("Location: ../paginas/perfilAdmin.php?id_user=$id");
-        }
-        else{
-            header("Location: ../paginas/perfil.php?id_user=$id");
-        }
-    }
-// metodo que cambia el correo
-    public function cambiarCorreo($id, $correoNuevo, $verificarCorreo){
-        $query = mysqli_query($this->conexion, "UPDATE usuarios SET correo='$correoNuevo' WHERE id = '$id'");
-
-        if(strpos($verificarCorreo, "@admin.com")){
-            header("Location: ../paginas/perfilAdmin.php?id_user=$id");
-        }
-        else{
-            header("Location: ../paginas/perfil.php?id_user=$id");
-        }
-    }
-// metodo que cambia la dirección
-    public function cambiarDireccion($id, $direccionNueva, $verificarCorreo){
-        $query = mysqli_query($this->conexion, "UPDATE usuarios SET dirección='$direccionNueva' WHERE id = '$id'");
-
-        if(strpos($verificarCorreo, "@admin.com")){
+        if(strpos($correo, "@admin.com")){
             header("Location: ../paginas/perfilAdmin.php?id_user=$id");
         }
         else{

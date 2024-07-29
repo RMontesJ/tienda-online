@@ -47,3 +47,7 @@ background-color: rgb(194, 211, 212);
     list-style: none;
 }
 
+.config{
+    display: flex;
+    flex-direction: row;
+}
