@@ -41,7 +41,7 @@ if(isset($nombre) || isset($contrasena) || isset($correo) || isset($direccion)){
     
 <div class="pagina">
 
-<?php include "../includes/navAdmin.php" ?>
+<?php include "../includes/nav.php" ?>
 
 <div class="formulario">
 

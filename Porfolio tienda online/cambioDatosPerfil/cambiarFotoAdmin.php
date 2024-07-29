@@ -51,7 +51,7 @@ if (isset($_FILES['fotoNueva'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cambiar nombre</title>
     <link rel="stylesheet" href="../css/nav.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="../css/cambiarContrasena.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../css/cambiarFoto.css?v=<?php echo time(); ?>">
 </head>
 <body>
 
