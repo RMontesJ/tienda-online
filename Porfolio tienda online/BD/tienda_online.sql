@@ -18,11 +18,11 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `app`
+-- Base de datos: `tienda_online`
 --
 
-CREATE DATABASE IF NOT EXISTS `app`;
-USE `app`;
+CREATE DATABASE IF NOT EXISTS `tienda_online`;
+USE `tienda_online`;
 
 -- --------------------------------------------------------
 

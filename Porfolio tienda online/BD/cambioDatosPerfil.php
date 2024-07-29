@@ -4,7 +4,7 @@ class cambioDatosPerfil{
     private $dbhost = 'localhost';
     private $dbuser = 'Rafa';
     private $dbpasswd = "1234";
-    private $dbname = "app";
+    private $dbname = "tienda_online";
 
     private $conexion;
 
