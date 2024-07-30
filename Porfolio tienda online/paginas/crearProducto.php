@@ -31,7 +31,12 @@ $precio = $_POST['precio'];
 $fotoPredeterminada = '../fotosProductos/image-product-default.png';
 $foto = $fotoPredeterminada;
 
+$extension = $_FILES['foto']['type'];
+
 if (isset($_FILES['foto'])) {
+
+    if(strpos($extension, 'png') || strpos($extension, 'jpeg') || strpos($extension, 'jpg') || strpos($extension, 'webp')){
+
     // Ruta donde se guardará la foto (puedes ajustarla según tu estructura de archivos)
     $ruta_destino = '../fotosProductos/';
 
@@ -43,6 +48,7 @@ if (isset($_FILES['foto'])) {
         // Aquí puedes guardar $nombre_archivo en la base de datos o realizar otras operaciones
         $foto = $nombre_archivo;
     }
+}
 }
 
 

@@ -1,6 +1,8 @@
 
 <?php 
 
+error_reporting(0);
+
 $usuario = $_GET['id_user']; 
 
 require_once "../BD/Datos.php";
@@ -15,6 +17,8 @@ if(!isset($usuario) || $usuario == ""){
 
 $correo = $clase->cogerCorreo($usuario);
 
+$extension = $_FILES['fotoNueva']['type'];
+
 // si el correo no es admin
 if (strpos($correo, "@admin.com") === false) {
     header("Location: ../paginas/indexRegistrado.php?id_user=$usuario");
@@ -22,6 +26,8 @@ if (strpos($correo, "@admin.com") === false) {
 }
 
 if (isset($_FILES['fotoNueva'])) {
+
+    if(strpos($extension, 'png') || strpos($extension, 'jpeg') || strpos($extension, 'jpg') || strpos($extension, 'webp')){
     // Ruta donde se guardará la foto
     $ruta_destino = '../fotosUsuarios/';
 
@@ -34,13 +40,16 @@ if (isset($_FILES['fotoNueva'])) {
         $foto = $nombre_archivo;
         $cambioFoto = $cambio->cambiarFoto($usuario, $foto, $correo);
     }
+
+}
+
     // si no has puesto foto, te pone la foto predeterminada
     else if ($_FILES['fotoNueva']['name'] == ""){
         $fotoPredeterminada = '../fotosUsuarios/user-photo-default.webp';
         $cambioFoto = $cambio->cambiarFoto($usuario, $fotoPredeterminada, $correo);
     }
-}
 
+}
 
 ?>
 
