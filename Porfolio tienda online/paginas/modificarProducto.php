@@ -1,5 +1,7 @@
 <?php
 
+error_reporting(0);
+
 $usuario = $_GET['id_user'];
 $id_producto = $_GET['id_producto'];
 
