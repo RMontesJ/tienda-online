@@ -49,6 +49,11 @@ if (isset($_FILES['foto'])) {
         $foto = $nombre_archivo;
     }
 }
+
+else{
+    header("Location: ../paginas/indexRegistradoAdmin.php?id_user=$usuario");
+}
+
 }
 
 

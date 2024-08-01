@@ -49,6 +49,10 @@ if (isset($_FILES['fotoNueva'])) {
         $cambioFoto = $cambio->cambiarFoto($usuario, $fotoPredeterminada, $correo);
     }
 
+    else{
+        header("Location: ../paginas/perfil.php?id_user=$usuario");
+    }
+
 }
 
 ?>
