@@ -94,14 +94,8 @@ class Datos
             echo "Categoria: " . $row['categoria'] . "<br>";
             echo "Precio: " . $row['precio'] . "€" . "<br>";
             echo "<div class= 'botones'>";
-            $id_producto = urlencode($row['id']);
-            $nombre = urlencode($row['nombre']);
-            $descripcion = urlencode($row['descripción']);
-            $categoria = urlencode($row['categoria']);
-            $foto = urlencode($row['foto']);
-            $precio = $row['precio'];
-            echo "<a href='./modificarProducto.php?id_user=$usuario&id_producto=$id_producto&nombre=$nombre&descripcion=$descripcion&categoria=$categoria&precio=$precio&foto=$foto'><img src='../img/iconoLapiz.svg' alt=''></a>";
-            echo "<a href='./borrarProducto.php?id_user=$usuario&id_producto=$id_producto'><img src='../img/iconoPapelera.svg' alt=''></a>";
+            echo "<a href='../paginas/verProducto.php?id_user=$usuario&id_producto=" . $row['id'] . "'><img src='../img/iconoLapiz.svg' alt=''></a>";
+            echo "<a href='../paginas/borrarProducto.php?id_user=$usuario&id_producto=". $row['id'] . "'><img src='../img/iconoPapelera.svg' alt=''></a>";
             echo "</div>";
             echo "</div>";
         }
@@ -217,5 +211,7 @@ class Datos
             return "No se encontró nada";
         }
     }
+
+    
 
 }
