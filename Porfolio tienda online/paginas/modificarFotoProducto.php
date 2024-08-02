@@ -68,7 +68,7 @@ $extension = $_FILES['fotoNueva']['type'];
 <h2>Foto</h2>
 
 <div class="input-group">
-<label for="name">Foto nueva</label>
+<label for="name">Foto (extensión .png .jpeg .jpg .webp)</label>
 <input type="file" name="fotoNueva" id="fotoNueva">
 
 <div class="form-txt">

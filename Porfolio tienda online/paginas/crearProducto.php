@@ -116,7 +116,7 @@ else{
                 <input type="text" name="precio" id="precio" placeholder="Precio">
                 <p id="corregirPrecio"></p>
 
-                <label for="foto">Foto</label>
+                <label for="foto">Foto (extensión .png .jpeg .jpg .webp)</label>
                 <input type="file" name="foto">
 
                 <div class="form-txt">
