@@ -90,7 +90,7 @@ $productos->editarProducto($usuario, $id_producto, $nombreNuevo, $descripcionNue
                 <p id="corregirPrecio"></p>
 
                 <div class="form-txt">
-                    <a href="#"></a>
+                <a href="../paginas/verProducto.php?id_user=<?php echo $usuario ?>&id_producto=<?php echo $id_producto ?>">Ver producto</a>
                 </div>
                 <input class="btn" id="boton" name="Enviar" type="submit" value="Enviar">
             </div>

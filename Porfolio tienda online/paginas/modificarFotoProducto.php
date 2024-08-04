@@ -72,7 +72,7 @@ $extension = $_FILES['fotoNueva']['type'];
 <input type="file" name="fotoNueva" id="fotoNueva">
 
 <div class="form-txt">
-
+<a href="../paginas/verProducto.php?id_user=<?php echo $usuario ?>&id_producto=<?php echo $id_producto ?>">Ver producto</a>
 </div>
 <input class="btn" type="submit" value="Enviar">
 </div>
