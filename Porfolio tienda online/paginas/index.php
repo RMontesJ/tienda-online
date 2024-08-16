@@ -17,8 +17,8 @@
             <a href="#">Terminos y condiciones</a>
         </div>
         <div class="botones">
-            <a href="inicio_sesion.php"><button class="btn">Iniciar sesion</button></a>
-            <a href="registro.php"><button class="btn">Registrarse</button></a>
+            <a href="../paginas/inicio_sesion.php"><button class="btn">Iniciar sesion</button></a>
+            <a href="../paginas/registro.php"><button class="btn">Registrarse</button></a>
     </div>
         </div>
     </div>
