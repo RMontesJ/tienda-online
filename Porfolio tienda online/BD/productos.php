@@ -22,7 +22,7 @@ class Productos{
 
     public function crearProducto($nombre, $descripción, $categoria, $precio, $foto, $id){
 
-        $query = mysqli_query($this->conexion, "INSERT INTO productos (nombre, descripción, categoria, precio, foto) VALUES ('$nombre','$descripción','$categoria','$precio', '$foto')");
+        $query = mysqli_query($this->conexion, "INSERT INTO productos (nombre, descripcion, categoria, precio, foto) VALUES ('$nombre','$descripción','$categoria','$precio', '$foto')");
         header("Location: indexRegistradoAdmin.php?id_user=$id");
         
     }

@@ -17,6 +17,7 @@ $fotoPerfil = $datosUsuario->cogerFoto($usuario);
         </ul>
     </nav>
     <div class="profile-logout-box">
+    <a href="../paginas/carrito.php?id_user=<?php echo $usuario; ?>"><img src="../img/MdiCart.svg" alt="Carrito" style="width:40px;height:40px;"></a>
     <a href="../paginas/perfil.php?id_user=<?php echo $usuario; ?>"><img src="../fotosUsuarios/<?php echo $fotoPerfil; ?>" alt="Foto usuario" style="width:40px;height:40px;"></a>
     <a href="../paginas/cerrarSesion.php"><img src="../img/logout_icon.svg" alt="Logout" style="width:40px;height:40px;"></a>
     </div>

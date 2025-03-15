@@ -2,7 +2,6 @@
 
 error_reporting(0);
 
-
 $usuario = $_GET['id_user'];
 $id_producto = $_GET['id_producto'];
 
@@ -39,7 +38,6 @@ $fotoProducto = $productos->cogerFotoProducto($id_producto);
 <div class="datos">
 <div class="foto">
 <img src="../fotosProductos/<?php echo $fotoProducto; ?>" alt="Foto usuario" style="width:400px;height:300px;"><br>
-<a href="../paginas/modificarFotoProducto.php?id_user=<?php echo $usuario;?>&id_producto=<?php echo $id_producto;?>"><img src="../img/iconoLapiz.svg" alt="Cambiar foto"></img></a>
 </div>
 <div class="nombre">
 <p>Nombre: <?php echo $nombreProducto ?></p>
@@ -62,7 +60,7 @@ $fotoProducto = $productos->cogerFotoProducto($id_producto);
 </div>
 
 <div class="config">
-    <a href="../paginas/modificarProducto.php?id_user=<?php echo $usuario;?>&id_producto=<?php echo $id_producto;?>"><img src="../img/iconoLapiz.svg" alt="Cambiar nombre"></img></a>
+
 </div>
 
 </div>

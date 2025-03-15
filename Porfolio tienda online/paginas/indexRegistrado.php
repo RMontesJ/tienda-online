@@ -52,7 +52,7 @@ if(!isset($usuario) || $usuario == ""){
     <?php 
     // ejecuta una sentencia a la base de datos que busca productos con el valor del campo del include
     // busquedaProductos.php
-    $productos = $clase->buscarProductos($valor);
+    $productos = $clase->buscarProductos($valor, $usuario);
     
     ?>
 

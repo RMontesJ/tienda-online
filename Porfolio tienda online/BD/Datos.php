@@ -65,13 +65,13 @@ class Datos
         }
     }
 
-    public function buscarProductos($busqueda)
+    public function buscarProductos($busqueda, $usuario)
     {
-        $consulta = $this->conexion->query("SELECT * FROM productos WHERE id LIKE '%$busqueda%' OR nombre LIKE '%$busqueda%' OR descripción LIKE '%$busqueda%' OR categoria LIKE '%$busqueda%' OR precio LIKE '%$busqueda%'");
+        $consulta = $this->conexion->query("SELECT * FROM productos WHERE id LIKE '%$busqueda%' OR nombre LIKE '%$busqueda%' OR descripcion LIKE '%$busqueda%' OR categoria LIKE '%$busqueda%' OR precio LIKE '%$busqueda%'");
 
         while ($row = $consulta->fetch_array(MYSQLI_ASSOC)) {
             echo "<div class= 'tarjeta'>";
-            echo "<img src='../fotosProductos/" . $row['foto'] . "' alt='Foto del producto' style='width:100%;height:300px;'><br>";
+            echo "<a href='../paginas/infoProducto.php?id_user=$usuario&id_producto=". $row['id'] . "'><img src='../fotosProductos/" . $row['foto'] . "' alt='Foto del producto' style='width:100%;height:300px;'><br></a>";
             echo "ID: " . $row['id'] . "<br>";
             echo "Nombre: " . $row['nombre'] . "<br>";
             echo "Descripción: " . $row['descripción'] . "<br>";
@@ -81,13 +81,14 @@ class Datos
         }
     }
 
+
     public function buscarProductosAdmin($busqueda, $usuario)
     {
-        $consulta = $this->conexion->query("SELECT * FROM productos WHERE id LIKE '%$busqueda%' OR nombre LIKE '%$busqueda%' OR descripción LIKE '%$busqueda%' OR categoria LIKE '%$busqueda%' OR precio LIKE '%$busqueda%'");
+        $consulta = $this->conexion->query("SELECT * FROM productos WHERE id LIKE '%$busqueda%' OR nombre LIKE '%$busqueda%' OR descripcion LIKE '%$busqueda%' OR categoria LIKE '%$busqueda%' OR precio LIKE '%$busqueda%'");
 
         while ($row = $consulta->fetch_array(MYSQLI_ASSOC)) {
             echo "<div class= 'tarjeta'>";
-            echo "<img src='../fotosProductos/" . $row['foto'] . "' alt='Foto del producto' style='width:100%;height:300px;'><br>";
+            echo "<a href='../paginas/infoProducto.php?id_user=$usuario&id_producto=". $row['id'] . "'><img src='../fotosProductos/" . $row['foto'] . "' alt='Foto del producto' style='width:100%;height:300px;'><br></a>";
             echo "ID: " . $row['id'] . "<br>";
             echo "Nombre: " . $row['nombre'] . "<br>";
             echo "Descripción: " . $row['descripción'] . "<br>";
@@ -97,6 +98,7 @@ class Datos
             echo "<a href='../paginas/verProducto.php?id_user=$usuario&id_producto=" . $row['id'] . "'><img src='../img/iconoLapiz.svg' alt=''></a>";
             echo "<a href='../paginas/borrarProducto.php?id_user=$usuario&id_producto=". $row['id'] . "'><img src='../img/iconoPapelera.svg' alt=''></a>";
             echo "</div>";
+            echo "<img src='../img/"."FamiconsBag.svg". "' alt='Foto del producto' style='width:30px;height:30px;'><br>";
             echo "</div>";
         }
     }
@@ -114,12 +116,16 @@ class Datos
 // metodo que permita crear un usuario
     public function crear($nombre, $contrasena, $correo, $direccion, $foto)
     {
-        $query = mysqli_query($this->conexion, "INSERT INTO usuarios (nombre, contrasena, correo, dirección, foto) VALUES ('$nombre','$contrasena','$correo','$direccion','$foto')");
+        $query = mysqli_query($this->conexion, "INSERT INTO usuarios (nombre, contrasena, correo, direccion, foto) VALUES ('$nombre','$contrasena','$correo','$direccion','$foto')");
         $query = mysqli_query($this->conexion, "SELECT * FROM usuarios where nombre = '$nombre' and contrasena = '$contrasena'");
         $num = mysqli_num_rows($query);
         if ($num == 1) {
             header("Location: inicio_sesion.php");
         }
+    }
+
+    public function crearCarrito($usuario_id){
+        $query = mysqli_query($this->conexion, "INSERT INTO carrito (usuario_id) VALUES ('$usuario_id')");
     }
 // coge el id del usuario si esta registrado. Si no lo esta, se le reedirige al inicio de sesion
     public function inicioSesion($nombre, $contrasena)

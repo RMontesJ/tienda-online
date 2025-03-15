@@ -34,6 +34,7 @@ if (isset($_FILES['foto'])) {
 if(isset($nombre) && isset($contrasena) && isset($correo) && isset($direccion)){
 
     $crear = $clase->crear($nombre, $contrasena, $correo, $direccion, $foto);
+    
 }
 
 ?>
