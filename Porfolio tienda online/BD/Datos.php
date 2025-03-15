@@ -128,6 +128,20 @@ class Datos
     public function crearCarrito($usuario_id){
         $query = mysqli_query($this->conexion, "INSERT INTO carrito (usuario_id) VALUES ('$usuario_id')");
     }
+
+    public function meterEnCarrito($usuario_id, $producto_id, $cantidad){
+        $query = mysqli_query($this->conexion, "INSERT INTO carrito (producto_id, cantidad) VALUES ('$producto_id', '$cantidad') where usuario_id = $usuario_id");        
+    }
+
+    public function comprobarSiCarritoExiste($id_user){
+        $query = mysqli_query($this->conexion, "SELECT * FROM carrito where usuario_id = '$id_user'");
+        $num = mysqli_num_rows($query);
+
+        if ($num == 0) {
+            $this->crearCarrito($id_user); 
+        } 
+    }
+
 // coge el id del usuario si esta registrado. Si no lo esta, se le reedirige al inicio de sesion
     public function inicioSesion($nombre, $contrasena)
     {

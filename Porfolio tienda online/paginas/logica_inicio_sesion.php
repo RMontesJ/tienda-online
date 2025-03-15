@@ -9,8 +9,6 @@ $contrasena = $_POST['contrasena'];
 // coge el id del usuario y lo guarda en una variable
 $inicioSesion = $clase->inicioSesion($nombre, $contrasena);
 
-$clase->crearCarrito($inicioSesion);
-
 // coge el correo del usuario que se esta iniciando sesion
 $tipoCorreo = $clase->cogerCorreo($inicioSesion);
 
@@ -19,11 +17,13 @@ $tipoCorreo = $clase->cogerCorreo($inicioSesion);
 if(isset($nombre) && isset($contrasena) && strpos($tipoCorreo, "@admin.com") && isset($inicioSesion)){
     session_start();
     $_SESSION['usuario'] = $inicioSesion;
+    $clase->comprobarSiCarritoExiste($inicioSesion);
     header("Location: ../paginas/indexRegistradoAdmin.php?id_user=".$inicioSesion);
 }
 else if(isset($nombre) && isset($contrasena) && !strpos($tipoCorreo, "@admin.com") && isset($inicioSesion)){
     session_start();
     $_SESSION['usuario'] = $inicioSesion;
+    $clase->comprobarSiCarritoExiste($inicioSesion);
     header("Location: ../paginas/indexRegistrado.php?id_user=".$inicioSesion);
 }
 

@@ -9,12 +9,15 @@ require_once "../BD/productos.php";
 require_once "../BD/Datos.php";
 
 $productos = new Productos();
+$datos = new Datos();
 
 $nombreProducto = $productos->cogerNombreProducto($id_producto);
 $descripcionProducto = $productos->cogerDescripcionProducto($id_producto);
 $categoriaProducto = $productos->cogerCategoriaProducto($id_producto);
 $precioProducto = $productos->cogerPrecioProducto($id_producto);
 $fotoProducto = $productos->cogerFotoProducto($id_producto);
+
+$datos->
 
 ?>
 
@@ -59,9 +62,9 @@ $fotoProducto = $productos->cogerFotoProducto($id_producto);
 
 </div>
 
-<div class="config">
-
-</div>
+<form action="../paginas/meterEnCarrito.php?id_producto=$id_producto&id_user=$id_user" method="post" class="config">
+<input name="cantidad" type="number" min="1">
+<button>Añadir al carrito</button>
 
 </div>
 
