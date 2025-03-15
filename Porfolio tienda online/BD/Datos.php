@@ -129,8 +129,8 @@ class Datos
         $query = mysqli_query($this->conexion, "INSERT INTO carrito (usuario_id) VALUES ('$usuario_id')");
     }
 
-    public function meterEnCarrito($usuario_id, $producto_id, $cantidad){
-        $query = mysqli_query($this->conexion, "INSERT INTO carrito (producto_id, cantidad) VALUES ('$producto_id', '$cantidad') where usuario_id = $usuario_id");        
+    public function meterEnCarrito($usuario, $producto_id, $cantidad){
+        $query = mysqli_query($this->conexion, "UPDATE carrito SET cantidad = $cantidad, producto_id = $producto_id WHERE usuario_id = $usuario");        
     }
 
     public function comprobarSiCarritoExiste($id_user){
