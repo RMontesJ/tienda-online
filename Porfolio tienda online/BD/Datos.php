@@ -77,7 +77,6 @@ class Datos
             echo "Descripción: " . $row['descripción'] . "<br>";
             echo "Categoria: " . $row['categoria'] . "<br>";
             echo "Precio: " . $row['precio'] . "€" . "<br>";
-            echo "<img src='../img/"."FamiconsBag.svg". "' alt='Foto del producto' style='width:30px;height:30px;'><br>";
             echo "</div>";
         }
     }
@@ -99,7 +98,6 @@ class Datos
             echo "<a href='../paginas/verProducto.php?id_user=$usuario&id_producto=" . $row['id'] . "'><img src='../img/iconoLapiz.svg' alt=''></a>";
             echo "<a href='../paginas/borrarProducto.php?id_user=$usuario&id_producto=". $row['id'] . "'><img src='../img/iconoPapelera.svg' alt=''></a>";
             echo "</div>";
-            echo "<img src='../img/"."FamiconsBag.svg". "' alt='Foto del producto' style='width:30px;height:30px;'><br>";
             echo "</div>";
         }
     }
@@ -125,21 +123,12 @@ class Datos
         }
     }
 
-    public function crearCarrito($usuario_id){
-        $query = mysqli_query($this->conexion, "INSERT INTO carrito (usuario_id) VALUES ('$usuario_id')");
+    public function crearCarrito($usuario_id, $producto_id, $cantidad){
+        $query = mysqli_query($this->conexion, "INSERT INTO carrito (usuario_id, producto_id, cantidad) VALUES ($usuario_id, $producto_id, $cantidad)");
     }
 
     public function meterEnCarrito($usuario, $producto_id, $cantidad){
         $query = mysqli_query($this->conexion, "UPDATE carrito SET cantidad = $cantidad, producto_id = $producto_id WHERE usuario_id = $usuario");        
-    }
-
-    public function comprobarSiCarritoExiste($id_user){
-        $query = mysqli_query($this->conexion, "SELECT * FROM carrito where usuario_id = '$id_user'");
-        $num = mysqli_num_rows($query);
-
-        if ($num == 0) {
-            $this->crearCarrito($id_user); 
-        } 
     }
 
 // coge el id del usuario si esta registrado. Si no lo esta, se le reedirige al inicio de sesion

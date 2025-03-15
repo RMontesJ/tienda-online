@@ -32,7 +32,7 @@ $fotoProducto = $productos->cogerFotoProducto($id_producto);
     
 <div class="page">
 
-<?php include "../includes/navAdmin.php" ?>
+<?php include "../includes/nav.php" ?>
 
 <h1>Informacion del producto</h1>
 
