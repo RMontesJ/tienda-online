@@ -28,7 +28,7 @@ class Productos{
     }
 
     public function editarProducto($id_usuario, $id_producto, $nombreNuevo, $descripcionNueva, $categoriaNueva, $precioNuevo) {
-        $query = mysqli_query($this->conexion, "UPDATE productos SET nombre = '$nombreNuevo', descripción = '$descripcionNueva', categoria = '$categoriaNueva', precio = $precioNuevo WHERE id = $id_producto");
+        $query = mysqli_query($this->conexion, "UPDATE productos SET nombre = '$nombreNuevo', descripcion = '$descripcionNueva', categoria = '$categoriaNueva', precio = $precioNuevo WHERE id = $id_producto");
         header("Location: ../paginas/verProducto.php?id_user=$id_usuario&id_producto=$id_producto");
     }
 
@@ -58,7 +58,7 @@ class Productos{
         if ($num == 1) {
             $row = mysqli_fetch_assoc($query);
             // coge el valor de la descripcion
-            $descripcion = $row['descripción'];
+            $descripcion = $row['descripcion'];
             return $descripcion;
         } else {
             return "No se encontró nada";

@@ -20,7 +20,7 @@ class cambioDatosPerfil{
     }
 
     public function actualizarPerfil($nombre, $contrasena, $correo, $direccion, $id){
-        $query = mysqli_query($this->conexion, "UPDATE usuarios SET nombre='$nombre', contrasena='$contrasena', correo='$correo', dirección='$direccion' WHERE id='$id'");
+        $query = mysqli_query($this->conexion, "UPDATE usuarios SET nombre='$nombre', contrasena='$contrasena', correo='$correo', direccion='$direccion' WHERE id='$id'");
 
         if(strpos($correo, "@admin.com")){
             header("Location: ../paginas/perfilAdmin.php?id_user=$id");

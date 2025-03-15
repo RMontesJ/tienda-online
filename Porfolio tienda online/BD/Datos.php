@@ -51,7 +51,7 @@ class Datos
 
     public function buscarUsuarios($busqueda)
     {
-        $consulta = $this->conexion->query("SELECT * FROM usuarios WHERE id LIKE '%$busqueda%' OR nombre LIKE '%$busqueda%' OR contrasena LIKE '%$busqueda%' OR correo LIKE '%$busqueda%' OR dirección LIKE '%$busqueda%'");
+        $consulta = $this->conexion->query("SELECT * FROM usuarios WHERE id LIKE '%$busqueda%' OR nombre LIKE '%$busqueda%' OR contrasena LIKE '%$busqueda%' OR correo LIKE '%$busqueda%' OR direccion LIKE '%$busqueda%'");
 
         while ($row = $consulta->fetch_array(MYSQLI_ASSOC)) {
             echo "<div class= 'tarjeta'>";
@@ -77,6 +77,7 @@ class Datos
             echo "Descripción: " . $row['descripción'] . "<br>";
             echo "Categoria: " . $row['categoria'] . "<br>";
             echo "Precio: " . $row['precio'] . "€" . "<br>";
+            echo "<img src='../img/"."FamiconsBag.svg". "' alt='Foto del producto' style='width:30px;height:30px;'><br>";
             echo "</div>";
         }
     }
@@ -197,7 +198,7 @@ class Datos
         if ($num == 1) {
             $row = mysqli_fetch_assoc($query);
             // coge el valor del nombre
-            $dirección = $row['dirección'];
+            $dirección = $row['direccion'];
             return $dirección;
         } else {
             return "No se encontró nada";
