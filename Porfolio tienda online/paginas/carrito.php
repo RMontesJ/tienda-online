@@ -49,6 +49,10 @@ if(!isset($usuario) || $usuario == ""){
 <?php echo $pintarCarrito = $clase->pintarCarrito($idPoductosCarrito);?>
 </div>
 
+<a href="../paginas/descargarPedidoPDF.php?id_user=<?php echo $usuario; ?>" target="_blank">
+    <button>Descargar PDF</button>
+</a>
+
 </div>
     
 </body>

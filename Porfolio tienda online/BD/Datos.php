@@ -120,6 +120,28 @@ class Datos
     
         return $productos; // Devuelve un array con los IDs de los productos y sus cantidades
     }
+
+    public function obtenerProductosPorId($usuario) {
+        $sql = "SELECT p.nombre, p.precio, c.cantidad 
+        FROM carrito c
+        JOIN productos p ON c.producto_id = p.id
+        WHERE c.usuario_id = ?";
+
+    
+        $stmt = $this->conexion->prepare($sql);
+        $stmt->bind_param("i", $usuario);
+        $stmt->execute();
+        $resultado = $stmt->get_result();
+    
+        $productos = [];
+        while ($fila = $resultado->fetch_assoc()) {
+            $productos[] = $fila;
+        }
+    
+        return $productos;
+    }
+    
+    
     
     public function pintarCarrito($productos) {
         if (empty($productos)) {
