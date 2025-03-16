@@ -131,6 +131,62 @@ class Datos
         $query = mysqli_query($this->conexion, "UPDATE carrito SET cantidad = $cantidad, producto_id = $producto_id WHERE usuario_id = $usuario");        
     }
 
+    public function cogerIdProductosCarrito($id_usuario) {
+        // Aseguramos que $id_usuario es un número entero válido
+        $id_usuario = intval($id_usuario);
+    
+        $query = mysqli_query($this->conexion, "SELECT producto_id FROM carrito WHERE usuario_id = $id_usuario");
+    
+        $productos = [];
+        while ($row = mysqli_fetch_assoc($query)) {
+            $productos[] = $row['producto_id']; // Añadimos cada producto_id al array
+        }
+    
+        return $productos; // Devuelve un array con los IDs de los productos en el carrito
+    }
+
+
+    public function pintarCarrito($productos) {
+        if (empty($productos)) {
+            echo "El carrito está vacío.";
+            return;
+        }
+    
+        // Convertimos el array en una cadena de números separados por comas
+        $productos_list = implode(",", array_map("intval", $productos));
+    
+        // Consultamos los detalles de los productos en la tabla `productos`
+        $consulta = $this->conexion->query("SELECT * FROM productos WHERE id IN ($productos_list)");
+    
+        // Iniciamos la tabla
+        echo "<table border='1' style='width:50%; text-align:left; border-collapse: collapse;'>";
+        echo "<tr>
+                <th>Imagen</th>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Categoría</th>
+                <th>Precio</th>
+              </tr>";
+    
+        // Recorremos los productos y los mostramos en la tabla
+        while ($row = $consulta->fetch_array(MYSQLI_ASSOC)) {
+            echo "<tr>";
+            echo "<td><img src='../fotosProductos/" . htmlspecialchars($row['foto']) . "' alt='Foto del producto' style='width:100px;height:100px;'></td>";
+            echo "<td>" . htmlspecialchars($row['id']) . "</td>";
+            echo "<td>" . htmlspecialchars($row['nombre']) . "</td>";
+            echo "<td>" . htmlspecialchars($row['descripcion']) . "</td>";
+            echo "<td>" . htmlspecialchars($row['categoria']) . "</td>";
+            echo "<td>" . htmlspecialchars($row['precio']) . "€</td>";
+            echo "</tr>";
+        }
+    
+        // Cerramos la tabla
+        echo "</table>";
+    }
+    
+    
+
 // coge el id del usuario si esta registrado. Si no lo esta, se le reedirige al inicio de sesion
     public function inicioSesion($nombre, $contrasena)
     {
