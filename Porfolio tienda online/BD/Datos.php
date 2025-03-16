@@ -78,6 +78,9 @@ class Datos
         $query = mysqli_query($this->conexion, "DELETE FROM productos WHERE id = '$id'");
     }
 
+    public function borrarProductoCarrito($id){
+        $query = mysqli_query($this->conexion, "DELETE FROM productos WHERE id = '$id'");
+    }
 
     public function borrar($id)
     {
@@ -143,7 +146,7 @@ class Datos
     
     
     
-    public function pintarCarrito($productos) {
+    public function pintarCarrito($productos, $usuario) {
         if (empty($productos)) {
             echo "El carrito está vacío.";
             return;
@@ -171,37 +174,42 @@ class Datos
                 <th>Categoría</th>
                 <th>Precio</th>
                 <th>Cantidad</th> 
-                <th>Total</th> <!-- Nueva columna Total -->
+                <th>Total</th>
+                <th>Acción</th> <!-- Nueva columna para eliminar -->
               </tr>";
     
-        // Recorremos los productos y los mostramos en la tabla
-        while ($row = $consulta->fetch_array(MYSQLI_ASSOC)) {
-            $producto_id = $row['id']; // ID del producto
-            $cantidad = $row['cantidad']; // Cantidad del producto en el carrito
-            $precio = $row['precio']; // Precio del producto
-            $total_producto = $cantidad * $precio; // Total por producto
-            $total_carrito += $total_producto; // Sumar al total del carrito
+    // Recorremos los productos y los mostramos en la tabla
+    while ($row = $consulta->fetch_array(MYSQLI_ASSOC)) {
+        $producto_id = $row['id']; // ID del producto
+        $cantidad = $row['cantidad']; // Cantidad del producto en el carrito
+        $precio = $row['precio']; // Precio del producto
+        $total_producto = $cantidad * $precio; // Total por producto
+        $total_carrito += $total_producto; // Sumar al total del carrito
     
-            echo "<tr>";
-            echo "<td><img src='../fotosProductos/" . htmlspecialchars($row['foto']) . "' alt='Foto del producto' style='width:100px;height:100px;'></td>";
-            echo "<td>" . htmlspecialchars($row['id']) . "</td>";
-            echo "<td>" . htmlspecialchars($row['nombre']) . "</td>";
-            echo "<td>" . htmlspecialchars($row['descripcion']) . "</td>";
-            echo "<td>" . htmlspecialchars($row['categoria']) . "</td>";
-            echo "<td>" . htmlspecialchars($row['precio']) . "€</td>";
-            echo "<td>" . htmlspecialchars($cantidad) . "</td>"; // Muestra la cantidad
-            echo "<td>" . number_format($total_producto, 2) . "€</td>"; // Muestra el total del producto (cantidad * precio)
-            echo "</tr>";
-        }
+        echo "<tr>";
+        echo "<td><img src='../fotosProductos/" . htmlspecialchars($row['foto']) . "' alt='Foto del producto' style='width:100px;height:100px;'></td>";
+        echo "<td>" . htmlspecialchars($row['id']) . "</td>";
+        echo "<td>" . htmlspecialchars($row['nombre']) . "</td>";
+        echo "<td>" . htmlspecialchars($row['descripcion']) . "</td>";
+        echo "<td>" . htmlspecialchars($row['categoria']) . "</td>";
+        echo "<td>" . htmlspecialchars($row['precio']) . "€</td>";
+        echo "<td>" . htmlspecialchars($cantidad) . "</td>"; // Muestra la cantidad
+        echo "<td>" . number_format($total_producto, 2) . "€</td>"; // Muestra el total del producto (cantidad * precio)
+        echo "<td><a href='../paginas/borrarProducto.php?id_user=$usuario&id_producto=" . $row['id'] . "'><img src='../img/iconoPapelera.svg' alt='Eliminar'></a></td>";
+        echo "</tr>";
     
-        // Agregar la fila del total del carrito
-        echo "<tr>
-                <td colspan='7' style='text-align:right; font-weight:bold;'>Total Carrito:</td>
-                <td style='font-weight:bold;'>" . number_format($total_carrito, 2) . "€</td>
-              </tr>";
+    }
     
-        // Cerramos la tabla
-        echo "</table>";
+    // Agregar la fila del total del carrito
+    echo "<tr>
+            <td colspan='7' style='text-align:right; font-weight:bold;'>Total Carrito:</td>
+            <td style='font-weight:bold;'>" . number_format($total_carrito, 2) . "€</td>
+            <td></td> <!-- Celda vacía para mantener alineación -->
+          </tr>";
+    
+    // Cerramos la tabla
+    echo "</table>";
+    
     }
     
     

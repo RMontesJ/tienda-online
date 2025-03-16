@@ -46,7 +46,7 @@ if(!isset($usuario) || $usuario == ""){
 
 
 <div class="carrito">
-<?php echo $pintarCarrito = $clase->pintarCarrito($idPoductosCarrito);?>
+<?php echo $pintarCarrito = $clase->pintarCarrito($idPoductosCarrito, $usuario);?>
 </div>
 
 <a href="../paginas/descargarPedidoPDF.php?id_user=<?php echo $usuario; ?>" target="_blank">
