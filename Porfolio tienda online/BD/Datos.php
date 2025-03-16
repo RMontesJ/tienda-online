@@ -131,17 +131,16 @@ class Datos
         $productos_ids = array_column($productos, 'producto_id');
         $productos_list = implode(",", array_map("intval", $productos_ids));
     
-        // Consultamos los detalles de los productos en la tabla `productos`
-        $consulta = $this->conexion->query("SELECT * FROM productos WHERE id IN ($productos_list)");
+        // Consultamos los detalles de los productos en la tabla `productos` y las cantidades en la tabla `carrito`
+        $consulta = $this->conexion->query("SELECT p.id, p.nombre, p.descripcion, p.categoria, p.precio, p.foto, c.cantidad 
+                                            FROM productos p
+                                            INNER JOIN carrito c ON p.id = c.producto_id
+                                            WHERE c.producto_id IN ($productos_list)");
     
-        // Asociamos las cantidades a los productos consultados
-        $cantidades = [];
-        foreach ($productos as $producto) {
-            $cantidades[$producto['producto_id']] = $producto['cantidad'];
-        }
+        $total_carrito = 0; // Variable para almacenar el total del carrito
     
-        // Iniciamos la tabla con la nueva columna "Cantidad"
-        echo "<table border='1' style='width:50%; text-align:left; border-collapse: collapse;'>";
+        // Iniciamos la tabla con la nueva columna "Total"
+        echo "<table border='1' style='width:60%; text-align:left; border-collapse: collapse;'>";
         echo "<tr>
                 <th>Imagen</th>
                 <th>ID</th>
@@ -150,11 +149,16 @@ class Datos
                 <th>Categoría</th>
                 <th>Precio</th>
                 <th>Cantidad</th> 
+                <th>Total</th> <!-- Nueva columna Total -->
               </tr>";
     
         // Recorremos los productos y los mostramos en la tabla
         while ($row = $consulta->fetch_array(MYSQLI_ASSOC)) {
             $producto_id = $row['id']; // ID del producto
+            $cantidad = $row['cantidad']; // Cantidad del producto en el carrito
+            $precio = $row['precio']; // Precio del producto
+            $total_producto = $cantidad * $precio; // Total por producto
+            $total_carrito += $total_producto; // Sumar al total del carrito
     
             echo "<tr>";
             echo "<td><img src='../fotosProductos/" . htmlspecialchars($row['foto']) . "' alt='Foto del producto' style='width:100px;height:100px;'></td>";
@@ -163,13 +167,21 @@ class Datos
             echo "<td>" . htmlspecialchars($row['descripcion']) . "</td>";
             echo "<td>" . htmlspecialchars($row['categoria']) . "</td>";
             echo "<td>" . htmlspecialchars($row['precio']) . "€</td>";
-            echo "<td>" . htmlspecialchars($cantidades[$producto_id]) . "</td>"; // Muestra la cantidad
+            echo "<td>" . htmlspecialchars($cantidad) . "</td>"; // Muestra la cantidad
+            echo "<td>" . number_format($total_producto, 2) . "€</td>"; // Muestra el total del producto (cantidad * precio)
             echo "</tr>";
         }
     
+        // Agregar la fila del total del carrito
+        echo "<tr>
+                <td colspan='7' style='text-align:right; font-weight:bold;'>Total Carrito:</td>
+                <td style='font-weight:bold;'>" . number_format($total_carrito, 2) . "€</td>
+              </tr>";
+    
         // Cerramos la tabla
         echo "</table>";
-    }    
+    }
+    
     
 
 // coge el id del usuario si esta registrado. Si no lo esta, se le reedirige al inicio de sesion
