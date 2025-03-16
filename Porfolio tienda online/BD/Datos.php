@@ -20,34 +20,6 @@ class Datos
 
     }
 
-    public function imprimirPerfiles()
-    {
-        $query = "SELECT * FROM usuarios";
-
-        if ($result = $this->conexion->query($query)) {
-
-            while ($row = $result->fetch_assoc()) {
-                $id = $row["id"];
-                $nombre = $row["nombre"];
-                $contrasena = $row["contrasena"];
-                $correo = $row["correo"];
-                $direccion = $row["dirección"];
-
-                echo "
-    <div class='tarjeta'> 
-    <p>Id: $id</p>
-    <p>Nombre: $nombre</p>
-    <p>Contraseña: $contrasena</p>
-    <p>Correo: $correo</p>
-    <p>Dirección: $direccion</p>
-    </div>";
-            }
-
-
-            $result->free();
-        }
-    }
-
 
     public function buscarUsuarios($busqueda)
     {
@@ -60,7 +32,7 @@ class Datos
             echo "Nombre: " . $row['nombre'] . "<br>";
             echo "Contraseña: " . $row['contrasena'] . "<br>";
             echo "Correo: " . $row['correo'] . "<br>";
-            echo "Dirección: " . $row['dirección'] . "<br>";
+            echo "Dirección: " . $row['direccion'] . "<br>";
             echo "</div>";
         }
     }
@@ -88,7 +60,7 @@ class Datos
 
         while ($row = $consulta->fetch_array(MYSQLI_ASSOC)) {
             echo "<div class= 'tarjeta'>";
-            echo "<a href='../paginas/infoProducto.php?id_user=$usuario&id_producto=". $row['id'] . "'><img src='../fotosProductos/" . $row['foto'] . "' alt='Foto del producto' style='width:100%;height:300px;'><br></a>";
+            echo "<img src='../fotosProductos/" . $row['foto'] . "' alt='Foto del producto' style='width:100%;height:300px;'><br>";
             echo "ID: " . $row['id'] . "<br>";
             echo "Nombre: " . $row['nombre'] . "<br>";
             echo "Descripción: " . $row['descripción'] . "<br>";
