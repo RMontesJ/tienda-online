@@ -225,16 +225,32 @@ class Datos
     echo "</table>";
     
     }
+
+    public function verificarNotificacionBienvenida($id_usuario, $correo, $fecha) {
+        // Ejecutar la consulta correctamente
+        $query = "SELECT * FROM notificaciones WHERE id_usuario = $id_usuario AND titulo = 'Bienvenido'";
+        $result = mysqli_query($this->conexion, $query); // Ejecutar la consulta
+        $num = mysqli_num_rows($result); // Contar filas correctamente
     
-    public function crearNotificacionBienvenida($id_usuario, $fecha){
-
-        $query = mysqli_query($this->conexion, "INSERT INTO notificaciones (id_usuario, titulo, descripcion, fecha) VALUES ($id_usuario, 'Bienvenido', 'Gracias por registrarte en nuestra tienda. Podras revisar nuestros productos, realizar pedidos y editar tu información personal', '$fecha')");
-
+        if ($num == 0) {
+            if (strpos($correo, "@admin.com")) {
+                $this->crearNotificacionBienvenidaAdmin($id_usuario, $fecha);
+            } else {
+                $this->crearNotificacionBienvenida($id_usuario, $fecha);
+            }
+        }
     }
+    
 
     public function crearNotificacionBienvenidaAdmin($id_usuario, $fecha){
 
         $query = mysqli_query($this->conexion, "INSERT INTO notificaciones (id_usuario, titulo, descripcion, fecha) VALUES ($id_usuario, 'Bienvenido', 'Esta es tu cuenta de administrador. Podras crear y editar productos y ver los usuarios registrados en la app, asi como consultar y editar tu información personal', '$fecha')");
+
+    }
+
+    public function crearNotificacionBienvenida($id_usuario, $fecha){
+
+        $query = mysqli_query($this->conexion, "INSERT INTO notificaciones (id_usuario, titulo, descripcion, fecha) VALUES ($id_usuario, 'Bienvenido', 'Gracias por registrarte en nuestra tienda. Podras revisar nuestros productos, realizar pedidos y editar tu información personal', '$fecha')");
 
     }
 
