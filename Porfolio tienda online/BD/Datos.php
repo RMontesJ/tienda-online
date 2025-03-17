@@ -46,7 +46,7 @@ class Datos
             echo "<a href='../paginas/infoProducto.php?id_user=$usuario&id_producto=". $row['id'] . "'><img src='../fotosProductos/" . $row['foto'] . "' alt='Foto del producto' style='width:100%;height:300px;'><br></a>";
             echo "ID: " . $row['id'] . "<br>";
             echo "Nombre: " . $row['nombre'] . "<br>";
-            echo "Descripción: " . $row['descripción'] . "<br>";
+            echo "Descripción: " . $row['descripcion'] . "<br>";
             echo "Categoria: " . $row['categoria'] . "<br>";
             echo "Precio: " . $row['precio'] . "€" . "<br>";
             echo "</div>";
@@ -63,7 +63,7 @@ class Datos
             echo "<img src='../fotosProductos/" . $row['foto'] . "' alt='Foto del producto' style='width:100%;height:300px;'><br>";
             echo "ID: " . $row['id'] . "<br>";
             echo "Nombre: " . $row['nombre'] . "<br>";
-            echo "Descripción: " . $row['descripción'] . "<br>";
+            echo "Descripción: " . $row['descripcion'] . "<br>";
             echo "Categoria: " . $row['categoria'] . "<br>";
             echo "Precio: " . $row['precio'] . "€" . "<br>";
             echo "<div class= 'botones'>";
