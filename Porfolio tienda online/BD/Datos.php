@@ -212,7 +212,11 @@ class Datos
     
     }
     
-    
+    public function crearNotificacionBienvenida($id_usuario, $fecha){
+
+        $query = mysqli_query($this->conexion, "INSERT INTO notificaciones (id_usuario, titulo, descripcion, fecha) VALUES ($id_usuario, 'Bienvenido', 'Gracias por registrarte en nuestra tienda. Podras revisar nuestros productos, realizar pedidos y editar tu información personal', '$fecha')");
+
+    }
 
 // coge el id del usuario si esta registrado. Si no lo esta, se le reedirige al inicio de sesion
     public function inicioSesion($nombre, $contrasena)

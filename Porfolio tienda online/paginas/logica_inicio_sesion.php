@@ -6,6 +6,8 @@ $clase = new Datos;
 $nombre = $_POST['nombre'];
 $contrasena = $_POST['contrasena'];
 
+$fecha = date("Y-m-d H:i:s");
+
 // coge el id del usuario y lo guarda en una variable
 $inicioSesion = $clase->inicioSesion($nombre, $contrasena);
 
@@ -22,6 +24,7 @@ if(isset($nombre) && isset($contrasena) && strpos($tipoCorreo, "@admin.com") && 
 else if(isset($nombre) && isset($contrasena) && !strpos($tipoCorreo, "@admin.com") && isset($inicioSesion)){
     session_start();
     $_SESSION['usuario'] = $inicioSesion;
+    $clase->crearNotificacionBienvenida($inicioSesion, $fecha);
     header("Location: ../paginas/indexRegistrado.php?id_user=".$inicioSesion);
 }
 

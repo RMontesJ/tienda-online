@@ -30,7 +30,6 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `correo` varchar(40) NOT NULL,
   `direccion` varchar(50) NOT NULL,
   `foto` varchar(300) NOT NULL,
-  `id_carrito` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -61,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `notificaciones` (
   `id_usuario` int(11) NOT NULL,
   `titulo` varchar(50) NOT NULL,
   `descripcion` text NOT NULL,
-  `fecha` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `fecha` varchar(300) NOT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_notificaciones_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios`(`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
