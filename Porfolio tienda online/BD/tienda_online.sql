@@ -11,7 +11,6 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
-
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
@@ -29,9 +28,9 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `nombre` varchar(30) NOT NULL,
   `contrasena` varchar(20) NOT NULL,
   `correo` varchar(40) NOT NULL,
-  `dirección` varchar(50) NOT NULL,
+  `direccion` varchar(50) NOT NULL,
   `foto` varchar(300) NOT NULL,
-  `id_carrito` int(11) NOT NULL
+  `id_carrito` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -39,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 CREATE TABLE IF NOT EXISTS `productos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(50) NOT NULL,
-  `descripción` varchar(100) NOT NULL,
+  `descripcion` varchar(100) NOT NULL,
   `categoria` varchar(30) NOT NULL,
   `precio` double NOT NULL,
   `foto` varchar(300) NOT NULL,
@@ -53,5 +52,18 @@ CREATE TABLE IF NOT EXISTS `carrito` (
   `producto_id` int(11) NOT NULL,
   `cantidad` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-CONSTRAINT `fk_carrito_usuario` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios`(`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `fk_carrito_usuario` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios`(`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Añade la tabla de notificaciones
+CREATE TABLE IF NOT EXISTS `notificaciones` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_usuario` int(11) NOT NULL,
+  `titulo` varchar(50) NOT NULL,
+  `descripcion` text NOT NULL,
+  `fecha` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `fk_notificaciones_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios`(`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+COMMIT;
