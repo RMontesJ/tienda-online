@@ -5,22 +5,17 @@ require_once "../BD/Datos.php";
 $usuario = $_GET['id_user'];
 $clase = new Datos;
 
-// Obtener los datos
-$correo = $clase->cogerCorreo($usuario);
-$idProductosCarrito = $clase->cogerIdProductosCarrito($usuario);
-$productos = $clase->obtenerProductosPorId($idProductosCarrito, $usuario);
-
 // Verificar si el usuario está vacío
 if (!isset($usuario) || $usuario == "") {
     header("Location: ../paginas/inicio_sesion.php");
     exit();
 }
 
-// Verificar si es admin
-if (strpos($correo, "@admin.com") !== false) {
-    header("Location: ../paginas/indexRegistrado.php?id_user=$usuario");
-    exit();
-}
+// Obtener los datos
+$correo = $clase->cogerCorreo($usuario);
+$idProductosCarrito = $clase->cogerIdProductosCarrito($usuario);
+$productos = $clase->obtenerProductosPorId($usuario);
+
 
 // Crear el PDF
 $pdf = new FPDF();
