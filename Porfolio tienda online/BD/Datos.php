@@ -74,6 +74,20 @@ class Datos
         }
     }
 
+    public function pintarNotificaciones($id_usuario){
+
+        $consulta = $this->conexion->query("SELECT * FROM notificaciones WHERE id_usuario = $id_usuario");
+
+    while ($row = $consulta->fetch_array(MYSQLI_ASSOC)) {
+    echo "<div class='tarjeta'>";
+    echo "<h3>" . $row['titulo'] . "</h3>";
+    echo "<p>" . $row['descripcion'] . "</p>";
+    echo "<small>Fecha: " . $row['fecha'] . "</small><br>";
+    echo "</div>";
+}
+
+    }
+
     public function borrarProducto($id){
         $query = mysqli_query($this->conexion, "DELETE FROM productos WHERE id = '$id'");
     }
@@ -215,6 +229,12 @@ class Datos
     public function crearNotificacionBienvenida($id_usuario, $fecha){
 
         $query = mysqli_query($this->conexion, "INSERT INTO notificaciones (id_usuario, titulo, descripcion, fecha) VALUES ($id_usuario, 'Bienvenido', 'Gracias por registrarte en nuestra tienda. Podras revisar nuestros productos, realizar pedidos y editar tu información personal', '$fecha')");
+
+    }
+
+    public function crearNotificacionBienvenidaAdmin($id_usuario, $fecha){
+
+        $query = mysqli_query($this->conexion, "INSERT INTO notificaciones (id_usuario, titulo, descripcion, fecha) VALUES ($id_usuario, 'Bienvenido', 'Esta es tu cuenta de administrador. Podras crear y editar productos y ver los usuarios registrados en la app, asi como consultar y editar tu información personal', '$fecha')");
 
     }
 
