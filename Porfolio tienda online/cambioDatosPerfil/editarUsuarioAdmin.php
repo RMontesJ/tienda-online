@@ -46,7 +46,7 @@ if(isset($nombre) || isset($contrasena) || isset($correo) || isset($direccion)){
 
 <div class="formulario">
 
-<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" id="form">
+<form id="form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" id="form">
 <h2>Actualizar perfil</h2>
 
 <div class="input-group">
@@ -67,7 +67,7 @@ if(isset($nombre) || isset($contrasena) || isset($correo) || isset($direccion)){
 <div class="form-txt">
 <a href="../paginas/perfilAdmin.php?id_user=<?php echo $usuario ?>">Volver a mi perfil</a>
 </div>
-<input class="btn" id="boton" type="submit" value="Enviar">
+<input class="btn" type="submit" value="Enviar">
 </div>
 </form>
 

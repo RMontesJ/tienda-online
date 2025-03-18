@@ -91,42 +91,55 @@ else{
     <div class="formulario">
     
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>?id_user=<?php echo $usuario; ?>" method="post" id="form" enctype="multipart/form-data">
-            <h2>Crear y subir producto</h2>
+    <div class="container">
+        <h2 class="my-4 text-center">Crear y subir producto</h2>
 
-            <input type="hidden" name="id_user" value="<?php echo $usuario; ?>">
+        <input type="hidden" name="id_user" value="<?php echo $usuario; ?>">
 
-            <div class="input-group">
-                <label for="name">Nombre</label>
-                <input type="text" name="nombre" id="nombre" placeholder="Nombre">
-                <p id="corregirNombre"></p>
-                <label for="descripcion">Descripción</label>
-                <input type="text" name="descripcion" id="descripcion" placeholder="Descripción">
-                <p id="corregirDescripcion"></p>
-                <label for="categoria">Categoria</label>
-                <select name="categoria" id="categoria">
-                    <option value=""></option>
-                    <option value="deportes">Deportes</option>
-                    <option value="hogar">Hogar</option>
-                    <option value="electronica">Electronica</option>
-                    <option value="mascotas">Mascotas</option>
-                    <option value="libros">Libros</option>
-                    <option value="juguetes">Juguetes</option>
-                    <option value="ropa">Ropa</option>
-                </select>
-                <p id="corregirCategoria"></p>
-                <label for="precio">Precio</label>
-                <input type="text" name="precio" id="precio" placeholder="Precio">
-                <p id="corregirPrecio"></p>
+        <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre">
+            <p id="corregirNombre" class="text-danger"></p>
+        </div>
 
-                <label for="foto">Foto (extensión .png .jpeg .jpg .webp)</label>
-                <input type="file" name="foto">
+        <div class="mb-3">
+            <label for="descripcion" class="form-label">Descripción</label>
+            <input type="text" name="descripcion" id="descripcion" class="form-control" placeholder="Descripción">
+            <p id="corregirDescripcion" class="text-danger"></p>
+        </div>
 
-                <div class="form-txt">
-                    <a href="#"></a>
-                </div>
-                <input class="btn" id="boton" type="submit" value="Enviar">
-            </div>
-        </form>
+        <div class="mb-3">
+            <label for="categoria" class="form-label">Categoria</label>
+            <select name="categoria" id="categoria" class="form-select">
+                <option value=""></option>
+                <option value="deportes">Deportes</option>
+                <option value="hogar">Hogar</option>
+                <option value="electronica">Electronica</option>
+                <option value="mascotas">Mascotas</option>
+                <option value="libros">Libros</option>
+                <option value="juguetes">Juguetes</option>
+                <option value="ropa">Ropa</option>
+            </select>
+            <p id="corregirCategoria" class="text-danger"></p>
+        </div>
+
+        <div class="mb-3">
+            <label for="precio" class="form-label">Precio</label>
+            <input type="text" name="precio" id="precio" class="form-control" placeholder="Precio">
+            <p id="corregirPrecio" class="text-danger"></p>
+        </div>
+
+        <div class="mb-3">
+            <label for="foto" class="form-label">Foto (extensión .png .jpeg .jpg .webp)</label>
+            <input type="file" name="foto" class="form-control">
+        </div>
+
+        <div class="text-center">
+            <input class="btn btn-primary" id="boton" type="submit" value="Enviar">
+        </div>
+    </div>
+</form>
+
         </div>
     </div>
 </body>

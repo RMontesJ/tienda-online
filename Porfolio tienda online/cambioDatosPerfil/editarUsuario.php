@@ -46,31 +46,33 @@ if(isset($nombre) || isset($contrasena) || isset($correo) || isset($direccion)){
 
 <div class="formulario">
 
-<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" id="form">
-<h2>Actualizar perfil</h2>
-
-<div class="input-group">
-<input type="hidden" name="id_user" value="<?php echo $usuario; ?>">
-<label for="name">Nombre</label>
-<input type="text" name="nombre" id="nombre" value="<?php echo $nombrePerfil ?>" placeholder="Nombre">
-<p id="corregirNombre"></p>
-<label for="contrasena">Contraseña</label>
-<input type="password" name="contrasena" id="contrasena" value="<?php echo $contrasenaPerfil ?>" placeholder="Contraseña">
-<p id="corregirContrasena"></p>
-<label for="correo">Correo</label>
-<input type="text" name="correo" id="correo" value="<?php echo $correoPerfil ?>" placeholder="Correo">
-<p id="corregirCorreo"></p>
-<label for="dirección">Dirección</label>
-<input type="text" name="direccion" id="direccion" value="<?php echo $direcciónPerfil ?>" placeholder="Dirección">
-<p id="corregirDireccion"></p>
-
-<div class="form-txt">
-<a href="../paginas/perfilAdmin.php?id_user=<?php echo $usuario ?>">Volver a mi perfil</a>
-</div>
-<input  class="btn btn-primary" id="boton" type="submit" value="Enviar">
-</div>
-</form>
-
+<form id="form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+                        <input type="hidden" name="id_user" value="<?php echo $usuario; ?>">
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre</label>
+                            <input type="text" name="nombre" id="nombre" class="form-control" value="<?php echo $nombrePerfil ?>" placeholder="Nombre">
+                            <p id="corregirNombre" class="text-danger small"></p>
+                        </div>
+                        <div class="mb-3">
+                            <label for="contrasena" class="form-label">Contraseña</label>
+                            <input type="password" name="contrasena" id="contrasena" class="form-control" value="<?php echo $contrasenaPerfil ?>" placeholder="Contraseña">
+                            <p id="corregirContrasena" class="text-danger small"></p>
+                        </div>
+                        <div class="mb-3">
+                            <label for="correo" class="form-label">Correo</label>
+                            <input type="text" name="correo" id="correo" class="form-control" value="<?php echo $correoPerfil ?>" placeholder="Correo">
+                            <p id="corregirCorreo" class="text-danger small"></p>
+                        </div>
+                        <div class="mb-3">
+                            <label for="direccion" class="form-label">Dirección</label>
+                            <input type="text" name="direccion" id="direccion" class="form-control" value="<?php echo $direcciónPerfil ?>" placeholder="Dirección">
+                            <p id="corregirDireccion" class="text-danger small"></p>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <a href="../paginas/perfilAdmin.php?id_user=<?php echo $usuario ?>" class="text-decoration-none">Volver a mi perfil</a>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Enviar</button>
+                    </form>
 </div>
 
 </div>

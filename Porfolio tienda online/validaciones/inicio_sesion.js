@@ -15,7 +15,7 @@ let contrasena = document.getElementById('contrasena');
 let corregirNombre = document.getElementById('corregirNombre');
 let corregirContrasena = document.getElementById('corregirContrasena');
 
-let validar = true
+let validar = true;
 
 if(nombre.value.trim() === "" || !/^[a-zA-Z\s]{1,25}$/.test(nombre.value)){
     nombre = document.getElementById('nombre').style.border = "1px red solid";

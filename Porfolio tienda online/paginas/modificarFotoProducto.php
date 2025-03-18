@@ -65,20 +65,18 @@ $extension = $_FILES['fotoNueva']['type'];
 
 <div class="formulario">
 
-<form action="../paginas/modificarFotoProducto.php?id_user=<?php echo $usuario ?>&id_producto=<?php echo $id_producto; ?>" method="post" id="form" enctype="multipart/form-data">
-<h2>Foto</h2>
+<form action="../paginas/modificarFotoProducto.php?id_user=<?php echo $usuario ?>&id_producto=<?php echo $id_producto; ?>" method="post" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label for="fotoNueva" class="form-label">Foto (extensión .png, .jpeg, .jpg, .webp)</label>
+                            <input type="file" name="fotoNueva" id="fotoNueva" class="form-control">
+                        </div>
 
-<div class="input-group">
-<label for="name">Foto (extensión .png .jpeg .jpg .webp)</label>
-<input type="file" name="fotoNueva" id="fotoNueva">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <a href="../paginas/verProducto.php?id_user=<?php echo $usuario ?>&id_producto=<?php echo $id_producto ?>" class="text-decoration-none">Ver producto</a>
+                        </div>
 
-<div class="form-txt">
-<a href="../paginas/verProducto.php?id_user=<?php echo $usuario ?>&id_producto=<?php echo $id_producto ?>">Ver producto</a>
-</div>
-<input class="btn" type="submit" value="Enviar">
-</div>
-</form>
-
+                        <button type="submit" class="btn btn-primary w-100">Actualizar Foto</button>
+                    </form>
 </div>
     
 </div>

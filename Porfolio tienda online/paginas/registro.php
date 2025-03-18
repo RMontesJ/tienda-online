@@ -51,32 +51,39 @@ if(isset($nombre) && isset($contrasena) && isset($correo) && isset($direccion)){
     <?php include "../includes/bootstrapLinks.php" ?>
 </head>
 <body>
+
     
-<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" id="form" enctype="multipart/form-data">
-<h2>Registrarse</h2>
+<form id="form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data">
+<h1>Registro</h1>
 
-<div class="input-group">
-<label for="name">Nombre</label>
-<input type="text" name="nombre" id="nombre" placeholder="Nombre">
-<p id="corregirNombre"></p>
-<label for="contrasena">Contraseña</label>
-<input type="password" name="contrasena" id="contrasena" placeholder="Contraseña">
-<p id="corregirContrasena"></p>
-<label for="correo">Correo</label>
-<input type="text" name="correo" id="correo" placeholder="Correo">
-<p id="corregirCorreo"></p>
-<label for="dirección">Dirección</label>
-<input type="text" name="direccion" id="direccion" placeholder="Dirección">
-<p id="corregirDireccion"></p>
-<label for="foto">Foto (opcional)</label>
-<input type="file" name="foto" id="foto">
-
-<div class="form-txt">
-<a href="inicio_sesion.php">Iniciar sesion</a>
-</div>
-<input class="btn" id="boton" type="submit" value="Enviar">
-</div>
-</form>
-
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre</label>
+                            <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre">
+                            <p id="corregirNombre" class="text-danger small"></p>
+                        </div>
+                        <div class="mb-3">
+                            <label for="contrasena" class="form-label">Contraseña</label>
+                            <input type="password" name="contrasena" id="contrasena" class="form-control" placeholder="Contraseña">
+                            <p id="corregirContrasena" class="text-danger small"></p>
+                        </div>
+                        <div class="mb-3">
+                            <label for="correo" class="form-label">Correo</label>
+                            <input type="email" name="correo" id="correo" class="form-control" placeholder="Correo">
+                            <p id="corregirCorreo" class="text-danger small"></p>
+                        </div>
+                        <div class="mb-3">
+                            <label for="direccion" class="form-label">Dirección</label>
+                            <input type="text" name="direccion" id="direccion" class="form-control" placeholder="Dirección">
+                            <p id="corregirDireccion" class="text-danger small"></p>
+                        </div>
+                        <div class="mb-3">
+                            <label for="foto" class="form-label">Foto (opcional)</label>
+                            <input type="file" name="foto" id="foto" class="form-control">
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <a href="inicio_sesion.php" class="text-decoration-none">Iniciar sesión</a>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Enviar</button>
+                    </form>
 </body>
 </html>

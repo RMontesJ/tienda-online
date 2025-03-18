@@ -75,21 +75,16 @@ if (isset($_FILES['fotoNueva'])) {
 
 <div class="formulario">
 
-<form action="cambiarFoto.php?id_user=<?php echo $usuario ?>" method="post" id="form" enctype="multipart/form-data">
-<h2>Foto</h2>
-
-<div class="input-group">
-<label for="name">Foto (extensión .png .jpeg .jpg .webp)</label>
-<input type="file" name="fotoNueva" id="fotoNueva">
-
-<div class="form-txt">
-<a href="../paginas/perfil.php?id_user=<?php echo $usuario; ?>">Volver a mi perfil</a>
-
-</div>
-<input class="btn" type="submit" value="Enviar">
-</div>
-</form>
-
+<form action="cambiarFoto.php?id_user=<?php echo $usuario ?>" method="post" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label for="fotoNueva" class="form-label">Foto (extensión .png .jpeg .jpg .webp)</label>
+                            <input type="file" name="fotoNueva" id="fotoNueva" class="form-control">
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <a href="../paginas/perfil.php?id_user=<?php echo $usuario; ?>" class="text-decoration-none">Volver a mi perfil</a>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Enviar</button>
+                    </form>
 </div>
     
 </div>
