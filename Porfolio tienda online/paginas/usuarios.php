@@ -36,6 +36,7 @@ if(isset($_POST['enviar'])){
     <title>Usuarios</title>
     <link rel="stylesheet" href="../css/usuarios.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../css/nav.css">
+    <?php include "../includes/bootstrapLinks.php" ?>
 </head>
 <body>
 

@@ -36,7 +36,7 @@ if(!isset($usuario) || $usuario == ""){
     <title>Carrito</title>
     <link rel="stylesheet" href="../css/carrito.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../css/nav.css?v=<?php echo time(); ?>">
-
+    <?php include "../includes/bootstrapLinks.php" ?>
 </head>
 <body>
 

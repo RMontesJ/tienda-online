@@ -52,6 +52,7 @@ $productos->editarProducto($usuario, $id_producto, $nombreNuevo, $descripcionNue
     <link rel="stylesheet" href="../css/nav.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../css/modificarProducto.css?v=<?php echo time(); ?>">
     <script src="../validaciones/actualizar_producto.js?v=<?php echo time(); ?>" defer></script>
+    <?php include "../includes/bootstrapLinks.php" ?>
 </head>
 
 <body>

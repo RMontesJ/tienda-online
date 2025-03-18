@@ -28,6 +28,7 @@ if(!isset($usuario) || $usuario == ""){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notificaciones</title>
     <link rel="stylesheet" href="../css/nav.css?v=<?php echo time(); ?>">
+    <?php include "../includes/bootstrapLinks.php" ?>
 </head>
 <body>
 

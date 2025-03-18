@@ -48,6 +48,7 @@ if(isset($nombre) && isset($contrasena) && isset($correo) && isset($direccion)){
     <title>Registrarse</title>
     <link rel="stylesheet" href="../css/formulario.css?v=<?php echo time(); ?>">
     <script src="../validaciones/registro.js?v=<?php echo time(); ?>" defer></script>
+    <?php include "../includes/bootstrapLinks.php" ?>
 </head>
 <body>
     

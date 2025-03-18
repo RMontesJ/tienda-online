@@ -65,6 +65,7 @@ if (isset($_FILES['fotoNueva'])) {
     <title>Cambiar nombre</title>
     <link rel="stylesheet" href="../css/nav.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../css/cambiarFotoProducto.css?v=<?php echo time(); ?>">
+    <?php include "../includes/bootstrapLinks.php" ?>
 </head>
 <body>
 

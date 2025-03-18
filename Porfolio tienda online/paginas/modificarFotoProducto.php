@@ -55,6 +55,7 @@ $extension = $_FILES['fotoNueva']['type'];
     <title>Cambiar foto producto</title>
     <link rel="stylesheet" href="../css/nav.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../css/cambiarFoto.css?v=<?php echo time(); ?>">
+    <?php include "../includes/bootstrapLinks.php" ?>
 </head>
 <body>
 

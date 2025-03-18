@@ -6,6 +6,7 @@
     <title>Inicio de sesion</title>
     <link rel="stylesheet" href="../css/formulario.css?v=<?php echo time(); ?>">
     <script src="../validaciones/inicio_sesion.js?v=<?php echo time(); ?>" defer></script>
+    <?php include "../includes/bootstrapLinks.php" ?>
 </head>
 <body>
 

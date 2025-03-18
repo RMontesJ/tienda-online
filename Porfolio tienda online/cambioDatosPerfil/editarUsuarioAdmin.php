@@ -36,6 +36,7 @@ if(isset($nombre) || isset($contrasena) || isset($correo) || isset($direccion)){
     <link rel="stylesheet" href="../css/nav.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../css/actualizarUsuario.css?v=<?php echo time(); ?>">
     <script src="../validaciones/actualizarPerfilAdmin.js?v=<?php echo time(); ?>" defer></script>
+    <?php include "../includes/bootstrapLinks.php" ?>
 </head>
 <body>
     

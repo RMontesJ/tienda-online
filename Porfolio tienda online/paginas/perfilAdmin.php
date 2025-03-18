@@ -35,6 +35,7 @@ $fotoPerfil = $datosUsuario->cogerFoto($usuario);
     <title>Mi perfil</title>
     <link rel="stylesheet" href="../css/perfil.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../css/nav.css?v=<?php echo time(); ?>">
+    <?php include "../includes/bootstrapLinks.php" ?>
 </head>
 <body>
 

@@ -79,6 +79,7 @@ else{
     <link rel="stylesheet" href="../css/nav.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../css/crearProducto.css?v=<?php echo time(); ?>">
     <script src="../validaciones/subida_producto.js?v=<?php echo time(); ?>" defer></script>
+    <?php include "../includes/bootstrapLinks.php" ?>
 </head>
 
 <body>

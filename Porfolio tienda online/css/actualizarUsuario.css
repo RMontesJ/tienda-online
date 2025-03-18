@@ -17,6 +17,7 @@ body{
 }
 
 form{
+    width: 500px;
     padding: 50px 55px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
     border-radius: 20px;
@@ -78,15 +79,6 @@ color: #b5cab6;
     text-decoration: none;
 }
 
-.btn{
-    font-size: 16px;
-    color: #FFFFFF;
-    border: 0;
-    border-radius: 25px;
-    background-color: #51D94C;
-    box-shadow: 0 0 20px rgba(25, 254, 0, 0.4);
-    cursor: pointer;
-}
 
 .btn:hover{
     background-color: #50E04B;
