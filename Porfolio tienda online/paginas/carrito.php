@@ -50,7 +50,7 @@ if(!isset($usuario) || $usuario == ""){
 </div>
 
 <a href="../paginas/descargarPedidoPDF.php?id_user=<?php echo $usuario; ?>" target="_blank">
-    <button>Descargar PDF</button>
+    <button>Realizar pedido</button>
 </a>
 
 </div>
