@@ -49,6 +49,66 @@ class Datos
         }
     }
 
+    public function verMisPedidos($productos, $id_usuario){
+       
+        // Extraemos solo los IDs de los productos para hacer la consulta
+        $productos_ids = array_column($productos, 'producto_id');
+        $productos_list = implode(",", array_map("intval", $productos_ids));
+    
+        // Consultamos los detalles de los productos en la tabla `productos` y las cantidades en la tabla `carrito`
+        $consulta = $this->conexion->query("SELECT p.id, p.nombre, p.descripcion, p.categoria, p.precio, p.foto, c.cantidad 
+                                            FROM productos p
+                                            INNER JOIN carrito c ON p.id = c.producto_id
+                                            WHERE c.producto_id IN ($productos_list)");
+    
+        $total_carrito = 0; // Variable para almacenar el total del carrito
+    
+        // Iniciamos la tabla con la nueva columna "Total"
+        echo "<table border='1' style='width:60%; text-align:left; border-collapse: collapse;'>";
+        echo "<tr>
+                <th>Imagen</th>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Categoría</th>
+                <th>Precio</th>
+                <th>Cantidad</th> 
+                <th>Total</th>
+                <th>Acción</th> <!-- Nueva columna para eliminar -->
+              </tr>";
+    
+    // Recorremos los productos y los mostramos en la tabla
+    while ($row = $consulta->fetch_array(MYSQLI_ASSOC)) {
+        $producto_id = $row['id']; // ID del producto
+        $cantidad = $row['cantidad']; // Cantidad del producto en el carrito
+        $precio = $row['precio']; // Precio del producto
+        $total_producto = $cantidad * $precio; // Total por producto
+        $total_carrito += $total_producto; // Sumar al total del carrito
+    
+        echo "<tr>";
+        echo "<td><img src='../fotosProductos/" . htmlspecialchars($row['foto']) . "' alt='Foto del producto' style='width:100px;height:100px;'></td>";
+        echo "<td>" . htmlspecialchars($row['id']) . "</td>";
+        echo "<td>" . htmlspecialchars($row['nombre']) . "</td>";
+        echo "<td>" . htmlspecialchars($row['descripcion']) . "</td>";
+        echo "<td>" . htmlspecialchars($row['categoria']) . "</td>";
+        echo "<td>" . htmlspecialchars($row['precio']) . "€</td>";
+        echo "<td>" . htmlspecialchars($cantidad) . "</td>"; // Muestra la cantidad
+        echo "<td>" . number_format($total_producto, 2) . "€</td>"; // Muestra el total del producto (cantidad * precio)
+        echo "</tr>";
+    
+    }
+    
+    // Agregar la fila del total del carrito
+    echo "<tr>
+            <td colspan='7' style='text-align:right; font-weight:bold;'>Total Carrito:</td>
+            <td style='font-weight:bold;'>" . number_format($total_carrito, 2) . "€</td>
+            <td></td> <!-- Celda vacía para mantener alineación -->
+          </tr>";
+    
+    // Cerramos la tabla
+    echo "</table>";
+    }
+
     public function buscarProductos($busqueda, $usuario)
     {
         $consulta = $this->conexion->query("SELECT * FROM productos WHERE id LIKE '%$busqueda%' OR nombre LIKE '%$busqueda%' OR descripcion LIKE '%$busqueda%' OR categoria LIKE '%$busqueda%' OR precio LIKE '%$busqueda%'");
@@ -198,6 +258,24 @@ $pdf->Output('D', 'factura.pdf');
         $id_usuario = intval($id_usuario);
     
         $query = mysqli_query($this->conexion, "SELECT producto_id, cantidad FROM carrito WHERE usuario_id = $id_usuario");
+    
+        $productos = [];
+        while ($row = mysqli_fetch_assoc($query)) {
+            // Guardamos cada producto con su cantidad en un array asociativo
+            $productos[] = [
+                'producto_id' => $row['producto_id'],
+                'cantidad' => $row['cantidad']
+            ];
+        }
+    
+        return $productos; // Devuelve un array con los IDs de los productos y sus cantidades
+    }
+
+    public function cogerIdProductosPedido($id_usuario) {
+        // Aseguramos que $id_usuario es un número entero válido
+        $id_usuario = intval($id_usuario);
+    
+        $query = mysqli_query($this->conexion, "SELECT producto_id, cantidad FROM pedidos WHERE usuario_id = $id_usuario");
     
         $productos = [];
         while ($row = mysqli_fetch_assoc($query)) {

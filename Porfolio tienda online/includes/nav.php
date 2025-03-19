@@ -22,6 +22,9 @@ $fotoPerfil = $datosUsuario->cogerFoto($usuario);
                 <li class="nav-item"><a href="../paginas/ayuda.php?id_user=<?php echo $usuario; ?>" class="nav-link">Ayuda</a></li>
             </ul>
             <div class="d-flex align-items-center">
+            <a href="../paginas/misPedidos.php?id_user=<?php echo $usuario; ?>" class="me-3">
+                    <img src="../img/IconParkSolidDelivery.svg" alt="Notificaciones" style="width:40px;height:40px;">
+                </a>
                 <a href="../paginas/notificaciones.php?id_user=<?php echo $usuario; ?>" class="me-3">
                     <img src="../img/MaterialSymbolsNotifications.svg" alt="Notificaciones" style="width:40px;height:40px;">
                 </a>
