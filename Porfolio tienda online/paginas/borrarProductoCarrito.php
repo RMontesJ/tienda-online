@@ -10,7 +10,7 @@ $producto = $_GET['id_producto'];
 
 // metodo que borra el producto, pasandole su id como argumento para borrarlo
 
-$clase->borrarProductoCarrito($producto);
+$clase->borrarProductoCarrito($usuario, $producto);
 
 
 header("Location: ../paginas/carrito.php?id_user=$usuario");

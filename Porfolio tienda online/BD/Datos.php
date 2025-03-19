@@ -102,8 +102,8 @@ echo "</div>"; // Fin col-md-4
         $query = mysqli_query($this->conexion, "DELETE FROM productos WHERE id = '$id'");
     }
 
-    public function borrarProductoCarrito($id){
-        $query = mysqli_query($this->conexion, "DELETE FROM productos WHERE id = '$id'");
+    public function borrarProductoCarrito($usuario, $producto_id){
+        $query = mysqli_query($this->conexion, "DELETE FROM carrito WHERE usuario_id = $usuario and producto_id= $producto_id");
     }
 
     public function borrar($id)
@@ -270,7 +270,7 @@ $pdf->Output('D', 'factura.pdf');
         echo "<td>" . htmlspecialchars($row['precio']) . "€</td>";
         echo "<td>" . htmlspecialchars($cantidad) . "</td>"; // Muestra la cantidad
         echo "<td>" . number_format($total_producto, 2) . "€</td>"; // Muestra el total del producto (cantidad * precio)
-        echo "<td><a href='../paginas/borrarProducto.php?id_user=$usuario&id_producto=" . $row['id'] . "'><img src='../img/iconoPapelera.svg' alt='Eliminar'></a></td>";
+        echo "<td><a href='../paginas/borrarProductoCarrito.php?id_user=$usuario&id_producto=" . $row['id'] . "'><img src='../img/iconoPapelera.svg' alt='Eliminar'></a></td>";
         echo "</tr>";
     
     }
