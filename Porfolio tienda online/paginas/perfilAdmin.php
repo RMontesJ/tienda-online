@@ -39,45 +39,31 @@ $fotoPerfil = $datosUsuario->cogerFoto($usuario);
 </head>
 <body>
 
-<div class="page">
-
-<?php include "../includes/navAdmin.php" ?>
-
-<h1>Mi perfil</h1>
-
-<div class="datos">
-<div class="foto">
-<img src="../fotosUsuarios/<?php echo $fotoPerfil; ?>" alt="Foto usuario" style="width:400px;height:300px;"><br>
-<a href="../cambioDatosPerfil/cambiarFotoAdmin.php?id_user=<?php echo $usuario;?>"><img src="../img/iconoLapiz.svg" alt="Cambiar foto"></img></a>
-</div>
-<div class="nombre">
-<p>Nombre: <?php echo $nombrePerfil ?></p>
-
-</div>
-
-<div class="contrasena">
-<p>Contraseña: <?php echo $contrasenaPerfil ?></p>
-
-</div>
-
-<div class="correo">
-<p>Correo: <?php echo $correoPerfil ?></p>
-
-</div>
-
-<div class="direccion">
-<p>Dirección: <?php echo $direcciónPerfil ?></p>
-
-</div>
-
-<div class="config">
-    <a href="../cambioDatosPerfil/editarUsuarioAdmin.php?id_user=<?php echo $usuario;?>"><img src="../img/iconoLapiz.svg" alt="Cambiar nombre"></img></a>
-    <a href="../cambioDatosPerfil/eliminarUsuario.php?id_user=<?php echo $usuario;?>"><img src="../img/iconoPapelera.svg" alt="Eliminar usuario"></a>
-</div>
-
-</div>
-
-</div>
-    
-</body>
+<div class="pagina">
+        <?php include "../includes/navAdmin.php" ?>
+        <div class="container-fluid">
+            <div class="row justify-content-center mt-4">
+                <div class="col-12 col-md-8 col-lg-6">
+                    <div class="perfil p-4 shadow-lg rounded text-center">
+                        <h1 class="mb-4">Mi perfil</h1>
+                        <div class="foto mb-3">
+                            <img src="../fotosUsuarios/<?php echo $fotoPerfil; ?>" alt="Foto usuario" class="img-fluid rounded" style="max-width: 400px; height: auto;">
+                            <br>
+                            <a href="../cambioDatosPerfil/cambiarFotoAdmin.php?id_user=<?php echo $usuario; ?>"><img src="../img/iconoLapiz.svg" alt="Cambiar foto"></a>
+                        </div>
+                        <div class="datos text-start">
+                            <p><strong>Nombre:</strong> <?php echo $nombrePerfil; ?></p>
+                            <p><strong>Contraseña:</strong> <?php echo $contrasenaPerfil; ?></p>
+                            <p><strong>Correo:</strong> <?php echo $correoPerfil; ?></p>
+                            <p><strong>Dirección:</strong> <?php echo $direcciónPerfil; ?></p>
+                        </div>
+                        <div class="config d-flex justify-content-center gap-3 mt-3">
+                            <a href="../cambioDatosPerfil/editarUsuarioAdmin.php?id_user=<?php echo $usuario; ?>"><img src="../img/iconoLapiz.svg" alt="Editar"></a>
+                            <a href="../cambioDatosPerfil/eliminarUsuario.php?id_user=<?php echo $usuario; ?>"><img src="../img/iconoPapelera.svg" alt="Eliminar"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div></body>
 </html>
