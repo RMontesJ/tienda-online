@@ -59,49 +59,55 @@ $productos->editarProducto($usuario, $id_producto, $nombreNuevo, $descripcionNue
 
 <?php include "../includes/navAdmin.php" ?>
 
-    <div class="formulario">
-    <form id="form" action="../paginas/modificarProducto.php?id_user=<?php echo $usuario; ?>&id_producto=<?php echo $id_producto; ?>" method="post" enctype="multipart/form-data">
-                        <div class="mb-3">
-                            <label for="nombre" class="form-label">Nombre</label>
-                            <input type="text" name="nombreNuevo" value="<?php echo $nombreProducto ?>" id="nombre" class="form-control" placeholder="Nombre">
-                            <p id="corregirNombre" class="text-danger small"></p>
-                        </div>
+<div class="container-fluid">
+    <div class="row justify-content-center mt-4">
+        <div class="col-12 col-md-8 col-lg-6">
+            <div class="formulario">
+                <form id="form" action="../paginas/modificarProducto.php?id_user=<?php echo $usuario; ?>&id_producto=<?php echo $id_producto; ?>" method="post" enctype="multipart/form-data">
+                    
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input type="text" name="nombreNuevo" value="<?php echo $nombreProducto ?>" id="nombre" class="form-control" placeholder="Nombre">
+                        <p id="corregirNombre" class="text-danger small"></p>
+                    </div>
 
-                        <div class="mb-3">
-                            <label for="descripcion" class="form-label">Descripción</label>
-                            <input type="text" name="descripcionNueva" value="<?php echo $descripcionProducto ?>" id="descripcion" class="form-control" placeholder="Descripción">
-                            <p id="corregirDescripcion" class="text-danger small"></p>
-                        </div>
+                    <div class="mb-3">
+                        <label for="descripcion" class="form-label">Descripción</label>
+                        <input type="text" name="descripcionNueva" value="<?php echo $descripcionProducto ?>" id="descripcion" class="form-control" placeholder="Descripción">
+                        <p id="corregirDescripcion" class="text-danger small"></p>
+                    </div>
 
-                        <div class="mb-3">
-                            <label for="categoria" class="form-label">Categoría</label>
-                            <select name="categoriaNueva" id="categoria" class="form-select">
-                                <option value="">Selecciona una categoría</option>
-                                <option value="deportes">Deportes</option>
-                                <option value="hogar">Hogar</option>
-                                <option value="electronica">Electrónica</option>
-                                <option value="mascotas">Mascotas</option>
-                                <option value="libros">Libros</option>
-                                <option value="juguetes">Juguetes</option>
-                                <option value="ropa">Ropa</option>
-                            </select>
-                            <p id="corregirCategoria" class="text-danger small"></p>
-                        </div>
+                    <div class="mb-3">
+                        <label for="categoria" class="form-label">Categoría</label>
+                        <select name="categoriaNueva" id="categoria" class="form-select">
+                            <option value="">Selecciona una categoría</option>
+                            <option value="deportes">Deportes</option>
+                            <option value="hogar">Hogar</option>
+                            <option value="electronica">Electrónica</option>
+                            <option value="mascotas">Mascotas</option>
+                            <option value="libros">Libros</option>
+                            <option value="juguetes">Juguetes</option>
+                            <option value="ropa">Ropa</option>
+                        </select>
+                        <p id="corregirCategoria" class="text-danger small"></p>
+                    </div>
 
-                        <div class="mb-3">
-                            <label for="precio" class="form-label">Precio</label>
-                            <input type="number" name="precioNuevo" value="<?php echo $precioProducto ?>" min="0" step="0.01" id="precio" class="form-control" placeholder="Precio">
-                            <p id="corregirPrecio" class="text-danger small"></p>
-                        </div>
+                    <div class="mb-3">
+                        <label for="precio" class="form-label">Precio</label>
+                        <input type="number" name="precioNuevo" value="<?php echo $precioProducto ?>" min="0" step="0.01" id="precio" class="form-control" placeholder="Precio">
+                        <p id="corregirPrecio" class="text-danger small"></p>
+                    </div>
 
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <a href="../paginas/verProducto.php?id_user=<?php echo $usuario ?>&id_producto=<?php echo $id_producto ?>" class="text-decoration-none">Ver producto</a>
-                        </div>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <a href="../paginas/verProducto.php?id_user=<?php echo $usuario ?>&id_producto=<?php echo $id_producto ?>" class="text-decoration-none">Ver producto</a>
+                    </div>
 
-                        <button type="submit" class="btn btn-primary w-100">Enviar</button>
-                    </form>
+                    <button type="submit" class="btn btn-primary w-100">Enviar</button>
+                </form>
+            </div>
+        </div>
     </div>
-
+</div>
 </body>
 
 </html>

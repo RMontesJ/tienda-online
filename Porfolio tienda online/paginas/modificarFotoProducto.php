@@ -61,11 +61,13 @@ $extension = $_FILES['fotoNueva']['type'];
 
 <div class="pagina">
 
-<?php include "../includes/navAdmin.php" ?>
+    <?php include "../includes/navAdmin.php" ?>
 
-<div class="formulario">
-
-<form action="../paginas/modificarFotoProducto.php?id_user=<?php echo $usuario ?>&id_producto=<?php echo $id_producto; ?>" method="post" enctype="multipart/form-data">
+    <div class="container-fluid">
+        <div class="row justify-content-center mt-4">
+            <div class="col-12 col-md-8 col-lg-6">
+                <div class="formulario">
+                    <form action="../paginas/modificarFotoProducto.php?id_user=<?php echo $usuario ?>&id_producto=<?php echo $id_producto; ?>" method="post" enctype="multipart/form-data">
                         <div class="mb-3">
                             <label for="fotoNueva" class="form-label">Foto (extensión .png, .jpeg, .jpg, .webp)</label>
                             <input type="file" name="fotoNueva" id="fotoNueva" class="form-control">
@@ -77,8 +79,11 @@ $extension = $_FILES['fotoNueva']['type'];
 
                         <button type="submit" class="btn btn-primary w-100">Actualizar Foto</button>
                     </form>
-</div>
-    
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
     
 </body>

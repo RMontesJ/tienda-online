@@ -27,21 +27,20 @@ if(!isset($usuario) || $usuario == ""){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notificaciones</title>
+    <link rel="stylesheet" href="../css/nav.css?v=<?php echo time(); ?>">
     <?php include "../includes/bootstrapLinks.php" ?>
 </head>
 <body>
 
-<div class="container-fluid">
-    <?php include "../includes/nav.php" ?>
+<div class="pagina">
 
-    <!-- Sección de notificaciones -->
-    <div class="row justify-content-center mt-4">
-        <div class="col-12 col-md-10 col-lg-8">
-            <div class="notificaciones p-3 p-sm-4 border rounded shadow-sm">
-                <?php $clase->pintarNotificaciones($usuario); ?>
-            </div>
-        </div>
-    </div>
+<?php include "../includes/navAdmin.php" ?>
+
+
+<div class="notificaciones">
+    <?php $clase->pintarNotificaciones($usuario); ?>
+</div>
+
 </div>
     
 </body>

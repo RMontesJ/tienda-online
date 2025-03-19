@@ -40,19 +40,20 @@ if(!isset($usuario) || $usuario == ""){
 </head>
 <body>
 
-<div class="pagina">
+<div class="container-fluid">
+    <?php include "../includes/nav.php" ?>
 
-<?php include "../includes/nav.php" ?>
+    <!-- Carrito de compras -->
+    <div class="carrito mb-4">
+        <?php echo $pintarCarrito = $clase->pintarCarrito($idPoductosCarrito, $usuario); ?>
+    </div>
 
-
-<div class="carrito">
-<?php echo $pintarCarrito = $clase->pintarCarrito($idPoductosCarrito, $usuario);?>
-</div>
-
-<a href="../paginas/descargarPedidoPDF.php?id_user=<?php echo $usuario; ?>" target="_blank">
-    <button>Realizar pedido</button>
-</a>
-
+    <!-- Botón para realizar pedido -->
+    <div class="d-flex justify-content-center">
+        <a href="../paginas/descargarPedidoPDF.php?id_user=<?php echo $usuario; ?>" target="_blank" class="btn btn-primary btn-lg">
+            Realizar pedido
+        </a>
+    </div>
 </div>
     
 </body>

@@ -26,14 +26,26 @@ class Datos
         $consulta = $this->conexion->query("SELECT * FROM usuarios WHERE id LIKE '%$busqueda%' OR nombre LIKE '%$busqueda%' OR contrasena LIKE '%$busqueda%' OR correo LIKE '%$busqueda%' OR direccion LIKE '%$busqueda%'");
 
         while ($row = $consulta->fetch_array(MYSQLI_ASSOC)) {
-            echo "<div class= 'tarjeta'>";
-            echo "<img src='../fotosUsuarios/" . $row['foto'] . "' alt='Foto usuario' style='width:100%;height:300px;'><br>";
-            echo "ID: " . $row['id'] . "<br>";
-            echo "Nombre: " . $row['nombre'] . "<br>";
-            echo "Contraseña: " . $row['contrasena'] . "<br>";
-            echo "Correo: " . $row['correo'] . "<br>";
-            echo "Dirección: " . $row['direccion'] . "<br>";
-            echo "</div>";
+            echo "<div class='col-md-4 mb-4'>"; // Cada tarjeta ocupa 4 columnas en pantallas medianas o más grandes
+        echo "<div class='card h-100 shadow-sm'>"; // Tarjeta con sombra y altura uniforme
+        
+        // Imagen de perfil
+        echo "<img src='../fotosUsuarios/" . $row['foto'] . "' class='card-img-top' alt='Foto usuario' style='height: 300px; object-fit: cover;'>"; // Imagen ajustada y responsiva
+
+        // Cuerpo de la tarjeta
+        echo "<div class='card-body'>";
+        echo "<h5 class='card-title'>ID: " . $row['id'] . "</h5>";
+        echo "<p class='card-text'><strong>Nombre:</strong> " . $row['nombre'] . "</p>";
+        echo "<p class='card-text'><strong>Contraseña:</strong> " . $row['contrasena'] . "</p>";
+        echo "<p class='card-text'><strong>Correo:</strong> " . $row['correo'] . "</p>";
+        echo "<p class='card-text'><strong>Dirección:</strong> " . $row['direccion'] . "</p>";
+        echo "</div>"; // Fin card-body
+        
+        // Cierre de la tarjeta
+        echo "</div>"; // Fin card
+        echo "</div>"; // Fin col-md-4
+            
+    
         }
     }
 

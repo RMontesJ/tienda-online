@@ -25,32 +25,28 @@ if (strpos($correo, "@admin.com") === true) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ayuda</title>
-    <link rel="stylesheet" href="../css/nav.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="../css/ayuda.css?v=<?php echo time(); ?>">
     <?php include "../includes/bootstrapLinks.php" ?>
 </head>
 <body>
 
-<div class="pagina">
+<div class="container-fluid">
+  <?php include "../includes/nav.php" ?>
 
-<?php include "../includes/nav.php" ?>
+  <div class="texto">
+    <h1 class="text-center mb-4">¿Dónde puedo ver mis datos?</h1>
 
-<div class="texto">
+    <p class="lead">
+      Pincha en la página "Mi perfil" en la parte superior, donde podrás consultar toda la información de
+      tu perfil, así como modificar tus datos y borrar tu cuenta.
+    </p>
 
-<h1>¿Donde puedo ver mis datos?</h1>
+    <h1 class="text-center mb-4">¿Cómo navego en la sección de productos?</h1>
 
-<p>Pincha en la pagina "Mi perfil" en la parte superior, donde podras consultar toda la informacion de 
-    tu perfil, asi como modificar tus datos y borrar tu cuenta.
-</p>
-
-<h1>¿Como navego en la seccion de productos?</h1>
-
-<p>En la pagina "inicio" tendras todos los productos registrados de la tienda. Tendras un buscador en el que si 
-    pones cualquer dato, te apareceran cualquier busqueda relacionada con lo que escribiste
-</p>
-
-</div>
-
+    <p class="lead">
+      En la página "inicio" tendrás todos los productos registrados de la tienda. Tendrás un buscador en el que si
+      pones cualquier dato, te aparecerán cualquier búsqueda relacionada con lo que escribiste.
+    </p>
+  </div>
 </div>
     
 </body>

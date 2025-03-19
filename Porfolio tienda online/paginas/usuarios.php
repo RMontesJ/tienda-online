@@ -34,13 +34,11 @@ if(isset($_POST['enviar'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Usuarios</title>
-    <link rel="stylesheet" href="../css/usuarios.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="../css/nav.css">
     <?php include "../includes/bootstrapLinks.php" ?>
 </head>
 <body>
 
-<div class="pagina">
+<div class="container-fluid text-center">
 
 <?php include "../includes/navAdmin.php" ?>
 
@@ -52,8 +50,8 @@ include "../includes/busquedaUsuarios.php"
 
 ?>
 
-<div id="perfiles">
-<?php 
+<div id="perfiles" class="row mt-4">
+    <?php 
 
  // ejecuta una sentencia a la base de datos que busca usuarios con el valor del campo del include
  //busquedaUsuarios.php

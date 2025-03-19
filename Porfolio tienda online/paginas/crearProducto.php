@@ -76,72 +76,82 @@ else{
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crear producto</title>
-    <link rel="stylesheet" href="../css/nav.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="../css/crearProducto.css?v=<?php echo time(); ?>">
     <script src="../validaciones/subida_producto.js?v=<?php echo time(); ?>" defer></script>
     <?php include "../includes/bootstrapLinks.php" ?>
 </head>
 
 <body>
 
-<div class="pagina">
+<div class="container-fluid">
 
     <?php include "../includes/navAdmin.php" ?>
 
-    <div class="formulario">
-    
-    <form action="<?php echo $_SERVER['PHP_SELF']; ?>?id_user=<?php echo $usuario; ?>" method="post" id="form" enctype="multipart/form-data">
-    <div class="container">
-        <h2 class="my-4 text-center">Crear y subir producto</h2>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-10 col-md-8 col-lg-6">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h2 class="text-center mb-4">Crear y subir producto</h2>
 
-        <input type="hidden" name="id_user" value="<?php echo $usuario; ?>">
+                        <form action="<?php echo $_SERVER['PHP_SELF']; ?>?id_user=<?php echo $usuario; ?>" method="post" id="form" enctype="multipart/form-data">
+                            <input type="hidden" name="id_user" value="<?php echo $usuario; ?>">
 
-        <div class="mb-3">
-            <label for="nombre" class="form-label">Nombre</label>
-            <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre">
-            <p id="corregirNombre" class="text-danger"></p>
-        </div>
+                            <!-- Nombre -->
+                            <div class="mb-3">
+                                <label for="nombre" class="form-label">Nombre</label>
+                                <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre">
+                                <p id="corregirNombre" class="text-danger small"></p>
+                            </div>
 
-        <div class="mb-3">
-            <label for="descripcion" class="form-label">Descripción</label>
-            <input type="text" name="descripcion" id="descripcion" class="form-control" placeholder="Descripción">
-            <p id="corregirDescripcion" class="text-danger"></p>
-        </div>
+                            <!-- Descripción -->
+                            <div class="mb-3">
+                                <label for="descripcion" class="form-label">Descripción</label>
+                                <input type="text" name="descripcion" id="descripcion" class="form-control" placeholder="Descripción">
+                                <p id="corregirDescripcion" class="text-danger small"></p>
+                            </div>
 
-        <div class="mb-3">
-            <label for="categoria" class="form-label">Categoria</label>
-            <select name="categoria" id="categoria" class="form-select">
-                <option value=""></option>
-                <option value="deportes">Deportes</option>
-                <option value="hogar">Hogar</option>
-                <option value="electronica">Electronica</option>
-                <option value="mascotas">Mascotas</option>
-                <option value="libros">Libros</option>
-                <option value="juguetes">Juguetes</option>
-                <option value="ropa">Ropa</option>
-            </select>
-            <p id="corregirCategoria" class="text-danger"></p>
-        </div>
+                            <!-- Categoria -->
+                            <div class="mb-3">
+                                <label for="categoria" class="form-label">Categoría</label>
+                                <select name="categoria" id="categoria" class="form-select">
+                                    <option value=""></option>
+                                    <option value="deportes">Deportes</option>
+                                    <option value="hogar">Hogar</option>
+                                    <option value="electronica">Electrónica</option>
+                                    <option value="mascotas">Mascotas</option>
+                                    <option value="libros">Libros</option>
+                                    <option value="juguetes">Juguetes</option>
+                                    <option value="ropa">Ropa</option>
+                                </select>
+                                <p id="corregirCategoria" class="text-danger small"></p>
+                            </div>
 
-        <div class="mb-3">
-            <label for="precio" class="form-label">Precio</label>
-            <input type="text" name="precio" id="precio" class="form-control" placeholder="Precio">
-            <p id="corregirPrecio" class="text-danger"></p>
-        </div>
+                            <!-- Precio -->
+                            <div class="mb-3">
+                                <label for="precio" class="form-label">Precio</label>
+                                <input type="text" name="precio" id="precio" class="form-control" placeholder="Precio">
+                                <p id="corregirPrecio" class="text-danger small"></p>
+                            </div>
 
-        <div class="mb-3">
-            <label for="foto" class="form-label">Foto (extensión .png .jpeg .jpg .webp)</label>
-            <input type="file" name="foto" class="form-control">
-        </div>
+                            <!-- Foto -->
+                            <div class="mb-3">
+                                <label for="foto" class="form-label">Foto (extensión .png .jpeg .jpg .webp)</label>
+                                <input type="file" name="foto" class="form-control">
+                            </div>
 
-        <div class="text-center">
-            <input class="btn btn-primary" id="boton" type="submit" value="Enviar">
+                            <!-- Botón Enviar -->
+                            <div class="text-center">
+                                <input class="btn btn-primary w-100 w-sm-auto" id="boton" type="submit" value="Enviar">
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</form>
 
-        </div>
-    </div>
+</div>
 </body>
 
 </html>
