@@ -13,6 +13,11 @@ header("Location: ../paginas/inicio_sesion.php");
 $correo = $datosUsuario->cogerCorreo($usuario);
 $idPoductosPedido = $datosUsuario->cogerIdProductosPedido($usuario);
 
+ // si es admin
+ if (strpos($correo, "@admin.com") === true) {
+    header("Location: ../paginas/indexRegistrado.php?id_user=$usuario");
+    exit();
+}
 
 // si se le da al boton de buscar, coge el valor de la busqueda del include busquedaUsuarios.php
 // y lo pasa como argumento al metodo buscarUsuarios
@@ -26,7 +31,7 @@ if(isset($_POST['enviar'])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Pedidos</title>
     <?php include "../includes/bootstrapLinks.php" ?>
 
 </head>
