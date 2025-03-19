@@ -36,29 +36,31 @@ if(isset($_POST['enviar'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pagina principal</title>
-    <link rel="stylesheet" href="../css/indexRegistrado.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="../css/nav.css?v=<?php echo time(); ?>">
     <?php include "../includes/bootstrapLinks.php" ?>
 </head>
 <body>
-    
-<div class="pagina">
-<?php include "../includes/navAdmin.php" ?>
-    <h1><?php echo "Hola, ". $nombre ?></h1>
-    <?php 
-    // campo de busqueda y boton de buscar
-    include "../includes/busquedaProductos.php"
-    
-    ?>
-    <div id="productos">
-    <?php 
-    // ejecuta una sentencia a la base de datos que busca productos con el valor del campo del include
-    // busquedaProductos.php
-    $productos = $clase->buscarProductosAdmin($valor, $usuario);
-    
-    ?>
+<div class="container-fluid">
+    <div class="pagina text-center">
+        <!-- Navbar para el administrador -->
+        <?php include "../includes/navAdmin.php"; ?>
+
+        <h1 class="mt-4"><?php echo "Hola, " . $nombre; ?></h1>
+
+        <?php 
+        // Campo de búsqueda y botón de buscar
+        include "../includes/busquedaProductos.php"; 
+        ?>
+
+        <!-- Fila de productos -->
+        <div id="productos" class="row mt-4">
+            <?php 
+            // Ejecuta una sentencia a la base de datos que busca productos con el valor del campo del include
+            $productos = $clase->buscarProductosAdmin($valor, $usuario);
+            ?>
+        </div>
     </div>
 </div>
+
 
 </body>
 </html>

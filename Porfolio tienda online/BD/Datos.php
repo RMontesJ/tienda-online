@@ -42,14 +42,19 @@ class Datos
         $consulta = $this->conexion->query("SELECT * FROM productos WHERE id LIKE '%$busqueda%' OR nombre LIKE '%$busqueda%' OR descripcion LIKE '%$busqueda%' OR categoria LIKE '%$busqueda%' OR precio LIKE '%$busqueda%'");
 
         while ($row = $consulta->fetch_array(MYSQLI_ASSOC)) {
-            echo "<div class= 'tarjeta'>";
-            echo "<a href='../paginas/infoProducto.php?id_user=$usuario&id_producto=". $row['id'] . "'><img src='../fotosProductos/" . $row['foto'] . "' alt='Foto del producto' style='width:100%;height:300px;'><br></a>";
-            echo "ID: " . $row['id'] . "<br>";
-            echo "Nombre: " . $row['nombre'] . "<br>";
-            echo "Descripción: " . $row['descripcion'] . "<br>";
-            echo "Categoria: " . $row['categoria'] . "<br>";
-            echo "Precio: " . $row['precio'] . "€" . "<br>";
-            echo "</div>";
+            echo "<div class='col-md-4 mb-4'>"; // Cada tarjeta ocupa 4 columnas en pantallas medianas o más grandes
+            echo "<div class='card h-100 shadow-sm'>"; // Tarjeta con sombra y altura uniforme
+            echo "<a href='../paginas/infoProducto.php?id_user=$usuario&id_producto=" . $row['id'] . "'>";
+            echo "<img src='../fotosProductos/" . $row['foto'] . "' alt='Foto del producto' class='card-img-top' style='height: 300px;'></a>"; // Imagen responsiva y ajustada
+            echo "<div class='card-body'>";
+            echo "<h5 class='card-title'>" . $row['nombre'] . "</h5>";
+            echo "<p class='card-text'>" . $row['descripcion'] . "</p>";
+            echo "<p class='text-muted'><strong>Categoría:</strong> " . $row['categoria'] . "</p>";
+            echo "<p class='fw-bold text-primary'>Precio: " . $row['precio'] . "€</p>";
+            echo "</div>"; // Fin card-body
+            echo "</div>"; // Fin card
+            echo "</div>"; // Fin col-md-4
+            
         }
     }
 
@@ -59,18 +64,23 @@ class Datos
         $consulta = $this->conexion->query("SELECT * FROM productos WHERE id LIKE '%$busqueda%' OR nombre LIKE '%$busqueda%' OR descripcion LIKE '%$busqueda%' OR categoria LIKE '%$busqueda%' OR precio LIKE '%$busqueda%'");
 
         while ($row = $consulta->fetch_array(MYSQLI_ASSOC)) {
-            echo "<div class= 'tarjeta'>";
-            echo "<img src='../fotosProductos/" . $row['foto'] . "' alt='Foto del producto' style='width:100%;height:300px;'><br>";
-            echo "ID: " . $row['id'] . "<br>";
-            echo "Nombre: " . $row['nombre'] . "<br>";
-            echo "Descripción: " . $row['descripcion'] . "<br>";
-            echo "Categoria: " . $row['categoria'] . "<br>";
-            echo "Precio: " . $row['precio'] . "€" . "<br>";
-            echo "<div class= 'botones'>";
-            echo "<a href='../paginas/verProducto.php?id_user=$usuario&id_producto=" . $row['id'] . "'><img src='../img/iconoLapiz.svg' alt=''></a>";
-            echo "<a href='../paginas/borrarProducto.php?id_user=$usuario&id_producto=". $row['id'] . "'><img src='../img/iconoPapelera.svg' alt=''></a>";
-            echo "</div>";
-            echo "</div>";
+            echo "<div class='col-md-4 mb-4'>"; // Cada tarjeta ocupa 4 columnas en pantallas medianas o más grandes
+echo "<div class='card h-100 shadow-sm'>"; // Tarjeta con sombra y altura uniforme
+echo "<a href='../paginas/infoProducto.php?id_user=$usuario&id_producto=" . $row['id'] . "'>";
+echo "<img src='../fotosProductos/" . $row['foto'] . "' alt='Foto del producto' class='card-img-top' style='height: 300px;'></a>"; // Imagen responsiva y ajustada
+echo "<div class='card-body'>";
+echo "<h5 class='card-title'>" . $row['nombre'] . "</h5>";
+echo "<p class='card-text'>" . $row['descripcion'] . "</p>";
+echo "<p class='text-muted'><strong>Categoría:</strong> " . $row['categoria'] . "</p>";
+echo "<p class='fw-bold text-primary'>Precio: " . $row['precio'] . "€</p>";
+echo "<div class='botones'>";
+echo "<a href='../paginas/verProducto.php?id_user=$usuario&id_producto=" . $row['id'] . "' class='btn btn-outline-primary btn-sm'><img src='../img/iconoLapiz.svg' alt='Editar'></a>";
+echo "<a href='../paginas/borrarProducto.php?id_user=$usuario&id_producto=" . $row['id'] . "' class='btn btn-outline-danger btn-sm'><img src='../img/iconoPapelera.svg' alt='Eliminar'></a>";
+echo "</div>";
+echo "</div>"; // Fin card-body
+echo "</div>"; // Fin card
+echo "</div>"; // Fin col-md-4
+
         }
     }
 
