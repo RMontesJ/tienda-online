@@ -27,6 +27,8 @@
                         <div class="d-flex justify-content-between align-items-center mb-3">
                             <a href="../paginas/registro.php" class="text-decoration-none">Registrarse</a>
                         </div>
-                        <input class="btn" type="submit" value="Iniciar sesion">                    </form>    
+                        <input class="btn" type="submit" value="Iniciar sesion">                    
+                    </form>
+                   
 </body>
 </html>

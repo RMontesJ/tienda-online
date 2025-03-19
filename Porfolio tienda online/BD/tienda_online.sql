@@ -58,6 +58,7 @@ CREATE TABLE IF NOT EXISTS `pedidos` (
   `usuario_id` int(11) NOT NULL,
   `producto_id` int(11) NOT NULL,
   `cantidad` int(11) NOT NULL,
+  `fecha` varchar(300) NOT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_pedidos_usuario` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios`(`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

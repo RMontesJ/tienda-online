@@ -50,16 +50,17 @@ class Datos
     }
 
     public function verMisPedidos($productos, $id_usuario){
-       
+   
         // Extraemos solo los IDs de los productos para hacer la consulta
         $productos_ids = array_column($productos, 'producto_id');
         $productos_list = implode(",", array_map("intval", $productos_ids));
     
-        // Consultamos los detalles de los productos en la tabla `productos` y las cantidades en la tabla `carrito`
-        $consulta = $this->conexion->query("SELECT p.id, p.nombre, p.descripcion, p.categoria, p.precio, p.foto, c.cantidad 
+        // Consultamos los detalles de los productos en la tabla `productos`, las cantidades en la tabla `carrito` y la fecha de la tabla `pedidos`
+        $consulta = $this->conexion->query("SELECT p.id, p.nombre, p.descripcion, p.categoria, p.precio, p.foto, c.cantidad, pe.fecha
                                             FROM productos p
                                             INNER JOIN carrito c ON p.id = c.producto_id
-                                            WHERE c.producto_id IN ($productos_list)");
+                                            INNER JOIN pedidos pe ON pe.producto_id = c.producto_id AND pe.usuario_id = c.usuario_id
+                                            WHERE c.producto_id IN ($productos_list) AND c.usuario_id = $id_usuario");
     
         $total_carrito = 0; // Variable para almacenar el total del carrito
     
@@ -73,41 +74,44 @@ class Datos
                 <th>Categoría</th>
                 <th>Precio</th>
                 <th>Cantidad</th> 
+                <th>Fecha de compra</th> 
                 <th>Total</th>
                 <th>Acción</th> <!-- Nueva columna para eliminar -->
               </tr>";
     
-    // Recorremos los productos y los mostramos en la tabla
-    while ($row = $consulta->fetch_array(MYSQLI_ASSOC)) {
-        $producto_id = $row['id']; // ID del producto
-        $cantidad = $row['cantidad']; // Cantidad del producto en el carrito
-        $precio = $row['precio']; // Precio del producto
-        $total_producto = $cantidad * $precio; // Total por producto
-        $total_carrito += $total_producto; // Sumar al total del carrito
-    
-        echo "<tr>";
-        echo "<td><img src='../fotosProductos/" . htmlspecialchars($row['foto']) . "' alt='Foto del producto' style='width:100px;height:100px;'></td>";
-        echo "<td>" . htmlspecialchars($row['id']) . "</td>";
-        echo "<td>" . htmlspecialchars($row['nombre']) . "</td>";
-        echo "<td>" . htmlspecialchars($row['descripcion']) . "</td>";
-        echo "<td>" . htmlspecialchars($row['categoria']) . "</td>";
-        echo "<td>" . htmlspecialchars($row['precio']) . "€</td>";
-        echo "<td>" . htmlspecialchars($cantidad) . "</td>"; // Muestra la cantidad
-        echo "<td>" . number_format($total_producto, 2) . "€</td>"; // Muestra el total del producto (cantidad * precio)
-        echo "</tr>";
-    
+        // Recorremos los productos y los mostramos en la tabla
+        while ($row = $consulta->fetch_array(MYSQLI_ASSOC)) {
+            $producto_id = $row['id']; // ID del producto
+            $cantidad = $row['cantidad']; // Cantidad del producto en el carrito
+            $precio = $row['precio']; // Precio del producto
+            $total_producto = $cantidad * $precio; // Total por producto
+            $total_carrito += $total_producto; // Sumar al total del carrito
+        
+            // Mostramos los datos en las filas de la tabla
+            echo "<tr>";
+            echo "<td><img src='../fotosProductos/" . htmlspecialchars($row['foto']) . "' alt='Foto del producto' style='width:100px;height:100px;'></td>";
+            echo "<td>" . htmlspecialchars($row['id']) . "</td>";
+            echo "<td>" . htmlspecialchars($row['nombre']) . "</td>";
+            echo "<td>" . htmlspecialchars($row['descripcion']) . "</td>";
+            echo "<td>" . htmlspecialchars($row['categoria']) . "</td>";
+            echo "<td>" . htmlspecialchars($row['precio']) . "€</td>";
+            echo "<td>" . htmlspecialchars($cantidad) . "</td>"; // Muestra la cantidad
+            echo "<td>" . htmlspecialchars($row['fecha']) . "</td>"; // Muestra la fecha de compra
+            echo "<td>" . number_format($total_producto, 2) . "€</td>"; // Muestra el total del producto (cantidad * precio)
+            echo "</tr>";
+        }
+        
+        // Agregar la fila del total del carrito
+        echo "<tr>
+                <td colspan='7' style='text-align:right; font-weight:bold;'>Total Carrito:</td>
+                <td style='font-weight:bold;'>" . number_format($total_carrito, 2) . "€</td>
+                <td></td> <!-- Celda vacía para mantener alineación -->
+              </tr>";
+        
+        // Cerramos la tabla
+        echo "</table>";
     }
     
-    // Agregar la fila del total del carrito
-    echo "<tr>
-            <td colspan='7' style='text-align:right; font-weight:bold;'>Total Carrito:</td>
-            <td style='font-weight:bold;'>" . number_format($total_carrito, 2) . "€</td>
-            <td></td> <!-- Celda vacía para mantener alineación -->
-          </tr>";
-    
-    // Cerramos la tabla
-    echo "</table>";
-    }
 
     public function buscarProductos($busqueda, $usuario)
     {
@@ -202,11 +206,12 @@ echo "</div>"; // Fin col-md-4
         $query = mysqli_query($this->conexion, "UPDATE carrito SET cantidad = $cantidad, producto_id = $producto_id WHERE usuario_id = $usuario");        
     }
 
-    public function crearPedido($id_usuario){
-        $query = mysqli_query($this->conexion, "INSERT INTO pedidos (usuario_id, producto_id, cantidad)
-        SELECT usuario_id, producto_id, cantidad FROM carrito WHERE usuario_id = $id_usuario");        
-
+    public function crearPedido($id_usuario) {
+        $fecha = date("Y-m-d H:i:s");  // Fecha y hora actual
+        $query = mysqli_query($this->conexion, "INSERT INTO pedidos (usuario_id, producto_id, cantidad, fecha)
+            SELECT usuario_id, producto_id, cantidad, '$fecha' FROM carrito WHERE usuario_id = $id_usuario");
     }
+    
 
     public function crearPDFCompra($correo, $productos){
         
