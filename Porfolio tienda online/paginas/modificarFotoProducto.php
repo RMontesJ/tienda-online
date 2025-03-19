@@ -53,8 +53,6 @@ $extension = $_FILES['fotoNueva']['type'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cambiar foto producto</title>
-    <link rel="stylesheet" href="../css/nav.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="../css/cambiarFoto.css?v=<?php echo time(); ?>">
     <?php include "../includes/bootstrapLinks.php" ?>
 </head>
 <body>

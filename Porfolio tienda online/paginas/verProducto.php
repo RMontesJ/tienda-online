@@ -33,40 +33,51 @@ $fotoProducto = $productos->cogerFotoProducto($id_producto);
     
 <div class="page">
 
-<?php include "../includes/navAdmin.php" ?>
+    <?php include "../includes/navAdmin.php" ?>
 
-<h1>Informacion del producto</h1>
+    <h1 class="text-center mt-4">Información del producto</h1>
 
-<div class="datos">
-<div class="foto">
-<img src="../fotosProductos/<?php echo $fotoProducto; ?>" alt="Foto usuario" style="width:400px;height:300px;"><br>
-<a href="../paginas/modificarFotoProducto.php?id_user=<?php echo $usuario;?>&id_producto=<?php echo $id_producto;?>"><img src="../img/iconoLapiz.svg" alt="Cambiar foto"></img></a>
-</div>
-<div class="nombre">
-<p>Nombre: <?php echo $nombreProducto ?></p>
+    <div class="container-fluid mt-4">
+        <div class="row justify-content-center">
 
-</div>
-
-<div class="descripcion">
-<p>Descripción: <?php echo $descripcionProducto ?></p>
-
+            <!-- Foto del producto -->
+            <div class="col-12 col-md-4 mb-4 text-center d-flex flex-column justify-content-center align-items-center">
+    <img src="../fotosProductos/<?php echo $fotoProducto; ?>" alt="Foto usuario" class="img-fluid" style="max-height: 300px; object-fit: cover;">
+    <br>
+    <a href="../paginas/modificarFotoProducto.php?id_user=<?php echo $usuario;?>&id_producto=<?php echo $id_producto;?>" class="btn btn-warning d-block mt-2 w-auto" style="padding: 8px; text-align: center;">
+        <img src="../img/iconoLapiz.svg" alt="Cambiar foto" class="img-fluid" style="max-width: 30px;">
+        Modificar foto
+    </a>
 </div>
 
-<div class="categoria">
-<p>Categoria: <?php echo $categoriaProducto ?></p>
 
-</div>
+            <!-- Detalles del producto -->
+            <div class="col-12 col-md-8">
+                <div class="mb-3">
+                    <p><strong>Nombre:</strong> <?php echo $nombreProducto ?></p>
+                </div>
 
-<div class="precio">
-<p>Precio: <?php echo $precioProducto ?></p>
+                <div class="mb-3">
+                    <p><strong>Descripción:</strong> <?php echo $descripcionProducto ?></p>
+                </div>
 
-</div>
+                <div class="mb-3">
+                    <p><strong>Categoría:</strong> <?php echo $categoriaProducto ?></p>
+                </div>
 
-<div class="config">
-    <a href="../paginas/modificarProducto.php?id_user=<?php echo $usuario;?>&id_producto=<?php echo $id_producto;?>"><img src="../img/iconoLapiz.svg" alt="Cambiar nombre"></img></a>
-</div>
+                <div class="mb-3">
+                    <p><strong>Precio:</strong> <?php echo $precioProducto ?></p>
+                </div>
 
-</div>
+                <div class="text-center mt-3">
+                    <a href="../paginas/modificarProducto.php?id_user=<?php echo $usuario;?>&id_producto=<?php echo $id_producto;?>" class="btn btn-warning">
+                        <img src="../img/iconoLapiz.svg" alt="Cambiar nombre" style="max-width: 20px;"> Modificar Producto
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
 
 </div>
 

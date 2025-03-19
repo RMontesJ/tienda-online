@@ -49,8 +49,6 @@ $productos->editarProducto($usuario, $id_producto, $nombreNuevo, $descripcionNue
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar producto</title>
-    <link rel="stylesheet" href="../css/nav.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="../css/modificarProducto.css?v=<?php echo time(); ?>">
     <script src="../validaciones/actualizar_producto.js?v=<?php echo time(); ?>" defer></script>
     <?php include "../includes/bootstrapLinks.php" ?>
 </head>
