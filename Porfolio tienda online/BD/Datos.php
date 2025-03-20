@@ -143,7 +143,6 @@ class Datos
     
             echo "<div class='col-md-4 mb-4'>"; // Cada tarjeta ocupa 4 columnas en pantallas medianas o más grandes
             echo "<div class='card h-100 shadow-sm'>"; // Tarjeta con sombra y altura uniforme
-            echo "<a href='../paginas/infoPedido.php?id_user=$usuario&id_pedido=" . $row['id'] . "'>";
             echo "<img src='../fotosProductos/" . htmlspecialchars($row['foto']) . "' alt='Foto del producto' class='card-img-top' style='height: 300px;'></a>"; // Imagen responsiva y ajustada
             echo "<div class='card-body'>";
             echo "<h5 class='card-title'>" . htmlspecialchars($row['producto_nombre']) . "</h5>";

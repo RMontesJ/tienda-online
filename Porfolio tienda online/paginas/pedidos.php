@@ -39,7 +39,7 @@ if(isset($_POST['enviar'])){
 
 <div class="container-fluid text-center">
 
-    <?php include "../includes/nav.php"; // Incluye la barra de navegación del usuario ?>
+    <?php include "../includes/navAdmin.php"; // Incluye la barra de navegación del usuario ?>
 
     <h1>Pedidos</h1>
 
