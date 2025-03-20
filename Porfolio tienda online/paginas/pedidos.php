@@ -41,7 +41,7 @@ if(isset($_POST['enviar'])){
 
     <?php include "../includes/nav.php"; // Incluye la barra de navegación del usuario ?>
 
-    <h1>Mis Pedidos</h1>
+    <h1>Pedidos</h1>
 
     <?php 
     // Incluye el campo de texto y botón de búsqueda (si lo necesitas, puedes adaptarlo para buscar pedidos)
@@ -54,7 +54,7 @@ if(isset($_POST['enviar'])){
         // Se buscarán los pedidos de un usuario específico.
 
         // Usamos el valor de búsqueda, que puede ser un campo o filtro que el usuario ingresa
-        $imprimirPedidos = $datosUsuario->verPedidos();
+        $imprimirPedidos = $datosUsuario->verPedidos($usuario);
 
         ?>
     </div>
