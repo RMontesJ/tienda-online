@@ -49,7 +49,7 @@ class Datos
         }
     }
 
-    public function verMisPedidos($productos, $id_usuario) {
+    public function buscarMisPedidos($productos, $id_usuario, $valor) {
         if (empty($productos)) {
             echo "No has realizado pedidos aún.";
             return;
@@ -61,63 +61,54 @@ class Datos
     
         // Consultamos los detalles de los productos en la tabla `productos`, `pedidos` y la dirección de `usuarios`
         $consulta = $this->conexion->query(" 
-        SELECT p.id, p.nombre, p.descripcion, p.categoria, p.precio, p.foto, 
-               pe.cantidad, pe.fecha, u.direccion
-        FROM pedidos pe
-        INNER JOIN productos p ON pe.producto_id = p.id 
-        INNER JOIN usuarios u ON pe.usuario_id = u.id
-        WHERE pe.usuario_id = $id_usuario
-    ");
+            SELECT p.id, p.nombre AS producto_nombre, p.descripcion, p.categoria, p.precio, p.foto, 
+                   pe.cantidad, pe.fecha, u.direccion, u.nombre AS nombre_usuario, pe.usuario_id
+            FROM pedidos pe
+            INNER JOIN productos p ON pe.producto_id = p.id 
+            INNER JOIN usuarios u ON pe.usuario_id = u.id
+            WHERE pe.usuario_id = $id_usuario 
+            AND (p.nombre LIKE '%$valor%' 
+                 OR u.nombre LIKE '%$valor%' 
+                 OR pe.fecha LIKE '%$valor%'
+                 OR pe.id = '$valor')");
     
         $total_pedidos = 0; // Variable para almacenar el total de los pedidos
     
-        // Iniciamos la tabla con la nueva columna "Total"
-        echo "<table border='1' style='width:70%; text-align:left; border-collapse: collapse;'>";
-        echo "<tr>
-                <th>Imagen</th>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Descripción</th>
-                <th>Categoría</th>
-                <th>Precio</th>
-                <th>Cantidad</th> 
-                <th>Fecha de compra</th> 
-                <th>Dirección de envío</th>
-                <th>Total</th>
-              </tr>";
+        // Comprobamos si hay resultados
+        if ($consulta->num_rows == 0) {
+            echo "No se encontraron pedidos que coincidan con tu búsqueda.";
+            return;
+        }
     
-        // Recorremos los productos y los mostramos en la tabla
+        // Mostrar los resultados de los pedidos encontrados
         while ($row = $consulta->fetch_array(MYSQLI_ASSOC)) {
-            $producto_id = $row['id'];
             $cantidad = $row['cantidad'];
             $precio = $row['precio'];
             $total_producto = $cantidad * $precio;
             $total_pedidos += $total_producto;
-            $direccion = htmlspecialchars($row['direccion']); // Obtener dirección del usuario
     
-            echo "<tr>";
-            echo "<td><img src='../fotosProductos/" . htmlspecialchars($row['foto']) . "' alt='Foto del producto' style='width:100px;height:100px;'></td>";
-            echo "<td>" . htmlspecialchars($row['id']) . "</td>";
-            echo "<td>" . htmlspecialchars($row['nombre']) . "</td>";
-            echo "<td>" . htmlspecialchars($row['descripcion']) . "</td>";
-            echo "<td>" . htmlspecialchars($row['categoria']) . "</td>";
-            echo "<td>" . htmlspecialchars($row['precio']) . "€</td>";
-            echo "<td>" . htmlspecialchars($cantidad) . "</td>"; 
-            echo "<td>" . htmlspecialchars($row['fecha']) . "</td>";
-            echo "<td>" . $direccion . "</td>"; // Muestra la dirección de envío
-            echo "<td>" . number_format($total_producto, 2) . "€</td>";
-            echo "</tr>";
+            echo "<div class='col-md-4 mb-4'>"; // Cada tarjeta ocupa 4 columnas en pantallas medianas o más grandes
+            echo "<div class='card h-100 shadow-sm'>"; // Tarjeta con sombra y altura uniforme
+            echo "<img src='../fotosProductos/" . htmlspecialchars($row['foto']) . "' alt='Foto del producto' class='card-img-top' style='height: 300px;'></a>"; // Imagen responsiva y ajustada
+            echo "<div class='card-body'>";
+            echo "<h5 class='card-title'>" . htmlspecialchars($row['producto_nombre']) . "</h5>";
+            echo "<p class='card-text'>" . htmlspecialchars($row['descripcion']) . "</p>";
+            echo "<p class='text-muted'><strong>Categoría:</strong> " . htmlspecialchars($row['categoria']) . "</p>";
+            echo "<p class='fw-bold text-primary'>Precio: " . htmlspecialchars($row['precio']) . "€</p>";
+            echo "<p class='fw-bold text-primary'>Cantidad: " . htmlspecialchars($row['cantidad']) . "</p>";
+            echo "<p class='fw-bold text-primary'>Total del Producto: " . number_format($total_producto, 2) . "€</p>";
+            echo "<p><strong>Fecha de compra:</strong> " . htmlspecialchars($row['fecha']) . "</p>";
+            echo "<p><strong>Dirección de envío:</strong> " . htmlspecialchars($row['direccion']) . "</p>";
+            echo "<p><strong>Nombre del Usuario:</strong> " . htmlspecialchars($row['nombre_usuario']) . "</p>";
+            echo "</div>"; // Fin card-body
+            echo "</div>"; // Fin card
+            echo "</div>"; // Fin col-md-4
         }
     
-        // Agregar la fila del total de los pedidos
-        echo "<tr>
-                <td colspan='8' style='text-align:right; font-weight:bold;'>Total de pedidos:</td>
-                <td style='font-weight:bold;'>" . number_format($total_pedidos, 2) . "€</td>
-                <td></td>
-              </tr>";
+        // Mostrar el total de los pedidos si se desea
+        echo "<div class='fw-bold text-end' style='margin-top: 20px;'>Total de pedidos: " . number_format($total_pedidos, 2) . "€</div>";
+    }
     
-        echo "</table>";
-    }    
     
     public function buscarPedidos($usuario, $busqueda) {
         // Consulta de pedidos con filtrado por nombre de producto, nombre de usuario y fecha

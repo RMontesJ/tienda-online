@@ -1,5 +1,7 @@
 <?php
 
+error_reporting(0);
+
 $usuario = $_GET['id_user'];
 
 require_once "../BD/Datos.php";
@@ -54,7 +56,7 @@ if(isset($_POST['enviar'])){
         // Se buscarán los pedidos de un usuario específico.
 
         // Usamos el valor de búsqueda, que puede ser un campo o filtro que el usuario ingresa
-        $imprimirPedidos = $datosUsuario->verMisPedidos($idPoductosPedido, $usuario);
+        $imprimirPedidos = $datosUsuario->buscarMisPedidos($idPoductosPedido, $usuario, $valor);
 
         ?>
     </div>
