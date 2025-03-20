@@ -54,7 +54,7 @@ if(isset($_POST['enviar'])){
         // Se buscarán los pedidos de un usuario específico.
 
         // Usamos el valor de búsqueda, que puede ser un campo o filtro que el usuario ingresa
-        $imprimirPedidos = $datosUsuario->verPedidos($usuario);
+        $imprimirPedidos = $datosUsuario->buscarPedidos($usuario, $valor);
 
         ?>
     </div>
