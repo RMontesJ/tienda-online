@@ -29,6 +29,10 @@ $fotoPerfil = $datosUsuario->cogerFoto($usuario);
                 </ul>
                 <!-- Iconos de perfil y logout -->
                 <div class="d-flex align-items-center">
+
+                <a href="../paginas/pedidos.php?id_user=<?php echo $usuario; ?>" class="me-3">
+                        <img src="../img/MaterialSymbolsDeliveryTruckSpeed.svg" alt="Notificaciones" style="width:40px;height:40px;">
+                    </a>
                     <a href="../paginas/notificaciones.php?id_user=<?php echo $usuario; ?>" class="me-3">
                         <img src="../img/MaterialSymbolsNotifications.svg" alt="Notificaciones" style="width:40px;height:40px;">
                     </a>

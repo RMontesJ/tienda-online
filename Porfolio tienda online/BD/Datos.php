@@ -60,15 +60,14 @@ class Datos
         $productos_list = implode(",", array_map("intval", $productos_ids));
     
         // Consultamos los detalles de los productos en la tabla `productos`, `pedidos` y la dirección de `usuarios`
-        $consulta = $this->conexion->query("
-            SELECT p.id, p.nombre, p.descripcion, p.categoria, p.precio, p.foto, 
-                   pe.cantidad, pe.fecha, u.direccion
-            FROM productos p
-            INNER JOIN pedidos pe ON pe.producto_id = p.id 
-            INNER JOIN usuarios u ON pe.usuario_id = u.id
-            WHERE pe.usuario_id = $id_usuario
-              AND p.id IN ($productos_list)
-        ");
+        $consulta = $this->conexion->query(" 
+        SELECT p.id, p.nombre, p.descripcion, p.categoria, p.precio, p.foto, 
+               pe.cantidad, pe.fecha, u.direccion
+        FROM pedidos pe
+        INNER JOIN productos p ON pe.producto_id = p.id 
+        INNER JOIN usuarios u ON pe.usuario_id = u.id
+        WHERE pe.usuario_id = $id_usuario
+    ");
     
         $total_pedidos = 0; // Variable para almacenar el total de los pedidos
     
@@ -119,6 +118,65 @@ class Datos
     
         echo "</table>";
     }    
+    
+    public function verPedidos() {
+        $consulta = $this->conexion->query(" 
+            SELECT p.id, p.nombre, p.descripcion, p.categoria, p.precio, p.foto, 
+                   pe.cantidad, pe.fecha, u.direccion, pe.usuario_id
+            FROM pedidos pe
+            INNER JOIN productos p ON pe.producto_id = p.id 
+            INNER JOIN usuarios u ON pe.usuario_id = u.id
+        ");
+    
+        if ($consulta->num_rows == 0) {
+            echo "No hay pedidos registrados.";
+            return;
+        }
+        
+        $total_pedidos = 0;
+        
+        echo "<table border='1' style='width:70%; text-align:left; border-collapse: collapse;'>";
+        echo "<tr>
+                <th>Imagen</th>
+                <th>ID Producto</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Categoría</th>
+                <th>Precio</th>
+                <th>Cantidad</th> 
+                <th>Fecha de compra</th> 
+                <th>Dirección de envío</th>
+                <th>ID Usuario</th>
+                <th>Total</th>
+              </tr>";
+    
+        while ($row = $consulta->fetch_array(MYSQLI_ASSOC)) {
+            $cantidad = $row['cantidad'];
+            $precio = $row['precio'];
+            $total_producto = $cantidad * $precio;
+            $total_pedidos += $total_producto;
+            
+            echo "<tr>";
+            echo "<td><img src='../fotosProductos/" . htmlspecialchars($row['foto']) . "' alt='Foto del producto' style='width:100px;height:100px;'></td>";
+            echo "<td>" . htmlspecialchars($row['id']) . "</td>";
+            echo "<td>" . htmlspecialchars($row['nombre']) . "</td>";
+            echo "<td>" . htmlspecialchars($row['descripcion']) . "</td>";
+            echo "<td>" . htmlspecialchars($row['categoria']) . "</td>";
+            echo "<td>" . htmlspecialchars($row['precio']) . "€</td>";
+            echo "<td>" . htmlspecialchars($cantidad) . "</td>";
+            echo "<td>" . htmlspecialchars($row['fecha']) . "</td>";
+            echo "<td>" . htmlspecialchars($row['direccion']) . "</td>";
+            echo "<td>" . htmlspecialchars($row['usuario_id']) . "</td>";
+            echo "<td>" . number_format($total_producto, 2) . "€</td>";
+            echo "</tr>";
+        }
+        
+        echo "<tr>
+                <td colspan='9' style='text-align:right; font-weight:bold;'>Total de pedidos:</td>
+                <td colspan='2' style='font-weight:bold;'>" . number_format($total_pedidos, 2) . "€</td>
+              </tr>";
+        echo "</table>";
+    }
     
 
     public function buscarProductos($busqueda, $usuario)

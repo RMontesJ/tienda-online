@@ -32,42 +32,38 @@ $fotoProducto = $productos->cogerFotoProducto($id_producto);
 </head>
 <body>
     
-<div class="page">
+<div class="container-fluid text-center">
+    <?php include "../includes/nav.php" ?>
 
-<?php include "../includes/nav.php" ?>
+    <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+            <h1 class="mb-4">Información del Producto</h1>
 
-<h1>Informacion del producto</h1>
+            <div class="card shadow p-4">
+                <div class="row">
+                    <div class="col-md-6 text-center">
+                        <img src="../fotosProductos/<?php echo $fotoProducto; ?>" 
+                             alt="Foto del producto" 
+                             class="img-fluid rounded">
+                    </div>
+                    <div class="col-md-6 text-start">
+                        <p><strong>Nombre:</strong> <?php echo $nombreProducto; ?></p>
+                        <p><strong>Descripción:</strong> <?php echo $descripcionProducto; ?></p>
+                        <p><strong>Categoría:</strong> <?php echo $categoriaProducto; ?></p>
+                        <p><strong>Precio:</strong> <?php echo $precioProducto; ?>€</p>
 
-<div class="datos">
-<div class="foto">
-<img src="../fotosProductos/<?php echo $fotoProducto; ?>" alt="Foto usuario" style="width:400px;height:300px;"><br>
-</div>
-<div class="nombre">
-<p>Nombre: <?php echo $nombreProducto ?></p>
-
-</div>
-
-<div class="descripcion">
-<p>Descripción: <?php echo $descripcionProducto ?></p>
-
-</div>
-
-<div class="categoria">
-<p>Categoria: <?php echo $categoriaProducto ?></p>
-
-</div>
-
-<div class="precio">
-<p>Precio: <?php echo $precioProducto ?></p>
-
-</div>
-
-<form action="../paginas/meterEnCarrito.php?id_user=<?php echo $usuario; ?>&id_producto=<?php echo $id_producto; ?>" method="post" class="config">
-<input name="cantidad" type="number" min="1">
-<button>Añadir al carrito</button>
-
-</div>
-
+                        <form action="../paginas/meterEnCarrito.php?id_user=<?php echo $usuario; ?>&id_producto=<?php echo $id_producto; ?>" method="post">
+                            <div class="mb-3">
+                                <label for="cantidad" class="form-label"><strong>Cantidad:</strong></label>
+                                <input name="cantidad" type="number" min="1" class="form-control w-50 mx-auto" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Añadir al carrito</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 </body>
