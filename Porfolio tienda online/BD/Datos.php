@@ -213,6 +213,8 @@ echo "</div>"; // Fin col-md-4
 
     }
 
+
+
     public function borrarProducto($id){
         $query = mysqli_query($this->conexion, "DELETE FROM productos WHERE id = '$id'");
     }
@@ -448,6 +450,22 @@ $pdf->Output('D', 'factura.pdf');
         $query = mysqli_query($this->conexion, "INSERT INTO notificaciones (id_usuario, titulo, descripcion, fecha) VALUES ($id_usuario, 'Bienvenido', 'Gracias por registrarte en nuestra tienda. Podras revisar nuestros productos, realizar pedidos y editar tu información personal', '$fecha')");
 
     }
+
+    public function crearNotificacionCompra($id_usuario, $fecha, $productos){
+        $descripcion = "Gracias por tu compra. Has adquirido: ";
+        $total = 0;
+        
+        foreach ($productos as $producto) {
+            $subtotal = $producto['cantidad'] * $producto['precio'];
+            $total += $subtotal;
+            $descripcion .= "{$producto['nombre']} (Cantidad: {$producto['cantidad']}, Subtotal: \${$subtotal}), ";
+        }
+        
+        $descripcion = rtrim($descripcion, ', ') . ". Total pagado: \${$total}. Puedes revisar tu pedido en la sección de historial de compras.";
+        
+        $query = mysqli_query($this->conexion, "INSERT INTO notificaciones (id_usuario, titulo, descripcion, fecha) VALUES ($id_usuario, 'Información de compra', '$descripcion', '$fecha')");
+    }
+    
 
 // coge el id del usuario si esta registrado. Si no lo esta, se le reedirige al inicio de sesion
     public function inicioSesion($nombre, $contrasena)

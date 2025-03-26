@@ -11,6 +11,8 @@ if (!isset($usuario) || $usuario == "") {
     exit();
 }
 
+$fecha = date("Y-m-d H:i:s");  // Fecha y hora actual
+
 // Obtener los datos
 $correo = $clase->cogerCorreo($usuario);
 $idProductosCarrito = $clase->cogerIdProductosCarrito($usuario);
@@ -19,6 +21,7 @@ $productos = $clase->obtenerProductosPorId($usuario);
 $clase->crearPDFCompra($correo, $productos);
 
 $clase->crearPedido($usuario);
+$clase->crearNotificacionCompra($usuario, $fecha, $productos);
 $clase->vaciarCarrito($usuario);
 
 header("Location: ../paginas/carrito.php?id_user=$usuario");
