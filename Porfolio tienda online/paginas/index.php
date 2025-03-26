@@ -7,21 +7,21 @@
     <?php include "../includes/bootstrapLinks.php" ?>
 </head>
 <body>
-<div class="container mt-4">
-        <div class="card shadow-sm">
-            <div class="card-body text-center">
-                <h2 class="mb-3">Menú</h2>
-                <div class="mb-3">
-                    <a href="#" class="d-block text-decoration-none">Política de privacidad</a>
-                    <a href="#" class="d-block text-decoration-none">Términos y condiciones</a>
-                </div>
-                <div class="d-grid gap-2">
-                    <a href="../paginas/inicio_sesion.php" class="btn btn-primary">Iniciar sesión</a>
-                    <a href="../paginas/registro.php" class="btn btn-success">Registrarse</a>
-                </div>
+<div class="container mt-4 d-flex justify-content-center">
+    <div class="card shadow-sm w-50">
+        <div class="card-body text-center">
+            <h2 class="mb-3">Menú</h2>
+            <div class="mb-3">
+                <a href="#" class="d-block text-decoration-none">Política de privacidad</a>
+                <a href="#" class="d-block text-decoration-none">Términos y condiciones</a>
+            </div>
+            <div class="d-grid gap-2">
+                <a href="../paginas/inicio_sesion.php" class="btn btn-primary">Iniciar sesión</a>
+                <a href="../paginas/registro.php" class="btn btn-success">Registrarse</a>
             </div>
         </div>
     </div>
+</div>
 
 </body>
 </html>

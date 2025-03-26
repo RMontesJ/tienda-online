@@ -48,7 +48,9 @@ $fotoPerfil = $datosUsuario->cogerFoto($usuario);
                         <div class="foto mb-3">
                             <img src="../fotosUsuarios/<?php echo $fotoPerfil; ?>" alt="Foto usuario" class="img-fluid rounded" style="max-width: 400px; height: auto;">
                             <br>
-                            <a href="../cambioDatosPerfil/cambiarFoto.php?id_user=<?php echo $usuario; ?>"><img src="../img/iconoLapiz.svg" alt="Cambiar foto"></a>
+                            <a href="../cambioDatosPerfil/cambiarFoto.php?id_user=<?php echo $usuario; ?>" class="btn btn-info">
+    <img src="../img/iconoLapiz.svg" alt="Cambiar foto" width="20" height="20"> Cambiar foto
+</a>
                         </div>
                         <div class="datos text-start">
                             <p><strong>Nombre:</strong> <?php echo $nombrePerfil; ?></p>
@@ -57,8 +59,14 @@ $fotoPerfil = $datosUsuario->cogerFoto($usuario);
                             <p><strong>Dirección:</strong> <?php echo $direcciónPerfil; ?></p>
                         </div>
                         <div class="config d-flex justify-content-center gap-3 mt-3">
-                            <a href="../cambioDatosPerfil/editarUsuario.php?id_user=<?php echo $usuario; ?>"><img src="../img/iconoLapiz.svg" alt="Editar"></a>
-                            <a href="../cambioDatosPerfil/eliminarUsuario.php?id_user=<?php echo $usuario; ?>"><img src="../img/iconoPapelera.svg" alt="Eliminar"></a>
+                        <a href="../cambioDatosPerfil/editarUsuario.php?id_user=<?php echo $usuario; ?>" class="btn btn-warning">
+    <img src="../img/iconoLapiz.svg" alt="Editar" width="20" height="20"> Editar perfil
+</a>
+<a href="../cambioDatosPerfil/eliminarUsuario.php?id_user=<?php echo $usuario; ?>" 
+   class="btn btn-danger" 
+   onclick="return confirm('¿Estás seguro de que quieres eliminar tu cuenta? Esta acción no se puede deshacer.');">
+    <img src="../img/iconoPapelera.svg" alt="Eliminar" width="20" height="20"> Eliminar cuenta
+</a>
                         </div>
                     </div>
                 </div>
