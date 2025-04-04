@@ -32,16 +32,18 @@ if(!isset($usuario) || $usuario == ""){
 </head>
 <body>
 
-<div class="pagina">
 
-<?php include "../includes/navAdmin.php" ?>
+<div class="container-fluid">
+    <?php include "../includes/navAdmin.php" ?>
 
-
-<div class="notificaciones">
-    <?php $clase->pintarNotificaciones($usuario); ?>
-</div>
-
-</div>
-    
+    <!-- Sección de notificaciones -->
+    <div class="row justify-content-center mt-4">
+        <div class="col-12 col-md-10 col-lg-8">
+            <div class="notificaciones p-3 p-sm-4 border rounded shadow-sm">
+                <?php $clase->pintarNotificaciones($usuario); ?>
+            </div>
+        </div>
+    </div>
+</div>    
 </body>
 </html>

@@ -55,7 +55,7 @@ include "../includes/busquedaUsuarios.php"
 
  // ejecuta una sentencia a la base de datos que busca usuarios con el valor del campo del include
  //busquedaUsuarios.php
-$imprimirUsuarios = $datosUsuario->buscarUsuarios($valor);
+$imprimirUsuarios = $datosUsuario->buscarUsuarios($valor, $usuario);
 
 
 ?>

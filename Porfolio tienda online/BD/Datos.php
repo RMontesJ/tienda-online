@@ -21,7 +21,7 @@ class Datos
     }
 
 
-    public function buscarUsuarios($busqueda)
+    public function buscarUsuarios($busqueda, $id_propio)
     {
         $consulta = $this->conexion->query("SELECT * FROM usuarios WHERE id LIKE '%$busqueda%' OR nombre LIKE '%$busqueda%' OR contrasena LIKE '%$busqueda%' OR correo LIKE '%$busqueda%' OR direccion LIKE '%$busqueda%'");
 
@@ -40,13 +40,23 @@ class Datos
         echo "<p class='card-text'><strong>Correo:</strong> " . $row['correo'] . "</p>";
         echo "<p class='card-text'><strong>Dirección:</strong> " . $row['direccion'] . "</p>";
         echo "</div>"; // Fin card-body
-        
+        echo "<a href='enviarMensaje.php?id_user=$id_propio&id_receiver=" . $row['id'] . "'><img src='../img/messageIcon.svg' alt='Enviar mensaje' style='width: 30px; height: 30px;'></a>";
+
         // Cierre de la tarjeta
         echo "</div>"; // Fin card
+       
+        echo "</a>";
         echo "</div>"; // Fin col-md-4
             
     
         }
+    }
+
+    public function enviarNotificacion($id_destinatario, $titulo, $descripcion, $fecha, $usuario){
+
+        $query = mysqli_query($this->conexion, "INSERT INTO notificaciones (id_usuario, titulo, descripcion, fecha) VALUES ($id_destinatario, '$titulo', '$descripcion', '$fecha')");
+
+        header("Location: ../paginas/indexRegistradoAdmin.php?id_user=$usuario");
     }
 
     public function buscarMisPedidos($productos, $id_usuario, $valor) {
@@ -181,7 +191,7 @@ class Datos
         while ($row = $consulta->fetch_array(MYSQLI_ASSOC)) {
             echo "<div class='col-md-4 mb-4'>"; // Cada tarjeta ocupa 4 columnas en pantallas medianas o más grandes
 echo "<div class='card h-100 shadow-sm'>"; // Tarjeta con sombra y altura uniforme
-echo "<a href='../paginas/infoProducto.php?id_user=$usuario&id_producto=" . $row['id'] . "'>";
+echo "<a href='../paginas/infoProductoAdmin.php?id_user=$usuario&id_producto=" . $row['id'] . "'>";
 echo "<img src='../fotosProductos/" . $row['foto'] . "' alt='Foto del producto' class='card-img-top' style='height: 300px;'></a>"; // Imagen responsiva y ajustada
 echo "<div class='card-body'>";
 echo "<h5 class='card-title'>" . $row['nombre'] . "</h5>";
