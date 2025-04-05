@@ -23,6 +23,13 @@ $fecha = date("d-m-Y H:i:s");
 $correo = $datosUsuario->cogerCorreo($usuario);
 
 
+
+    // si es admin
+    if (strpos($correo, "@admin.com") === false) {
+        header("Location: ../paginas/indexRegistrado.php?id_user=$usuario");
+        exit();
+    }
+
 ?>
 
 <!DOCTYPE html>

@@ -52,13 +52,7 @@ $fotoProducto = $productos->cogerFotoProducto($id_producto);
                         <p><strong>Categoría:</strong> <?php echo $categoriaProducto; ?></p>
                         <p><strong>Precio:</strong> <?php echo $precioProducto; ?>€</p>
 
-                        <form action="../paginas/meterEnCarrito.php?id_user=<?php echo $usuario; ?>&id_producto=<?php echo $id_producto; ?>" method="post">
-                            <div class="mb-3">
-                                <label for="cantidad" class="form-label"><strong>Cantidad:</strong></label>
-                                <input name="cantidad" type="number" min="1" class="form-control w-50 mx-auto" required>
-                            </div>
-                            <button type="submit" class="btn btn-primary w-100">Añadir al carrito</button>
-                        </form>
+                    
                     </div>
                 </div>
             </div>
