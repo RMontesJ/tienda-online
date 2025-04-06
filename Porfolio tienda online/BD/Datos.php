@@ -69,8 +69,8 @@ class Datos
         $productos_ids = array_column($productos, 'producto_id');
         $productos_list = implode(",", array_map("intval", $productos_ids));
     
-        // Consultamos los detalles de los productos en la tabla `productos`, `pedidos` y la dirección de `usuarios`
-        $consulta = $this->conexion->query(" 
+        // Consultamos los detalles de los productos en la tabla `productos`, `pedidos` y `usuarios`
+        $consulta = $this->conexion->query("
             SELECT p.id, p.nombre AS producto_nombre, p.descripcion, p.categoria, p.precio, p.foto, 
                    pe.cantidad, pe.fecha, u.direccion, u.nombre AS nombre_usuario, pe.usuario_id
             FROM pedidos pe
@@ -79,44 +79,60 @@ class Datos
             WHERE pe.usuario_id = $id_usuario 
             AND (p.nombre LIKE '%$valor%' 
                  OR u.nombre LIKE '%$valor%' 
-                 OR pe.fecha LIKE '%$valor%'
-                 OR pe.id = '$valor')");
+                 OR pe.fecha LIKE '%$valor%' 
+                 OR pe.id = '$valor')"
+        );
     
-        $total_pedidos = 0; // Variable para almacenar el total de los pedidos
+        $total_pedidos = 0;
     
-        // Comprobamos si hay resultados
         if ($consulta->num_rows == 0) {
             echo "No se encontraron pedidos que coincidan con tu búsqueda.";
             return;
         }
     
-        // Mostrar los resultados de los pedidos encontrados
+        // Inicio de tabla
+        echo "<table border='1' style='width:100%; text-align:left; border-collapse: collapse; font-family: Arial, sans-serif;'>";
+        echo "<tr style='background-color: #f2f2f2;'>
+                <th>Imagen</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Categoría</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+                <th>Total</th>
+                <th>Fecha</th>
+                <th>Dirección</th>
+                <th>Usuario</th>
+              </tr>";
+    
         while ($row = $consulta->fetch_array(MYSQLI_ASSOC)) {
             $cantidad = $row['cantidad'];
             $precio = $row['precio'];
             $total_producto = $cantidad * $precio;
             $total_pedidos += $total_producto;
     
-            echo "<div class='col-md-4 mb-4'>"; // Cada tarjeta ocupa 4 columnas en pantallas medianas o más grandes
-            echo "<div class='card h-100 shadow-sm'>"; // Tarjeta con sombra y altura uniforme
-            echo "<img src='../fotosProductos/" . htmlspecialchars($row['foto']) . "' alt='Foto del producto' class='card-img-top' style='height: 300px;'></a>"; // Imagen responsiva y ajustada
-            echo "<div class='card-body'>";
-            echo "<h5 class='card-title'>" . htmlspecialchars($row['producto_nombre']) . "</h5>";
-            echo "<p class='card-text'>" . htmlspecialchars($row['descripcion']) . "</p>";
-            echo "<p class='text-muted'><strong>Categoría:</strong> " . htmlspecialchars($row['categoria']) . "</p>";
-            echo "<p class='fw-bold text-primary'>Precio: " . htmlspecialchars($row['precio']) . "€</p>";
-            echo "<p class='fw-bold text-primary'>Cantidad: " . htmlspecialchars($row['cantidad']) . "</p>";
-            echo "<p class='fw-bold text-primary'>Total del Producto: " . number_format($total_producto, 2) . "€</p>";
-            echo "<p><strong>Fecha de compra:</strong> " . htmlspecialchars($row['fecha']) . "</p>";
-            echo "<p><strong>Dirección de envío:</strong> " . htmlspecialchars($row['direccion']) . "</p>";
-            echo "<p><strong>Nombre del Usuario:</strong> " . htmlspecialchars($row['nombre_usuario']) . "</p>";
-            echo "</div>"; // Fin card-body
-            echo "</div>"; // Fin card
-            echo "</div>"; // Fin col-md-4
+            echo "<tr>";
+            echo "<td><img src='../fotosProductos/" . htmlspecialchars($row['foto']) . "' alt='Foto del producto' style='width:100px;height:100px;'></td>";
+            echo "<td>" . htmlspecialchars($row['producto_nombre']) . "</td>";
+            echo "<td>" . htmlspecialchars($row['descripcion']) . "</td>";
+            echo "<td>" . htmlspecialchars($row['categoria']) . "</td>";
+            echo "<td>" . htmlspecialchars($row['precio']) . "€</td>";
+            echo "<td>" . htmlspecialchars($cantidad) . "</td>";
+            echo "<td>" . number_format($total_producto, 2) . "€</td>";
+            echo "<td>" . htmlspecialchars($row['fecha']) . "</td>";
+            echo "<td>" . htmlspecialchars($row['direccion']) . "</td>";
+            echo "<td>" . htmlspecialchars($row['nombre_usuario']) . "</td>";
+            echo "</tr>";
         }
     
-        // Mostrar el total de los pedidos si se desea
-        echo "<div class='fw-bold text-end' style='margin-top: 20px;'>Total de pedidos: " . number_format($total_pedidos, 2) . "€</div>";
+        // Fila total
+        echo "<tr>
+                <td colspan='7' style='text-align:right; font-weight:bold;'>Total de pedidos:</td>
+                <td style='font-weight:bold;'>" . number_format($total_pedidos, 2) . "€</td>
+                <td colspan='3'></td>
+              </tr>";
+    
+        echo "</table>";
     }
     
     
@@ -258,7 +274,7 @@ echo "</div>"; // Fin col-md-4
     }
 
     public function crearPedido($id_usuario) {
-        $fecha = date("Y-m-d H:i:s");  // Fecha y hora actual
+        $fecha = date("d-m-Y H:i:s");  // Fecha y hora actual
         $query = mysqli_query($this->conexion, "INSERT INTO pedidos (usuario_id, producto_id, cantidad, fecha)
             SELECT usuario_id, producto_id, cantidad, '$fecha' FROM carrito WHERE usuario_id = $id_usuario");
     }

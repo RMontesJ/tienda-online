@@ -11,7 +11,7 @@ if (!isset($usuario) || $usuario == "") {
     exit();
 }
 
-$fecha = date("Y-m-d H:i:s");  // Fecha y hora actual
+$fecha = date("d-m-Y H:i:s");  // Fecha y hora actual
 
 // Obtener los datos
 $correo = $clase->cogerCorreo($usuario);
