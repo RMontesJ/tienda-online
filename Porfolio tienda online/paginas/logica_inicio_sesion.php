@@ -9,7 +9,7 @@ $nombre = $_POST['nombre'];
 $contrasena = $_POST['contrasena'];
 
 //guardamos la fecha actual gracias a un metodo que aporta PHP
-$fecha = date("Y-m-d H:i:s");
+$fecha = date("d-m-Y H:i:s");
 
 // coge el id del usuario y lo guarda en una variable
 $inicioSesion = $clase->inicioSesion($nombre, $contrasena);
