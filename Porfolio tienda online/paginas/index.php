@@ -65,6 +65,10 @@
     <h3 class="mb-3">Transforma tu negocio hoy mismo</h3>
     <p class="mb-4">Únete a cientos de empresas que ya están vendiendo en línea con nosotros.</p>
     <a href="../paginas/registro.php" class="btn btn-success btn-lg">Crea tu tienda ahora</a>
+    <p class="mb-4 mt-4">O si ya estas registrado</p>
+    <a href="../paginas/inicio_sesion.php" class="btn btn-success btn-lg">Inicia sesion</a>
+
+
 </div>
 
 <!-- FOOTER LINKS -->
